@@ -1,0 +1,256 @@
+#eighteen-content {
+    width: 90%;
+    float: left;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+#eighteen {
+    background-color: #e2ebf0;
+}
+
+/************************************************** َATIEH_N strat********************************************************************************/
+
+.pageTTParent_18 {
+    position: fixed;
+    width: 100%;
+    background-color: #e2ebf0;
+}
+
+.pic-header-18 {
+    position: relative;
+    width: 93%;
+    /* padding-left: 3%; */
+    /* padding-right: 3%; */
+    /* border: 1px solid red; */
+    /*height: 85%;*/
+    margin: 3% auto;
+
+}
+
+.pic-header-18 img {
+    width: 100%;
+    box-shadow: 2px 2px 7px -4px #888888;
+    border-radius: 12px;
+}
+
+.Pparent_18 {
+    position: relative;
+    width: 93%;
+    overflow: auto;
+    margin: 3% auto;
+    height: 65%;
+    border-radius: 12px;
+    box-shadow: 2px 2px 7px -4px #888888;
+    background-color: #ffffff;
+}
+
+.Pchild_18 {
+    background-color: #ffffff;
+    position: relative;
+    padding-bottom: 30px !important;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.sellsItem_18 {
+    flex: 0 0 auto;
+    direction: rtl;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /*border: 1px solid red;*/
+}
+
+.sideList_18 {
+    width: 23%;
+    float: left;
+    margin-left: 0px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.lineList_18 {
+    flex: 0 0 auto;
+    direction: rtl;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    width: 90%;
+    height: 1px;
+    background-color: #d2d3d5;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radioClass_18 {
+    width: 20%;
+}
+
+input[type='radio'] {
+    -webkit-appearance: none !important;
+    color: #d2d3d5 !important;
+    background-color: #d2d3d5 !important;
+    border: 1px solid #d2d3d5 !important;
+    box-shadow: 1px 1px 10px #d2d3d5 !important;
+}
+
+[type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+    border: 2px solid #d2d3d5;
+    background-color: #d2d3d5;
+}
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+    border: 2px solid #d2d3d5 !important;
+    background-color: #4385f5 !important;
+}
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+    background-color: #4385f5 !important;
+}
+
+
+/************************************************** َATIEH_N end********************************************************************************/
+
+
+@media screen and (min-width: 320px) {
+    [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+        width: 10px !important;
+        height: 10px !important;
+        margin-top: 10px !important;
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+        width: 10px !important;
+        height: 10px !important;
+        margin-top: 10px !important;
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+        width: 10px !important;
+        height: 10px !important;
+        margin-top: 10px !important;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+        width: 15px !important;
+        height: 15px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+        width: 15px !important;
+        height: 15px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+        width: 15px !important;
+        height: 15px !important;
+
+    }
+}
+
+@media screen and (min-width: 375px) {
+
+}
+
+@media screen and (min-width: 384px) {
+    [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+        width: 15px !important;
+        height: 15px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+        width: 15px !important;
+        height: 15px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+        width: 15px !important;
+        height: 15px !important;
+
+    }
+}
+
+@media screen and (min-width: 411px) {
+
+}
+
+@media screen and (min-width: 412px) {
+
+}
+
+@media screen and (min-width: 480px) {
+
+}
+
+@media screen and (min-width: 600px) {
+
+}
+
+@media screen and (min-width: 768px) {
+    [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+        width:25px !important;
+        height: 25px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+        width: 25px !important;
+        height: 25px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+        width: 25px !important;
+        height: 25px !important;
+
+    }
+}
+
+@media screen and (min-width: 800px) {
+    [type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+        width:25px !important;
+        height: 25px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+        width: 25px !important;
+        height: 25px !important;
+
+    }
+
+    [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+        width: 25px !important;
+        height: 25px !important;
+
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+}

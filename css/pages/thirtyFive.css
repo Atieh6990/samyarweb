@@ -1,0 +1,50 @@
+
+.Pparent_35{
+    position: relative;
+    width: 93%;
+    /* padding-left: 3%; */
+    /* padding-right: 3%; */
+    /* border: 1px solid red; */
+    height: 80%;
+    overflow: auto;
+    margin: 3% auto;
+}
+.Pchild_35{
+    position: relative;
+    padding-bottom: 30px !important;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+.txtTitleClass_35{
+    width: 100%;
+    position: relative;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    direction: rtl;
+    text-align: right;
+}
+.pageTTParent_35{
+    position: relative;
+    width: 100%;
+    background-color: #e2ebf0;
+}
+#thirtyfive{
+    background-color: #e2ebf0;
+}
+.thirtyFiveTitle{
+    width: 90%;
+    position: relative;
+    margin: auto;
+    color: #000;
+    text-align: right;
+    direction: rtl;
+    font-size: 18px;
+    margin-top: 35px;
+}

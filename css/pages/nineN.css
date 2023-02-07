@@ -1,0 +1,29 @@
+.Pparent_9{
+    position: relative;
+    width: 93%;
+    /* padding-left: 3%; */
+    /* padding-right: 3%; */
+    /* border: 1px solid red; */
+    height: 80%;
+    overflow: auto;
+    margin: 3% auto;
+}
+.Pchild_9{
+    position: relative;
+    padding-bottom: 30px !important;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+.pageTTParent_9{
+     position: relative;
+     width: 100%;
+     background-color: #e2ebf0;
+ }
+#nine{
+    background-color: #e2ebf0;
+}

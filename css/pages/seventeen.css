@@ -1,0 +1,334 @@
+#seventeen-detail-box {
+    width: 96%;
+    height: 100%;
+    margin-right: 2%;
+    margin-left: 2%;
+    overflow: hidden;
+    direction: rtl;
+    color: #fff;
+    padding: 10px;
+    position: relative;
+    background: #efefef;
+    padding-bottom: 50px;
+
+}
+
+.seventeen-list {
+
+    border: 1px solid #035faa;
+    border-radius: 100px;
+    width: 100%;
+    margin-bottom: 2%;
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+.seventeen-img {
+    float: right;
+    z-index: 1;
+    height: 100%;
+    position: relative;
+    z-index: 11;
+}
+
+.seventeen-box-rank {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    height: 100%;
+    z-index: 11;
+    border: 1px solid #035faa;
+    color: #035faa;
+    text-align: center;
+    border-radius: 100px;
+    font-size: 16px;
+}
+
+.seventeen-imgbak {
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+    height: 100%;
+
+}
+
+.seventeen-title {
+    position: absolute;
+    top: 10%;
+    text-align: right;
+    direction: rtl;
+    color: #035faa;
+    font-size: 12px;
+    text-align: justify;
+}
+
+.seventeen-score {
+    position: absolute;
+    bottom: 10%;
+    text-align: right;
+    direction: rtl;
+    color: #035faa;
+    font-size: 12px;
+    text-align: justify;
+}
+
+.seventeen-tab {
+    height: 50%;
+    border: 2px solid #035faa;
+    background: #fff;
+    color: #035faa;
+    width: 30%;
+    float: left;
+    border-radius: 20px;
+    margin-top: 2.5%;
+    margin-right: 2.6%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 4vh;
+    float: right;
+}
+
+#seventeen-box-tab {
+    background: #fff;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    z-index: 55;
+}
+
+.seventeen-tab-active {
+    background: #035faa;
+    color: #fff;
+}
+
+.seventeen-isuser {
+    background: #035faa;
+    color: #fff;
+}
+
+.seventeen-isuser .seventeen-title {
+    color: #fff;
+}
+
+.seventeen-isuser .seventeen-score {
+    color: #fff;
+}
+
+.seventeen-isuser .seventeen-box-rank {
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+/**************************************************** ATIEH_N strat ********************************************************************************************/
+
+.pageTTParent_17 {
+    position: relative;
+    width: 100%;
+    background-color: #e2ebf0;
+}
+.Pparent_17 {
+    position: relative;
+    width: 93%;
+    /* padding-left: 3%; */
+    /* padding-right: 3%; */
+    /* border: 1px solid red; */
+    height:85%;
+    overflow: auto;
+    margin: 3% auto;
+}
+.Pchild_17 {
+    position: relative;
+    padding-bottom: 30px !important;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    /* flex-direction: row-reverse; */
+}
+.head_rate_17 {
+    width: 100%;
+    text-align: center;
+    direction: rtl;
+    color: #ffffff;
+    background: rgb(3, 95, 170);
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 22222;
+}
+
+.rate-item-17 {
+    width: 33%;
+    flex: 1;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*justify-content: space-around;*/
+    align-items: center;
+    border-bottom: 1px solid #CCCCCC;
+    flex-wrap: wrap;
+    background-color: rgb(3, 95, 170);
+}
+
+.rate-item-17:first-child, .rate-item-17:nth-child(2) {
+    border-left: 1px solid #0a78e7;
+}
+.hoverTab_17{
+    flex: 1;
+    width: 33%;
+    height: 5px;
+    background-color: #fec400;
+    position: absolute;
+    bottom: 0px;
+    display: none;
+}
+.colorHideHover > .hoverTab_17 {
+    display: block !important;
+}
+.tabImg_17{
+    width: 20%;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 6%;
+}
+.imgTab_1_17{
+    display: none;
+}
+.colorHideHover > .imgTab_1_17 {
+    display: block !important;
+}
+.colorHideHover > .imgTab_2_17 {
+    display: none !important;
+}
+
+.sideList_17{
+    background-color: #cfd8dd;
+    width: 23%;
+    float: left;
+    margin-left: 0px;
+    color: #000000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.CitemImg_17{
+    width: 20%;
+    float: right;
+    margin-right: 2%;
+    border-radius: 50px;
+}
+.firstRate_17{
+    background-color: #fbc201 !important;
+}
+.secondRate_17{
+    background-color: #9e9fa3 !important;
+}
+.thirdRate_17{
+    background-color: #ff7143 !important;
+}
+.isUser_total_17{
+    background-color: #4385f5 !important;
+}
+.isUser_side_17{
+    background-color: #044180 !important;
+}
+.is_user_colorTxt{
+    color: #ffffff !important;
+}
+.isUserListImg{
+    float: left;
+    width: 15%;
+    margin-left: 5%;
+}
+.cupImg_17{
+    width: 70%;
+}
+
+@media screen and (min-width: 320px) {
+    .rate-item-17 {
+        font-size: 10px !important;
+    }
+    .tabImg_17{
+        margin-bottom: 3% !important;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .rate-item-17 {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (min-width: 375px) {
+
+}
+
+@media screen and (min-width: 384px) {
+
+}
+
+@media screen and (min-width: 411px) {
+
+
+}
+
+
+@media screen and (min-width: 412px) {
+
+
+}
+
+@media screen and (min-width: 480px) {
+
+}
+
+@media screen and (min-width: 600px) {
+    .rate-item-17{
+        font-size: 20px !important;
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .CitemImg_17{
+        width: 16% !important;
+    }
+
+
+}
+
+@media screen and (min-width: 800px) {
+    .rate-item-17 {
+        font-size: 25px !important;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .listItemTitle {
+        font-size: 22px !important;
+    }
+    .CitemImg_17{
+        width: 16% !important;
+    }
+
+}
+
+
+/**************************************************** ATIEH_N end ********************************************************************************************/

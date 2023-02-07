@@ -1,0 +1,25 @@
+#five-detailNews-box{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    overflow: hidden;
+    direction: rtl;
+    color: #fff;
+    background: #efefef;
+    padding-bottom: 25px;
+    border-radius: 0px 0px 25px 25px;
+    padding: 10px;
+}
+.five-btn {
+    border-radius: 25px;
+    text-align: right;
+    padding: 0px;
+    padding-right: 10px;
+    line-height: 45px;
+    background: #035faa;
+    width: 100%;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+}

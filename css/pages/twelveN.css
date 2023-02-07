@@ -1,0 +1,264 @@
+#twelve {
+    background-color: #e2ebf0;
+}
+.Pchild_12{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.pageTTParent_12 {
+    position: relative;
+    width: 100%;
+    background-color: #e2ebf0;
+    overflow: hidden;
+}
+
+.answerParent_12 {
+    position: relative;
+    width: 100%;
+    margin: 3% auto;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.answerBox_12 {
+    margin: auto;
+    height: 90%;
+    border-color: #d6d7db;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 9px;
+    box-shadow: 2px 2px 7px -4px #888888;
+    background-color: #ffffff;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+    direction: rtl;
+}
+
+.truAns_12 {
+    width: 48%;
+    float: right;
+}
+
+.falseAns_12 {
+    width: 48%;
+    float: left;
+}
+
+.examAnsImg_12 {
+    width: 15%;
+    position: relative;
+    float: right;
+    align-self: center;
+    justify-content: center;
+    margin-right: 5%;
+}
+
+.ansCntTitle_12 {
+    position: relative;
+    float: right;
+    align-self: center;
+    justify-content: center;
+    margin-right: 5%;
+    color: #000;
+    font-size: 11px;
+}
+
+.ansCntShow_12 {
+    text-align: left;
+    position: relative;
+    float: left;
+    align-self: center;
+    justify-content: center;
+    margin-left: 5%;
+    color: #000;
+    font-size: 11px;
+}
+
+.ansCntTxt_12 {
+    width: 53%;
+}
+
+.ansCntNum_12 {
+    width: 15%;
+}
+
+.Pparent_12 {
+    position: relative;
+    width: 93%;
+    height: 85%;
+    overflow: auto;
+    margin: 3% auto;
+    border-color: #d6d7db;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 9px;
+    box-shadow: 2px 2px 7px -4px #888888;
+    background-color: #ffffff;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+    direction: rtl;
+}
+
+.examListTopDiv_12 {
+    width: 100%;
+    height: 98%;
+    align-content: space-between;
+    /* align-items: center; */
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /*margin-bottom: 2%;*/
+}
+
+.listItem_12 {
+    /*border: 1px solid red;*/
+    direction: rtl;
+    position: relative;
+    text-align: center;
+    margin-top: 1%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    width: 100%;
+
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+
+}
+
+.examListIcon_12 {
+    width: 11%;
+    position: relative;
+    float: right;
+    align-self: center;
+    justify-content: center;
+    margin-right: 2%;
+}
+
+.examListTitle_12 {
+    position: relative;
+    float: right;
+    align-self: center;
+    justify-content: unset;
+    margin-right: 2%;
+    color: #000;
+    font-size: 11px;
+    direction: rtl;
+    text-align: right;
+}
+
+.examListNum_12 {
+    text-align: left;
+    position: relative;
+    float: left;
+    align-self: center;
+    justify-content: center;
+    left: 0px;
+    margin-left: 3%;
+    color: #000;
+    font-size: 11px;
+    width: 30%;
+}
+
+.examListLine_12 {
+    position: relative;
+    float: left;
+    align-self: center;
+    justify-content: center;
+    background-color: #e1e1e1;
+    width: 90%;
+    height: 1%;
+}
+
+.reviewBtn_12 {
+    position: absolute;
+    bottom: 18px;
+    border-radius: 9px;
+    direction: rtl;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #4385f6;
+    color: #ffffff;
+    width: 90%;
+    align-items: stretch;
+    align-content: space-between;
+    /* align-items: center; */
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    opacity: 0;
+}
+
+@media screen and (min-width: 320px) {
+    .ansCntShow_12, .ansCntTitle_12, .examListTitle_12, .examListNum_12,.CitemTxt {
+        font-size: 9px !important;
+    }
+
+    .examListTitle_12, .reviewBtn_12 {
+        font-size: 11px !important;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .ansCntShow_12, .ansCntTitle_12 {
+        font-size: 11px !important;
+    }
+
+    .examListTitle_12, .examListNum_12, .reviewBtn_12,.CitemTxt {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (min-width: 412px) {
+    .ansCntShow_12, .ansCntTitle_12, .examListNum_12, .reviewBtn_12,.CitemTxt {
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .ansCntShow_12, .ansCntTitle_12, .examListTitle_12, .examListNum_12, .reviewBtn_12,.CitemTxt {
+        font-size: 14px !important;
+    }
+}
+@media screen and (min-width: 600px) {
+    .CitemTxt {
+        font-size: 20px !important;
+    }
+}
+@media screen and (min-width: 768px) {
+    .ansCntShow_12, .ansCntTitle_12, .examListTitle_12, .examListNum_12, .reviewBtn_12,.CitemTxt {
+        font-size: 20px !important;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .ansCntShow_12, .ansCntTitle_12, .examListTitle_12, .examListNum_12, .reviewBtn_12,.CitemTxt {
+        font-size: 23px !important;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+    .ansCntShow_12, .ansCntTitle_12, .examListNum_12, .reviewBtn_12,.CitemTxt {
+        font-size: 28px !important;
+    }
+}

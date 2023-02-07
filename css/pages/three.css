@@ -1,0 +1,83 @@
+#three-tab{
+    height: 8.8%;
+    width: 90%;
+    float: right;
+    position: relative;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+#three-one-content{
+    width: 90%;
+    float: left;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+.three-btn{
+    border-radius: 25px;
+    text-align: right;
+    padding: 0px;
+    padding-right: 10px;
+    line-height: 45px;
+    background: #035faa;
+    width: 48%;
+    font-size: 12px;
+}
+div.three-tab{
+    height: 100%;
+    float: right;
+    border: none;
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s;
+    background: #035faa;
+    border-radius: 50px;
+    overflow: hidden;
+}
+img.three-tab{
+    height: 100%;
+    float: left;
+    border: none;
+
+}
+.three-gap-item-tab{
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.three-gap-right-tab{
+    margin-right: 1%;
+}
+.three-gap-left-tab{
+    margin-left: 1%;
+}
+.three-tab-box{
+    -webkit-transition: width 1s; /* Safari */
+    transition: width 1s;
+}
+
+.tab-wrapper{
+    width: 90%;
+    float: left;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+#three-one-edu-error{
+    top: 35px;
+}
+#three-avatar-error{
+    right: 10px;  
+}
+.three-select-box{
+    position: relative; padding-bottom: 17px;position: absolute;padding-right: 33px !important;
+}
+#three-one-avatar img{
+    width: 100%;
+}
+#three-three-pirhan-error{
+    top: 27px;
+}
+#three-three-shalvar-error{
+    top: 27px;
+}
+#three-three-kafsh-error{
+    top: 27px;
+}

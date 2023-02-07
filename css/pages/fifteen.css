@@ -1,0 +1,110 @@
+#fifteen-detail-box{
+    width: 96%;
+    margin-right: 2%;
+    margin-left: 2%;
+    overflow: hidden;
+    direction: rtl;
+    color: #fff;
+    padding: 10px;
+    position: relative;
+    background: #efefef;
+
+
+}
+
+.fifteen-item-top{
+    width: 100%;
+    background: #035faa;
+    margin-top: 0px;
+    color: #fff;
+    position: fixed;
+    z-index: 5;
+    border-top: 3px solid #fff;
+}
+#fifteen-question-cnt{
+    float: right;
+    margin-right: 3%;
+    height: 100%;
+    color: #fff;
+    direction: rtl;
+}
+#fifteen-questions{
+    min-height: 80px;
+    width: 100%;
+    overflow: hidden;
+    background: #035faa;
+    border-radius: 15px;
+    padding: 7px;
+    font-size: 14px;
+    line-height: 26px;
+    direction: rtl;
+    text-align: justify;
+}
+#fifteen-question-options{
+
+    width: 100%;
+    margin-top: 20px;
+}
+#fifteen-box-bottom{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background: #fff;
+    z-index: 2;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    bottom: 20px;
+    padding-top: 3%;
+}
+.fifteen-btn-rl{
+    height: 100%;
+    font-size: 13px;
+
+    background: #035faa;
+    color: #fff;
+    text-align: center;
+    border-radius: 25px;
+    width: 30%;
+    float: right;
+
+}
+#fifteen-next{
+    margin-left: 5%; 
+} 
+#fifteen-prv{
+    margin-right: 5%; 
+} 
+.fifteen-btn-cancel{
+    height: 100%;
+    font-size: 13px;
+
+    border:2px solid #035faa;
+    color: #035faa;
+    text-align: center;
+    border-radius: 25px;
+    width: 30%;
+    float: right;
+
+
+}
+#fifteen-question-time{
+    margin-left: 3%;
+    color: #c3ad00;
+}
+.fifteen-active{
+    background: #ccc;
+}
+
+#fifteen-modal{
+    margin-bottom: 20px;
+}
+#fifteen-cm{
+    border:2px solid #035faa !important;
+    border-radius: 15px;
+    outline: transparent;
+}
+#fifteen-question-options label{
+    font-size: 14px;
+    color: #035faa;
+}

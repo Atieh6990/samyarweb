@@ -1,0 +1,17 @@
+@media screen and (min-width: 768px) {
+    #model-table-26{
+        font-size: 20px !important;
+    }
+
+}
+@media screen and (min-width: 1024px) {
+    #model-table-26{
+        font-size: 28px !important;
+    }
+    .model-detholder-26 {
+        font-size: 25px !important;
+    }
+    .model-detail-26{
+        font-size: 25px !important;
+    }
+}

@@ -1,0 +1,315 @@
+.userDataSideMenu {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: end;
+    /* justify-content: flex-end; */
+    /* align-items: flex-end; */
+    /* align-content: stretch; */
+    width: 100%;
+    position: relative;
+}
+
+.userImageBox {
+    height: 50%;
+    width: 100%;
+    flex: 0 0 auto;
+    direction: rtl;
+    position: relative;
+    float: right;
+    text-align: center;
+    margin-top: 3%;
+    cursor: pointer;
+    /* margin-left: 2%; */
+    padding-left: 2%;
+    padding-right: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+}
+
+.userProfileImg {
+    width: 35%;
+    border-radius: 50%;
+    float: right;
+    border: 3px solid #ffffff;
+}
+
+.userProfileScore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    float: right;
+    color: #ffffff;
+    height: 30%;
+    margin-right: -4%;
+    background-color: #fbc201;
+    border-radius: 8px;
+    font-size: 14px;
+    padding-top: 3%;
+}
+
+.userNameBox {
+    height: 25%;
+    width: 100%;
+    flex: 0 0 auto;
+    direction: rtl;
+    position: relative;
+    float: right;
+
+    cursor: pointer;
+    /* margin-left: 2%; */
+    padding-left: 2%;
+    padding-right: 6%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: right;
+}
+
+.menuParent {
+    position: relative;
+    width: 93%;
+    height: 75%;
+    overflow: auto;
+    margin: 3% auto;
+    /*border: 1px solid red;*/
+}
+
+.menuChild {
+    position: relative;
+    padding-bottom: 30px !important;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.menuItem {
+    flex: 0 0 auto;
+    direction: rtl;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.menuItemIn {
+    position: relative;
+    float: right;
+    margin-right: 0px;
+    padding: 1%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* justify-content: flex-start; */
+    /* align-items: stretch; */
+    align-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuLine {
+    flex: 0 0 auto;
+    direction: rtl;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    width: 90%;
+    height: 1px;
+    background-color: #d2d3d5;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuIcon {
+    width: 20%;
+    float: right;
+    /*margin-right: 2%;*/
+}
+
+.menuTxt {
+    width: 70%;
+    float: right;
+    margin-right: 3%;
+    color: #000;
+    text-align: right;
+    height: 80%;
+    align-content: space-between;
+    /* align-items: center; */
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+@media screen and (min-width: 320px) {
+    #slide-out {
+        width: 160px !important;
+    }
+
+    .userProfileScore {
+        font-size: 11px !important;
+    }
+
+    .userImageBox {
+        height: 50% !important;
+        margin-top: 5% !important;
+    }
+
+    .userNameBox {
+        height: 20% !important;
+        margin-top: 7% !important;
+    }
+
+    .menuTxt {
+        font-size: 12px !important;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    #slide-out {
+        width: 190px !important;
+    }
+
+    .userImageBox {
+        height: 53% !important;
+        margin-top: 3% !important;
+    }
+
+    .userProfileScore {
+        font-size: 14px !important;
+    }
+
+    .userNameBox {
+        height: 25% !important;
+        margin-top: 0% !important;
+    }
+
+}
+
+
+@media screen and (min-width: 375px) {
+    .userProfileScore {
+        font-size: 14px !important;
+    }
+    .userNameBox{
+        margin-top: 0% !important;
+    }
+    .menuTxt {
+        font-size: 15px !important;
+    }
+}
+
+@media screen and (min-width: 384px) {
+    .userImageBox {
+        height: 43% !important;
+        margin-top: 3% !important;
+    }
+
+}
+
+@media screen and (min-width: 411px) {
+    .userProfileScore {
+        font-size: 14px !important;
+    }
+
+    .userNameBox {
+        height: 19% !important;
+        margin-top: 0% !important;
+    }
+    .menuTxt {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (min-width: 412px) {
+
+}
+
+@media screen and (min-width: 480px) {
+    #slide-out {
+        width: 250px !important;
+    }
+
+    .userProfileScore {
+        font-size: 18px !important;
+        padding-top: 1% !important;
+    }
+
+    .userNameBox {
+        font-size: 23px !important;
+    }
+
+    .menuTxt {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #slide-out {
+        width: 290px !important;
+    }
+
+    .userProfileScore {
+        font-size: 20px !important;
+        padding-top: 2% !important;
+    }
+
+    .userNameBox {
+        font-size: 23px !important;
+    }
+
+    .menuTxt {
+        font-size: 23px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .userImageBox {
+        height: 52% !important;
+
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #slide-out {
+        width: 375px !important;
+    }
+
+    .userProfileScore {
+        font-size: 28px !important;
+        padding-top: 2% !important;
+    }
+
+    .userNameBox {
+        font-size: 28px !important;
+    }
+
+    .menuTxt {
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+}
