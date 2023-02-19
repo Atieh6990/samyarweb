@@ -103,7 +103,7 @@ pageThirtyThree.ClickItem = function (id) {
             return
         }
 
-        if(pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 17 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 18){ //17 == id mashin lebas shooee sam & 18 = yakhchal sam(01/04/1)
+        if(pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 17 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 18 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 22 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 21){ //17 == id mashin lebas shooee sam & 18 = yakhchal sam(01/04/1) & 22 = side by side sam & 21 = zarfshooee sam (30/111401)
             managementRel.tost("امکان درج محصول وجود ندارد.");
             return
         }
