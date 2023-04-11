@@ -153,7 +153,10 @@ pageThirtyTwo.validForm = function () {
             },
         },
         submitHandler: function () {
-
+            if( $("#input_serial_32").val().length < 15){
+                managementRel.tost('شماره سریال کمتر از 15 کاراکتر ثبت نخواهد شد.');
+                return false
+            }
             var data = {
                 code: $("#input_serial_32").val(),
                 model: pageThirty.selected
