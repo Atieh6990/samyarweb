@@ -153,16 +153,25 @@ pageThirtyTwo.validForm = function () {
             },
         },
         submitHandler: function () {
-            if( $("#input_serial_32").val().length < 15){
+            var reg1 = /[a-zA-Z]/;
+            var reg2 = /[0-9]/;
+            var inpVal = $("#input_serial_32").val()
+
+            console.log('regex ', reg1.test(inpVal), reg2.test(inpVal), inpVal.length)
+
+            if (reg1.test(inpVal) == false || reg2.test(inpVal) == false) {
+                managementRel.tost('شماره سریال باید ترکیبی از عدد و حروف باشد.');
+                return false
+            }
+
+            if (inpVal.length < 15) {
                 managementRel.tost('شماره سریال کمتر از 15 کاراکتر ثبت نخواهد شد.');
                 return false
             }
             var data = {
-                code: $("#input_serial_32").val(),
+                code: inpVal,
                 model: pageThirty.selected
-
             }
-
             pageTwentyFour.ajaxForecast("POST", urlForecast + 'v1/sell', pageThirtyTwo.submit, data);
 
         },
