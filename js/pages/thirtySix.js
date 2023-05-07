@@ -130,7 +130,22 @@ thirtySix.validForm = function () {
             },
         },
         submitHandler: function () {
+            var reg1 = /[a-zA-Z]/;
+            var reg2 = /[0-9]/;
+            var inpVal1 = $("#input_serial_36_1").val()
+            var inpVal0 = $("#input_serial_36_0").val()
 
+            console.log('regex ', reg1.test(inpVal1), reg2.test(inpVal1), reg1.test(inpVal1), reg2.test(inpVal0), inpVal1.length, inpVal0.length)
+
+            if (reg1.test(inpVal1) == false || reg2.test(inpVal1) == false || reg1.test(inpVal1) == false | reg2.test(inpVal0) == false) {
+                managementRel.tost('شماره سریال باید ترکیبی از عدد و حروف باشد.');
+                return false
+            }
+
+            if ((inpVal1.length < 15) || (inpVal0.length < 15)) {
+                managementRel.tost('شماره سریال کمتر از 15 کاراکتر ثبت نخواهد شد.');
+                return false
+            }
             var data = {
                 code: $("#input_serial_36_0").val(),
                 code2: $("#input_serial_36_1").val(),
