@@ -103,7 +103,10 @@ pageThirtyThree.ClickItem = function (id) {
             return
         }
 
-        if(pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 17 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 18){ //17 == id mashin lebas shooee sam & 18 = yakhchal sam(01/04/1)
+        if(pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 17 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 18 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 16 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 22 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 21){
+
+            // id == 16 (tv) , id == 22 (side) , id == 21 (DW) dar tarikhe 15.08.02 be darkhste teame samyar be promotion ezafe shod
+            //17 == id mashin lebas shooee sam & 18 = yakhchal sam(01/04/1)
             // & 22 = side by side sam & 21 = zarfshooee sam (30/11/1401) /*****/ (dar tarikhe 22/01/1402 side va zarfshoee hazf shod (21&22))
             managementRel.tost("امکان درج محصول وجود ندارد.");
             return
