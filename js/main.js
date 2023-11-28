@@ -361,6 +361,7 @@ managementRel.setCookie = function (name, val) {
 };
 managementRel.getCookie = function (name) {
     // alert(managementRel.versionBuild());
+    // console.log(window.JSInterface)
     if (window.JSInterface) {
         // alert($.base64.decode(window.JSInterface.getCookie($.base64.encode(name))));
         if (parseFloat(managementRel.versionBuild()) >= 4.4) {
@@ -386,8 +387,12 @@ managementRel.getCookie = function (name) {
             // document.cookie =name+"="+val;
         }
 
-    } else
+    } else{
+        // console.log('name' , name)
+        // console.log('localStorage.getItem(name)' , localStorage.getItem(name))
         return localStorage.getItem(name);
+    }
+
     //return managementRel.webdecodebase64(GetCookieValue(managementRel.webencodebase64(name)));
 
 };

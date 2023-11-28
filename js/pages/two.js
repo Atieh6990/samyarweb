@@ -1,8 +1,29 @@
 var pageTwo = {
     imgs: ["images/1.jpg", "images/2.jpg", "images/3.jpg", "images/4.jpg"],
     title: ["images/1.png", "images/2.png", "images/3.png", "images/4.png"],
-    slide: "", slidId: [], slidTxt: [], slidPic: [], slidTime: [], slidType: [], slidTypeId: [],parsedData:[],
-    newsId: [], newsTxt: [], newsLongTxt: [], newsPic: [], newsTime: [], newsType: [], newsTypeId: [],isNews:0,popUpTitle:[],popUpSub:[],popUpPic:[],popUpIds:[],popUpSgroup:[],popUpTypeId:[],popUpNewsID:[]
+    slide: "",
+    slidId: [],
+    slidTxt: [],
+    slidPic: [],
+    slidTime: [],
+    slidType: [],
+    slidTypeId: [],
+    parsedData: [],
+    newsId: [],
+    newsTxt: [],
+    newsLongTxt: [],
+    newsPic: [],
+    newsTime: [],
+    newsType: [],
+    newsTypeId: [],
+    isNews: 0,
+    popUpTitle: [],
+    popUpSub: [],
+    popUpPic: [],
+    popUpIds: [],
+    popUpSgroup: [],
+    popUpTypeId: [],
+    popUpNewsID: []
 };
 pageTwo.init = function () {
     /* if(pageOne.slide._pusse())
@@ -20,12 +41,12 @@ pageTwo.init = function () {
 
     var data = {
         userID: managementRel.getCookie("id"),
-        playerID : managementRel.getPalayId ()
+        playerID: managementRel.getPalayId()
     };
 
     //   alert("2 sare ajax");
     // console.log(managementRel.keyOld());
-    if((window.JSInterface)&&(parseFloat(managementRel.versionBuild())<4.4)){
+    if ((window.JSInterface) && (parseFloat(managementRel.versionBuild()) < 4.4)) {
         getKey(managementRel.keyOld());
     }
 
@@ -44,39 +65,39 @@ pageTwo.init = function () {
 
 }
 
-pageTwo.getStore=function(data){
-    this.data=jQuery.parseJSON(data)
-    if(this.data["success"]=="true"){
+pageTwo.getStore = function (data) {
+    this.data = jQuery.parseJSON(data)
+    if (this.data["success"] == "true") {
         $(".exam-m-up-two").html(this.data["data"]["store_name"])
-        $(".exam-m-down-two").html(managementRel.getCookie("city") +  " - "+this.data["data"]["store_adrs"])
+        $(".exam-m-down-two").html(managementRel.getCookie("city") + " - " + this.data["data"]["store_adrs"])
         //  console.log("================================",jQuery.parseJSON(data)["data"])
     }
 
 }
-pageTwo.onClickPrice=function(image,model){
+pageTwo.onClickPrice = function (image, model) {
     pageTwentySix.selectedModel = model
-    if(image==1){
+    if (image == 1) {
         pageTwentySix.logoAdd = "images/products/samsungicon.png"
-    }else{
+    } else {
         pageTwentySix.logoAdd = "images/products/sam_icon.png?t=22"
     }
 
     handelPage.managerEnter(26);
 }
-pageTwo.onClickData=function(type,id,index){
+pageTwo.onClickData = function (type, id, index) {
     pageTwo.slide._pusse();
     handelPage.managerEnter(4);
     //  gaU('send', 'pageview', 'pg2-detail');
 
 
-    if(index >= pageTwo.parsedData["education_content"].length){
+    if (index >= pageTwo.parsedData["education_content"].length) {
         var data = {
             userID: managementRel.getCookie("id"),
             type: type,
             id: id,
         };
         ajax("POST", dir, pageFour.init, "act=slide&type=detail" + setParamsAjax(data));
-    }else{
+    } else {
 
         var data = {
             userID: managementRel.getCookie("id"),
@@ -88,33 +109,31 @@ pageTwo.onClickData=function(type,id,index){
     }
 
 
-
-
 }
-pageTwo.eventInsta= function () {
+pageTwo.eventInsta = function () {
     gaU('send', 'pageview', 'pg1-instagram');
 }
-pageTwo.manageSearchItems=function (data) {
+pageTwo.manageSearchItems = function (data) {
 
-    pageTwo.parsedData=jQuery.parseJSON(data)["data"]
+    pageTwo.parsedData = jQuery.parseJSON(data)["data"]
 
-    pageTwo.popUpTitle=[]
-    pageTwo.popUpSub=[]
-    pageTwo.popUpPic=[]
-    pageTwo.popUpIds=[]
-    pageTwo.popUpSgroup=[]
+    pageTwo.popUpTitle = []
+    pageTwo.popUpSub = []
+    pageTwo.popUpPic = []
+    pageTwo.popUpIds = []
+    pageTwo.popUpSgroup = []
     $("#popup-two").removeClass("d-none-m")
     $("#popup-two").addClass("d-block-m")
     //   alert(pageTwo.isNews)
 
-    if(pageTwo.isNews==0){
+    if (pageTwo.isNews == 0) {
         for (var i = 0; i < pageTwo.parsedData["model"].length; i++) {
             //    console.log("----------------------", this.parsedData["news"][0])
             pageTwo.popUpTitle[i] = pageTwo.parsedData["model"][i]["title"]
-            pageTwo.popUpSub[i] ="قیمت : " + pageTwo.parsedData["model"][i]["price"]
+            pageTwo.popUpSub[i] = "قیمت : " + pageTwo.parsedData["model"][i]["price"]
             pageTwo.popUpPic[i] = pageTwo.parsedData["model"][i]["thumbnail"]
             pageTwo.popUpIds[i] = pageTwo.parsedData["model"][i]["id"]
-            pageTwo.popUpSgroup[i]=pageTwo.parsedData["model"][i]["s_group"]
+            pageTwo.popUpSgroup[i] = pageTwo.parsedData["model"][i]["s_group"]
 
 
         }
@@ -127,9 +146,9 @@ pageTwo.manageSearchItems=function (data) {
 //             pageTwo.popUpIds[i]=this.parsedData[i]["id"]
 //             pageTwo.popUpSgroup[i]=this.parsedData[i]["s_group"]
 //         }
-    }else{
+    } else {
 
-        pageTwo.popUpTypeId=[]
+        pageTwo.popUpTypeId = []
         // pageTwo.popUpNewsID=[]
         for (var i = 0; i < pageTwo.parsedData["education_content"].length; i++) {
             //    console.log("----------------------", this.parsedData["news"][0])
@@ -137,17 +156,17 @@ pageTwo.manageSearchItems=function (data) {
             pageTwo.popUpSub[i] = pageTwo.parsedData["education_content"][i]["short_desc"]
             pageTwo.popUpPic[i] = pageTwo.parsedData["education_content"][i]["thumbnail"]
             pageTwo.popUpIds[i] = pageTwo.parsedData["education_content"][i]["id"]
-            pageTwo.popUpTypeId[i]=pageTwo.parsedData["education_content"][i]["type"]
+            pageTwo.popUpTypeId[i] = pageTwo.parsedData["education_content"][i]["type"]
 
 
         }
-        for (var i = pageTwo.parsedData["education_content"].length; i < pageTwo.parsedData["news"].length+pageTwo.parsedData["education_content"].length; i++) {
+        for (var i = pageTwo.parsedData["education_content"].length; i < pageTwo.parsedData["news"].length + pageTwo.parsedData["education_content"].length; i++) {
             //    console.log("----------------------", this.parsedData["news"][0])
-            pageTwo.popUpTitle[i] = pageTwo.parsedData["news"][i-pageTwo.parsedData["education_content"].length]["title"]
-            pageTwo.popUpSub[i] = pageTwo.parsedData["news"][i-pageTwo.parsedData["education_content"].length]["short_desc"]
-            pageTwo.popUpPic[i] = pageTwo.parsedData["news"][i-pageTwo.parsedData["education_content"].length]["thumbnail"]
-            pageTwo.popUpIds[i] = pageTwo.parsedData["news"][i-pageTwo.parsedData["education_content"].length]["id"]
-            pageTwo.popUpTypeId[i]=pageTwo.parsedData["news"][i-pageTwo.parsedData["education_content"].length]["type"]
+            pageTwo.popUpTitle[i] = pageTwo.parsedData["news"][i - pageTwo.parsedData["education_content"].length]["title"]
+            pageTwo.popUpSub[i] = pageTwo.parsedData["news"][i - pageTwo.parsedData["education_content"].length]["short_desc"]
+            pageTwo.popUpPic[i] = pageTwo.parsedData["news"][i - pageTwo.parsedData["education_content"].length]["thumbnail"]
+            pageTwo.popUpIds[i] = pageTwo.parsedData["news"][i - pageTwo.parsedData["education_content"].length]["id"]
+            pageTwo.popUpTypeId[i] = pageTwo.parsedData["news"][i - pageTwo.parsedData["education_content"].length]["type"]
 
 
         }
@@ -158,28 +177,28 @@ pageTwo.manageSearchItems=function (data) {
 
 }
 pageTwo.searchItems = function (x) {
-    if(pageTwo.isNews==0){
+    if (pageTwo.isNews == 0) {
         var data = {'q': x, 'product': null};
         pageTwentyFour.ajaxForecast("POST", urlForecast + 'v1/search/all', pageTwo.manageSearchItems, data);
-    }else{
+    } else {
         var data = {'q': x, 'product': null};
         pageTwentyFour.ajaxForecast("POST", urlForecast + 'v1/search/all', pageTwo.manageSearchItems, data);
     }
 
 
 }
-pageTwo.submitInput=function (e) {
+pageTwo.submitInput = function (e) {
     if (e.code === 'Enter') {
         pageTwo.changeInputTwo()
     }
 
 };
-pageTwo.changeInputTwo= function () {
+pageTwo.changeInputTwo = function () {
     var x = document.getElementById("input-two").value;
     pageTwo.createPopUP(x);
 };
 
-pageTwo.createPopUP= function (x) {
+pageTwo.createPopUP = function (x) {
 
     $(".pooup-inner-two").empty()
 
@@ -191,7 +210,7 @@ pageTwo.createPopUP= function (x) {
         return;
     }
 
-    if (x.length > 0){
+    if (x.length > 0) {
         pageTwo.addOverlay()
         pageTwo.createError("تعداد کارکتر ها باید بیش از 3 حرف باشد")
         return;
@@ -200,15 +219,15 @@ pageTwo.createPopUP= function (x) {
 }
 pageTwo.createItem = function () {
 
-    for(var i=0;i<pageTwo.popUpIds.length;i++){
+    for (var i = 0; i < pageTwo.popUpIds.length; i++) {
 
         this.el = $("<div></div>");
         this.el.addClass("popup-item-two");
-        if(pageTwo.isNews==0){
+        if (pageTwo.isNews == 0) {
 
-            this.el.attr("onclick", 'pageTwo.onClickPrice("'+pageTwo.popUpSgroup[i] + '","' + pageTwo.popUpIds[i] + '")')
-        }else{
-            this.el.attr("onclick", 'pageTwo.onClickData("'+pageTwo.popUpTypeId[i] + '","' + pageTwo.popUpIds[i] + '","' + i + '")')
+            this.el.attr("onclick", 'pageTwo.onClickPrice("' + pageTwo.popUpSgroup[i] + '","' + pageTwo.popUpIds[i] + '")')
+        } else {
+            this.el.attr("onclick", 'pageTwo.onClickData("' + pageTwo.popUpTypeId[i] + '","' + pageTwo.popUpIds[i] + '","' + i + '")')
         }
 
         $(".pooup-inner-two").append(this.el);
@@ -219,7 +238,7 @@ pageTwo.createItem = function () {
 
         this.el21 = $("<div></div>");
         this.el21.addClass("popup-txt-header-two");
-        this.el21.html( pageTwo.popUpTitle[i])
+        this.el21.html(pageTwo.popUpTitle[i])
         this.el1.append(this.el21);
 
         this.el22 = $("<div></div>");
@@ -229,14 +248,12 @@ pageTwo.createItem = function () {
 
         this.el3 = $("<img>");
         this.el3.addClass("popup-img-two");
-        this.el3.attr("src",pageTwo.popUpPic[i])
+        this.el3.attr("src", pageTwo.popUpPic[i])
         this.el.append(this.el3);
 
 
-
-
     }
-    if( pageTwo.popUpIds.length==0){
+    if (pageTwo.popUpIds.length == 0) {
         pageTwo.createError("نتیجه ای یافت نشد.")
 
     }
@@ -247,18 +264,18 @@ pageTwo.createItem = function () {
 
 //managementRel.getCookie("store")
 }
-pageTwo.createError= function (error) {
+pageTwo.createError = function (error) {
     this.el = $("<div></div>");
     this.el.html(error)
     this.el.addClass("popup-error-two");
     $(".pooup-inner-two").append(this.el);
 }
-pageTwo.clickFilter= function (status) {
-    if(status==0){
+pageTwo.clickFilter = function (status) {
+    if (status == 0) {
         gaU('send', 'pageview', 'pg1-filter-data');
         $("#price-two").removeClass("back-not-selected-two")
         $("#price-two div").removeClass("color-not-selected-two")
-        $("#price-two svg").attr("fill","#044182")
+        $("#price-two svg").attr("fill", "#044182")
 
         $("#price-two").addClass("back-selected-two")
         $("#price-two div").addClass("color-selected-two")
@@ -266,18 +283,18 @@ pageTwo.clickFilter= function (status) {
 
         $("#data-two").removeClass("price-two")
         $("#data-two div").removeClass("color-selected-two")
-        $("#data-two svg").attr("fill","#a9b1b4")
+        $("#data-two svg").attr("fill", "#a9b1b4")
 
 
         $("#data-two").addClass("back-not-selected-two")
         $("#data-two div").addClass("color-not-selected-two")
 
 
-    }else{
+    } else {
         gaU('send', 'pageview', 'pg1-filter-price');
         $("#data-two").removeClass("back-not-selected-two")
         $("#data-two div").removeClass("color-not-selected-two")
-        $("#data-two svg").attr("fill","#044182")
+        $("#data-two svg").attr("fill", "#044182")
 
         $("#data-two").addClass("back-selected-two")
         $("#data-two div").addClass("color-selected-two")
@@ -285,13 +302,13 @@ pageTwo.clickFilter= function (status) {
 
         $("#price-two").removeClass("price-two")
         $("#price-two div").removeClass("color-selected-two")
-        $("#price-two svg").attr("fill","#a9b1b4")
+        $("#price-two svg").attr("fill", "#a9b1b4")
 
 
         $("#price-two").addClass("back-not-selected-two")
         $("#price-two div").addClass("color-not-selected-two")
     }
-    pageTwo.isNews=status
+    pageTwo.isNews = status
     pageTwo.changeInputTwo()
 }
 pageTwo.resulNews = function (data) {
@@ -303,11 +320,25 @@ pageTwo.resulNews = function (data) {
     }
     // alert("2 sare forecast");
 
+
+    console.log('dataAjax', dataAjax)
+    console.log('setParamsAjax(dataAjax)', setParamsAjax(dataAjax))
+
     ajax("POST", urlForecast + 'login', pageTwo.successLogin, "act=contest&type=get" + setParamsAjax(dataAjax));  //ajax e login
 
     pageTwo.parser(data);
     if (pageTwo.slide == "") {
-        pageTwo.slide = new slideshow({height: handelPage.height * 0.3, indicators: false, id: "slider2", append: "#two-slide-box", img: pageTwo.slidPic, title: pageTwo.slidTxt, onclick: "pageTwo.ClickItem(id)", baseId: "two-slide-", titleBar: true});
+        pageTwo.slide = new slideshow({
+            height: handelPage.height * 0.3,
+            indicators: false,
+            id: "slider2",
+            append: "#two-slide-box",
+            img: pageTwo.slidPic,
+            title: pageTwo.slidTxt,
+            onclick: "pageTwo.ClickItem(id)",
+            baseId: "two-slide-",
+            titleBar: true
+        });
         pageTwo.create();
     } else {
 
@@ -332,16 +363,24 @@ pageTwo.resulNews = function (data) {
 
 
 }
-pageTwo.successLogin=function(data){
+pageTwo.successLogin = function (data) {
     //console.log("success login"+JSON.stringify(data));
+
     var obj = jQuery.parseJSON(data);
+
+    // managementRel.tost("token" + obj['data']['token']);
     if (obj['success'] == "true") {
         pageTwo.token = obj['data']['token'];
         pageTwo.userScore = obj['data']['score'];
         pageTwo.rank = obj['data']['rank'];
-        pageTwentyFour.ajaxForecast("POST", urlForecast + 'user/store', pageTwo.getStore, {});
+
+        setTimeout(function () {
+            pageTwentyFour.ajaxForecast("POST", urlForecast + 'user/store', pageTwo.getStore, {});
+        }, 2000)
+
+
         //console.log("token->"+pageTwo.token);
-    }else if (obj['success'] == "false") {
+    } else if (obj['success'] == "false") {
 
     }
 
@@ -379,16 +418,25 @@ pageTwo.parser = function (data) {
 }
 pageTwo.create = function () {
     for (var i = 0; i < 3; i++) {
-        if(this.newsPic[i]!=null && this.newsPic[i]!="null" ){
-            $("#news-img-"+i+"-two").attr("src", this.newsPic[i])
+        if (this.newsPic[i] != null && this.newsPic[i] != "null") {
+            $("#news-img-" + i + "-two").attr("src", this.newsPic[i])
         }
 
-        $("#news-h-"+i+"-two").html(this.newsTxt[i].substr(0, 30))
-        $("#news-f-"+i+"-two").html( this.newsTime[i])
+        $("#news-h-" + i + "-two").html(this.newsTxt[i].substr(0, 30))
+        $("#news-f-" + i + "-two").html(this.newsTime[i])
 
     }
-    this.list = new list({title: pageTwo.newsTxt, height: handelPage.height * 0.12, baseId: "two-list-", className: "two-list-news", appendEl: "#two-news-box", model: "A", img: pageTwo.newsPic, time: pageTwo.newsTime,
-        onclick: "pageTwo.ClickItem(id)"});
+    this.list = new list({
+        title: pageTwo.newsTxt,
+        height: handelPage.height * 0.12,
+        baseId: "two-list-",
+        className: "two-list-news",
+        appendEl: "#two-news-box",
+        model: "A",
+        img: pageTwo.newsPic,
+        time: pageTwo.newsTime,
+        onclick: "pageTwo.ClickItem(id)"
+    });
     //
     // $("#two-news-box").css({"margin-bottom": (handelPage.height * 0.093) + 20 + "px"});
     //
@@ -423,18 +471,18 @@ pageTwo.create = function () {
     //     $(".two-box-btn").css({"bottom": "0px"});
     // }
 }
-pageTwo.addOverlay=function (){
+pageTwo.addOverlay = function () {
     $(".back-overlay-two").removeClass("d-none-m")
     $(".back-overlay-two").addClass("d-block-m")
 }
-pageTwo.removeOverlay=function (){
+pageTwo.removeOverlay = function () {
     $(".back-overlay-two").addClass("d-none-m")
     $(".back-overlay-two").removeClass("d-block-m")
     $("#popup-two").addClass("d-none-m")
     $("#popup-two").removeClass("d-block-m")
     $(".search-two").removeClass("remove-bottomn-border-radios-m")
 }
-pageTwo.overlayClick = function (){
+pageTwo.overlayClick = function () {
 
     //  console.log(e.target)
 //alert(e.target.className)
@@ -502,8 +550,6 @@ pageTwo.ClickItem = function (id) {
 
             break;
     }
-
-
 
 
 }

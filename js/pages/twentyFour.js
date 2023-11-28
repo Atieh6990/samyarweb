@@ -1,3 +1,5 @@
+var xhr3;
+
 pageTwentyFour = {
     starAppModule: "",
 };
@@ -1105,74 +1107,86 @@ pageTwentyFour.showTab = function (id) {  //neshoon dadane safe
     }
 
 };
+
+
 pageTwentyFour.ajaxForecast = function (type, link, funSuccess, data) {
-    // console.log(data);
-    managementRel.ios({"action": "print", "msg": "ajax"});
-    // $("#loadId").addClass("fc-loading");
-    managementRel.showLoading();
-    if (typeof xhr2 !== 'undefined')
-        xhr2.abort();
+    //managementRel.tost('link' + link)
+    // setTimeout(function () {
 
-    xhr2 = $.ajax({
-        type: 'POST',
-        dataType: "html",
-        data: data,
-        contentType: 'application/x-www-form-urlencoded',
-        Accept: 'application/json',
-        headers: {
-            'Accept': 'application/json',
-        },
-        url: link,
-        success: funSuccess,
-        tryCount: 0,
-        retryLimit: 0,
+        // console.log(data);
+        managementRel.ios({"action": "print", "msg": "ajax"});
+        // $("#loadId").addClass("fc-loading");
+        managementRel.showLoading();
+        if (typeof xhr2 !== 'undefined')
+            xhr2.abort();
 
-        beforeSend: function (xhr2) {
-            // console.log(pageTwentyFour.token);
-            //alert('pageTwo.token->'+pageTwo.token);
-            xhr2.setRequestHeader("Authorization", "Bearer " + pageTwo.token);
-            //mylog.log("start");
-        },
-        error: function (xhr2, textStatus, errorThrown) {
-            mylog.log('erorr = ' + xhr2 + ' ' + textStatus + '' + errorThrown);
-            if (textStatus == 'timeout' || textStatus == 'error') {
-                managementRel.hideLoading();
-                this.tryCount++;
-                if (this.tryCount <= this.retryLimit) {
-                    //try again
-                    $.ajax(this);
+        xhr2 = $.ajax({
+            type: 'POST',
+            dataType: "html",
+            data: data,
+            contentType: 'application/x-www-form-urlencoded',
+            Accept: 'application/json',
+            headers: {
+                "Authorization": "Bearer " + pageTwo.token,
+                'Accept': 'application/json',
+            },
+            url: link,
+            success: funSuccess,
+            tryCount: 0,
+            retryLimit: 0,
+
+            beforeSend: function (xhr2) {
+                // console.log(pageTwentyFour.token);
+                //alert('pageTwo.token->'+pageTwo.token);
+                // managementRel.tost("pageTwo.token" + pageTwo.token);
+                xhr2.setRequestHeader("Authorization", "Bearer " + pageTwo.token);
+                //mylog.log("start");
+            },
+            error: function (xhr2, textStatus, errorThrown) {
+               // managementRel.tost('erorr = ' + JSON.stringify(xhr2) + 'textStatus' + textStatus + 'errorThrown' + errorThrown + 'xhr2.status' + xhr2.status);
+                if (textStatus == 'timeout' || textStatus == 'error') {
+                    managementRel.hideLoading();
+                    this.tryCount++;
+                    if (this.tryCount <= this.retryLimit) {
+                        //try again
+                        $.ajax(this);
+                        return;
+                    } else {
+                        managementRel.tost("55  اختلال در برقراری ارتباط با اینترنت");
+                        mylog.log('a');
+                        //document.getElementById('dis'+dis).style.display = 'block';
+                    }
                     return;
-                } else {
-                    managementRel.tost("اختلال در برقراری ارتباط با اینترنت");
-                    mylog.log('a');
-                    //document.getElementById('dis'+dis).style.display = 'block';
                 }
-                return;
-            }
 
-            if (xhr2.status == 500) {
+                if (xhr2.status == 500) {
 
-            } else {
-                //handle error
+                } else {
+                    //handle error
 
-            }
-        },
-        statusCode: {
-            404: function () {
-                mylog.log("page not found");
-            }
-        },
-    }).done(function () {
-        mylog.log("success");
-        // $("#loadId").removeClass("fc-loading");
-        //loadingAjax('loaderImage'+dis,false);
-        managementRel.hideLoading();
-    })
-        .fail(function () {
-            mylog.log("error");
+                }
+            },
+            statusCode: {
+                404: function () {
+                    mylog.log("page not found");
+                }
+            },
+        }).done(function () {
+            mylog.log("success");
+            // $("#loadId").removeClass("fc-loading");
+            //loadingAjax('loaderImage'+dis,false);
             managementRel.hideLoading();
         })
-        .always(function () {
-            mylog.log("complete");
-        });
+            .fail(function () {
+                mylog.log("error");
+                managementRel.hideLoading();
+            })
+            .always(function () {
+                mylog.log("complete");
+            });
+
+
+    // } , 1000)
+
+
 }

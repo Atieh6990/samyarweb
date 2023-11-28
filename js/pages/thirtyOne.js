@@ -28,7 +28,7 @@ pageThirtyOne.parse = function (data2) {
             }
         }
     } else {
-        managementRel.tost("اختلال در برقراری ارتباط با اینترنت");
+        managementRel.tost("11  اختلال در برقراری ارتباط با اینترنت");
     }
 
 };
