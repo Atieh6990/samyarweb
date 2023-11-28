@@ -1,1 +1,927 @@
-!function(e,t){"function"==typeof define&&define.amd?define(["exports"],t):t("object"==typeof exports&&"string"!=typeof exports.nodeName?exports:e.commonJsStrict={})}(this,function(e){function t(e){if(e in O)return e;for(var t=e[0].toUpperCase()+e.slice(1),n=N.length;n--;)if((e=N[n]+t)in O)return e}function n(e,t){e=e||{};for(var i in t)t[i]&&t[i].constructor&&t[i].constructor===Object?(e[i]=e[i]||{},n(e[i],t[i])):e[i]=t[i];return e}function i(e){if("createEvent"in document){var t=document.createEvent("HTMLEvents");t.initEvent("change",!1,!0),e.dispatchEvent(t)}else e.fireEvent("onchange")}function o(e,t,n){if("string"==typeof t){var i=t;(t={})[i]=n}for(var o in t)e.style[o]=t[o]}function r(e,t){e.classList?e.classList.add(t):e.className+=" "+t}function a(e,t){e.classList?e.classList.remove(t):e.className=e.className.replace(t,"")}function l(e){return parseInt(e,10)}function s(e,t){var n=t||new Image;return n.style.opacity=0,new Promise(function(t){n.src===e?t(n):(n.removeAttribute("crossOrigin"),e.match(/^https?:\/\/|^\/\//)&&n.setAttribute("crossOrigin","anonymous"),n.onload=function(){setTimeout(function(){t(n)},1)},n.src=e)})}function u(e,t){window.EXIF||t(0),EXIF.getData(e,function(){var e=EXIF.getTag(this,"Orientation");t(e)})}function c(e,t,n){var i=t.width,o=t.height,r=e.getContext("2d");switch(e.width=t.width,e.height=t.height,r.save(),n){case 2:r.translate(i,0),r.scale(-1,1);break;case 3:r.translate(i,o),r.rotate(180*Math.PI/180);break;case 4:r.translate(0,o),r.scale(1,-1);break;case 5:e.width=o,e.height=i,r.rotate(90*Math.PI/180),r.scale(1,-1);break;case 6:e.width=o,e.height=i,r.rotate(90*Math.PI/180),r.translate(0,-o);break;case 7:e.width=o,e.height=i,r.rotate(-90*Math.PI/180),r.translate(-i,o),r.scale(1,-1);break;case 8:e.width=o,e.height=i,r.translate(0,i),r.rotate(-90*Math.PI/180)}r.drawImage(t,0,0,i,o),r.restore()}function h(){var e,t,n,i,a,l=this,s=l.options.viewport.type?"cr-vp-"+l.options.viewport.type:null;l.options.useCanvas=l.options.enableOrientation||p.call(l),l.data={},l.elements={},e=l.elements.boundary=document.createElement("div"),t=l.elements.viewport=document.createElement("div"),l.elements.img=document.createElement("img"),n=l.elements.overlay=document.createElement("div"),l.options.useCanvas?(l.elements.canvas=document.createElement("canvas"),l.elements.preview=l.elements.canvas):l.elements.preview=l.elements.img,r(e,"cr-boundary"),i=l.options.boundary.width,a=l.options.boundary.height,o(e,{width:i+(isNaN(i)?"":"px"),height:a+(isNaN(a)?"":"px")}),r(t,"cr-viewport"),s&&r(t,s),o(t,{width:l.options.viewport.width+"px",height:l.options.viewport.height+"px"}),t.setAttribute("tabindex",0),r(l.elements.preview,"cr-image"),r(n,"cr-overlay"),l.element.appendChild(e),e.appendChild(l.elements.preview),e.appendChild(t),e.appendChild(n),r(l.element,"croppie-container"),l.options.customClass&&r(l.element,l.options.customClass),w.call(this),l.options.enableZoom&&d.call(l)}function p(){return this.options.enableExif&&window.EXIF}function m(e){if(this.options.enableZoom){var t=this.elements.zoomer,n=F(e,4);t.value=Math.max(t.min,Math.min(t.max,n))}}function d(){function e(){f.call(n,{value:parseFloat(o.value),origin:new D(n.elements.preview),viewportRect:n.elements.viewport.getBoundingClientRect(),transform:T.parse(n.elements.preview)})}function t(t){var i,o;i=t.wheelDelta?t.wheelDelta/1200:t.deltaY?t.deltaY/1060:t.detail?t.detail/-60:0,o=n._currentZoom+i*n._currentZoom,t.preventDefault(),m.call(n,o),e.call(n)}var n=this,i=n.elements.zoomerWrap=document.createElement("div"),o=n.elements.zoomer=document.createElement("input");r(i,"cr-slider-wrap"),r(o,"cr-slider"),o.type="range",o.step="0.0001",o.value=1,o.style.display=n.options.showZoomer?"":"none",n.element.appendChild(i),i.appendChild(o),n._currentZoom=1,n.elements.zoomer.addEventListener("input",e),n.elements.zoomer.addEventListener("change",e),n.options.mouseWheelZoom&&(n.elements.boundary.addEventListener("mousewheel",t),n.elements.boundary.addEventListener("DOMMouseScroll",t))}function f(e){function t(){var e={};e[z]=i.toString(),e[S]=a.toString(),o(n.elements.preview,e)}var n=this,i=e?e.transform:T.parse(n.elements.preview),r=e?e.viewportRect:n.elements.viewport.getBoundingClientRect(),a=e?e.origin:new D(n.elements.preview);if(n._currentZoom=e?e.value:n._currentZoom,i.scale=n._currentZoom,t(),n.options.enforceBoundary){var l=v.call(n,r),s=l.translate,u=l.origin;i.x>=s.maxX&&(a.x=u.minX,i.x=s.maxX),i.x<=s.minX&&(a.x=u.maxX,i.x=s.minX),i.y>=s.maxY&&(a.y=u.minY,i.y=s.maxY),i.y<=s.minY&&(a.y=u.maxY,i.y=s.minY)}t(),q.call(n),b.call(n)}function v(e){var t=this,n=t._currentZoom,i=e.width,o=e.height,r=t.elements.boundary.clientWidth/2,a=t.elements.boundary.clientHeight/2,l=t.elements.preview.getBoundingClientRect(),s=l.width,u=l.height,c=i/2,h=o/2,p=-1*(c/n-r),m=-1*(h/n-a),d=1/n*c,f=1/n*h;return{translate:{maxX:p,minX:p-(s*(1/n)-i*(1/n)),maxY:m,minY:m-(u*(1/n)-o*(1/n))},origin:{maxX:s*(1/n)-d,minX:d,maxY:u*(1/n)-f,minY:f}}}function g(){var e=this,t=e._currentZoom,n=e.elements.preview.getBoundingClientRect(),i=e.elements.viewport.getBoundingClientRect(),r=T.parse(e.elements.preview.style[z]),a=new D(e.elements.preview),l=i.top-n.top+i.height/2,s=i.left-n.left+i.width/2,u={},c={};u.y=l/t,u.x=s/t,c.y=(u.y-a.y)*(1-t),c.x=(u.x-a.x)*(1-t),r.x-=c.x,r.y-=c.y;var h={};h[S]=u.x+"px "+u.y+"px",h[z]=r.toString(),o(e.elements.preview,h)}function w(){function e(e,t){var n=d.elements.preview.getBoundingClientRect(),i=p.y+t,o=p.x+e;d.options.enforceBoundary?(h.top>n.top+t&&h.bottom<n.bottom+t&&(p.y=i),h.left>n.left+e&&h.right<n.right+e&&(p.x=o)):(p.y=i,p.x=o)}function t(e){var t=37,i=38,o=39,r=40;if(!e.shiftKey||e.keyCode!=i&&e.keyCode!=r){if(e.keyCode>=37&&e.keyCode<=40){e.preventDefault();var a=function(e){switch(e){case t:return[1,0];case i:return[0,1];case o:return[-1,0];case r:return[0,-1]}}(e.keyCode);p=T.parse(d.elements.preview),document.body.style[P]="none",h=d.elements.viewport.getBoundingClientRect(),n(a)}}else{var l=0;l=e.keyCode==i?parseFloat(d.elements.zoomer.value,10)+parseFloat(d.elements.zoomer.step,10):parseFloat(d.elements.zoomer.value,10)-parseFloat(d.elements.zoomer.step,10),d.setZoom(l)}}function n(t){var n={};e(t[0],t[1]),n[z]=p.toString(),o(d.elements.preview,n),y.call(d),document.body.style[P]="",g.call(d),b.call(d),c=0}function r(e){if(e.preventDefault(),!f){if(f=!0,s=e.pageX,u=e.pageY,e.touches){var t=e.touches[0];s=t.pageX,u=t.pageY}p=T.parse(d.elements.preview),window.addEventListener("mousemove",a),window.addEventListener("touchmove",a),window.addEventListener("mouseup",l),window.addEventListener("touchend",l),document.body.style[P]="none",h=d.elements.viewport.getBoundingClientRect()}}function a(t){t.preventDefault();var n=t.pageX,r=t.pageY;if(t.touches){var a=t.touches[0];n=a.pageX,r=a.pageY}var l=n-s,h=r-u,f={};if("touchmove"==t.type&&t.touches.length>1){var v=t.touches[0],g=t.touches[1],w=Math.sqrt((v.pageX-g.pageX)*(v.pageX-g.pageX)+(v.pageY-g.pageY)*(v.pageY-g.pageY));c||(c=w/d._currentZoom);var b=w/c;return m.call(d,b),void i(d.elements.zoomer)}e(l,h),f[z]=p.toString(),o(d.elements.preview,f),y.call(d),u=r,s=n}function l(){f=!1,window.removeEventListener("mousemove",a),window.removeEventListener("touchmove",a),window.removeEventListener("mouseup",l),window.removeEventListener("touchend",l),document.body.style[P]="",g.call(d),b.call(d),c=0}var s,u,c,h,p,d=this,f=!1;d.elements.overlay.addEventListener("mousedown",r),d.elements.viewport.addEventListener("keydown",t),d.elements.overlay.addEventListener("touchstart",r)}function y(){var e=this,t=e.elements.boundary.getBoundingClientRect(),n=e.elements.preview.getBoundingClientRect();o(e.elements.overlay,{width:n.width+"px",height:n.height+"px",top:n.top-t.top+"px",left:n.left-t.left+"px"})}function b(){var e=this,t=e.get();if(x.call(e))if(e.options.update.call(e,t),e.$&&"undefined"==typeof Prototype)e.$(e.element).trigger("update",t);else{var n;window.CustomEvent?n=new CustomEvent("update",{detail:t}):(n=document.createEvent("CustomEvent")).initCustomEvent("update",!0,!0,t),e.element.dispatchEvent(n)}}function x(){return this.elements.preview.offsetHeight>0&&this.elements.preview.offsetWidth>0}function C(){var e,t,n,r,a,l=this,s=0,u=1.5,c=1,h={},p=l.elements.preview,d=l.elements.zoomer,f=new T(0,0,c),v=new D;if(x.call(l)&&!l.data.bound){if(l.data.bound=!0,h[z]=f.toString(),h[S]=v.toString(),h.opacity=1,o(p,h),e=p.getBoundingClientRect(),t=l.elements.viewport.getBoundingClientRect(),n=l.elements.boundary.getBoundingClientRect(),l._originalImageWidth=e.width,l._originalImageHeight=e.height,l.options.enableZoom){l.options.enforceBoundary&&(r=t.width/e.width,a=t.height/e.height,s=Math.max(r,a)),s>=u&&(u=s+1),d.min=F(s,4),d.max=F(u,4);var w=Math.max(n.width/e.width,n.height/e.height);c=null!==l.data.boundZoom?l.data.boundZoom:w,m.call(l,c),i(d)}else l._currentZoom=c;f.scale=l._currentZoom,h[z]=f.toString(),o(p,h),l.data.points.length?E.call(l,l.data.points):_.call(l),g.call(l),y.call(l)}}function E(e){if(4!=e.length)throw"Croppie - Invalid number of points supplied: "+e;var t=this,n=e[2]-e[0],i=t.elements.viewport.getBoundingClientRect(),r=t.elements.boundary.getBoundingClientRect(),a={left:i.left-r.left,top:i.top-r.top},l=i.width/n,s=e[1],u=e[0],c=-1*e[1]+a.top,h=-1*e[0]+a.left,p={};p[S]=u+"px "+s+"px",p[z]=new T(h,c,l).toString(),o(t.elements.preview,p),m.call(t,l),t._currentZoom=l}function _(){var e=this,t=e.elements.preview.getBoundingClientRect(),n=e.elements.viewport.getBoundingClientRect(),i=e.elements.boundary.getBoundingClientRect(),r=n.left-i.left,a=n.top-i.top,l=r-(t.width-n.width)/2,s=a-(t.height-n.height)/2,u=new T(l,s,e._currentZoom);o(e.elements.preview,z,u.toString())}function B(e){var t=this,n=t.elements.canvas,i=t.elements.img,o=n.getContext("2d"),r=p.call(t),e=t.options.enableOrientation&&e;o.clearRect(0,0,n.width,n.height),n.width=i.width,n.height=i.height,r?u(i,function(t){c(n,i,l(t,10)),e&&c(n,i,e)}):e&&c(n,i,e)}function R(e){var t=this,n=e.points,i=l(n[0]),o=l(n[1]),r=l(n[2]),a=l(n[3]),s=r-i,u=a-o,c=e.circle,h=document.createElement("canvas"),p=h.getContext("2d"),m=s,d=u,f=0,v=0,g=m,w=d,y=1;return e.outputWidth&&e.outputHeight&&(g=e.outputWidth,w=e.outputHeight,y=g/m),h.width=g,h.height=w,e.backgroundColor&&(p.fillStyle=e.backgroundColor,p.fillRect(0,0,m,d)),t.options.enforceBoundary||(i<0&&(f=Math.abs(i),i=0),o<0&&(v=Math.abs(o),o=0),r>t._originalImageWidth&&(m=s=t._originalImageWidth-i),a>t._originalImageHeight&&(d=u=t._originalImageHeight-o)),1!==y&&(f*=y,v*=y,m*=y,d*=y),p.drawImage(this.elements.preview,i,o,s,u,f,v,m,d),c&&(p.fillStyle="#fff",p.globalCompositeOperation="destination-in",p.beginPath(),p.arc(m/2,d/2,m/2,0,2*Math.PI,!0),p.closePath(),p.fill()),h}function I(e){var t=e.points,n=document.createElement("div"),i=document.createElement("img"),a=t[2]-t[0],l=t[3]-t[1];return r(n,"croppie-result"),n.appendChild(i),o(i,{left:-1*t[0]+"px",top:-1*t[1]+"px"}),i.src=e.url,o(n,{width:a+"px",height:l+"px"}),n}function Z(e){return R.call(this,e).toDataURL(e.format,e.quality)}function L(e){var t=this;return new Promise(function(n,i){R.call(t,e).toBlob(function(e){n(e)},e.format,e.quality)})}function M(e,t){var n,i=this,o=[],r=null;if("string"==typeof e)n=e,e={};else if(Array.isArray(e))o=e.slice();else{if(void 0===e&&i.data.url)return C.call(i),b.call(i),null;n=e.url,o=e.points||[],r=void 0===e.zoom?null:e.zoom}return i.data.bound=!1,i.data.url=n||i.data.url,i.data.boundZoom=r,s(n,i.elements.img).then(function(n){if(o.length)i.options.relative&&(o=[o[0]*n.naturalWidth/100,o[1]*n.naturalHeight/100,o[2]*n.naturalWidth/100,o[3]*n.naturalHeight/100]),i.data.points=o.map(function(e){return parseFloat(e)});else{var r,a,l=n.naturalWidth,s=n.naturalHeight,u=i.elements.viewport.getBoundingClientRect(),c=u.width/u.height;l/s>c?r=(a=s)*c:a=(r=l)/c;var h=(l-r)/2,p=(s-a)/2,m=h+r,d=p+a;i.data.points=[h,p,m,d]}i.options.useCanvas&&(i.elements.img.exifdata=null,B.call(i,e.orientation||1)),C.call(i),b.call(i),t&&t()})}function F(e,t){return parseFloat(e).toFixed(t||0)}function W(){var e=this,t=e.elements.preview.getBoundingClientRect(),n=e.elements.viewport.getBoundingClientRect(),i=n.left-t.left,o=n.top-t.top,r=(n.width-e.elements.viewport.offsetWidth)/2,a=(n.height-e.elements.viewport.offsetHeight)/2,l=i+e.elements.viewport.offsetWidth+r,s=o+e.elements.viewport.offsetHeight+a,u=e._currentZoom;(u===1/0||isNaN(u))&&(u=1);var c=e.options.enforceBoundary?0:Number.NEGATIVE_INFINITY;return i=Math.max(c,i/u),o=Math.max(c,o/u),l=Math.max(c,l/u),s=Math.max(c,s/u),{points:[F(i),F(o),F(l),F(s)],zoom:u}}function X(e){var t=this,i=W.call(t),o=n(U,n({},e)),r="string"==typeof e?e:o.type||"base64",a=o.size,l=o.format,s=o.quality,u=o.backgroundColor,c="boolean"==typeof o.circle?o.circle:"circle"===t.options.viewport.type,h=t.elements.viewport.getBoundingClientRect(),p=h.width/h.height;return"viewport"===a?(i.outputWidth=h.width,i.outputHeight=h.height):"object"==typeof a&&(a.width&&a.height?(i.outputWidth=a.width,i.outputHeight=a.height):a.width?(i.outputWidth=a.width,i.outputHeight=a.width/p):a.height&&(i.outputWidth=a.height*p,i.outputHeight=a.height)),$.indexOf(l)>-1&&(i.format="image/"+l,i.quality=s),i.circle=c,i.url=t.data.url,i.backgroundColor=u,new Promise(function(e,n){switch(r.toLowerCase()){case"rawcanvas":e(R.call(t,i));break;case"canvas":case"base64":e(Z.call(t,i));break;case"blob":L.call(t,i).then(e);break;default:e(I.call(t,i))}})}function k(){C.call(this)}function H(e){if(!this.options.useCanvas)throw"Croppie: Cannot rotate without enableOrientation";var t=this,n=t.elements.canvas,i=(t.elements.img,document.createElement("canvas")),o=1;i.width=n.width,i.height=n.height,i.getContext("2d").drawImage(n,0,0),90!==e&&-270!==e||(o=6),-90!==e&&270!==e||(o=8),180!==e&&-180!==e||(o=3),c(n,i,o),f.call(t)}function Y(){var e=this;e.element.removeChild(e.elements.boundary),a(e.element,"croppie-container"),e.options.enableZoom&&e.element.removeChild(e.elements.zoomerWrap),delete e.elements}function j(e,t){if(this.element=e,this.options=n(n({},j.defaults),t),"img"===this.element.tagName.toLowerCase()){var i=this.element;r(i,"cr-original-image");var o=document.createElement("div");this.element.parentNode.appendChild(o),o.appendChild(i),this.element=o,this.options.url=this.options.url||i.src}if(h.call(this),this.options.url){var a={url:this.options.url,points:this.options.points};delete this.options.url,delete this.options.points,M.call(this,a)}}"function"!=typeof Promise&&function(e){function t(e,t){return function(){e.apply(t,arguments)}}function n(e){if("object"!=typeof this)throw new TypeError("Promises must be constructed via new");if("function"!=typeof e)throw new TypeError("not a function");this._state=null,this._value=null,this._deferreds=[],s(e,t(o,this),t(r,this))}function i(e){var t=this;return null===this._state?void this._deferreds.push(e):void c(function(){var n=t._state?e.onFulfilled:e.onRejected;if(null!==n){var i;try{i=n(t._value)}catch(t){return void e.reject(t)}e.resolve(i)}else(t._state?e.resolve:e.reject)(t._value)})}function o(e){try{if(e===this)throw new TypeError("A promise cannot be resolved with itself.");if(e&&("object"==typeof e||"function"==typeof e)){var n=e.then;if("function"==typeof n)return void s(t(n,e),t(o,this),t(r,this))}this._state=!0,this._value=e,a.call(this)}catch(e){r.call(this,e)}}function r(e){this._state=!1,this._value=e,a.call(this)}function a(){for(var e=0,t=this._deferreds.length;t>e;e++)i.call(this,this._deferreds[e]);this._deferreds=null}function l(e,t,n,i){this.onFulfilled="function"==typeof e?e:null,this.onRejected="function"==typeof t?t:null,this.resolve=n,this.reject=i}function s(e,t,n){var i=!1;try{e(function(e){i||(i=!0,t(e))},function(e){i||(i=!0,n(e))})}catch(e){if(i)return;i=!0,n(e)}}var u=setTimeout,c="function"==typeof setImmediate&&setImmediate||function(e){u(e,1)},h=Array.isArray||function(e){return"[object Array]"===Object.prototype.toString.call(e)};n.prototype.catch=function(e){return this.then(null,e)},n.prototype.then=function(e,t){var o=this;return new n(function(n,r){i.call(o,new l(e,t,n,r))})},n.all=function(){var e=Array.prototype.slice.call(1===arguments.length&&h(arguments[0])?arguments[0]:arguments);return new n(function(t,n){function i(r,a){try{if(a&&("object"==typeof a||"function"==typeof a)){var l=a.then;if("function"==typeof l)return void l.call(a,function(e){i(r,e)},n)}e[r]=a,0==--o&&t(e)}catch(e){n(e)}}if(0===e.length)return t([]);for(var o=e.length,r=0;r<e.length;r++)i(r,e[r])})},n.resolve=function(e){return e&&"object"==typeof e&&e.constructor===n?e:new n(function(t){t(e)})},n.reject=function(e){return new n(function(t,n){n(e)})},n.race=function(e){return new n(function(t,n){for(var i=0,o=e.length;o>i;i++)e[i].then(t,n)})},n._setImmediateFn=function(e){c=e},"undefined"!=typeof module&&module.exports?module.exports=n:e.Promise||(e.Promise=n)}(this),"function"!=typeof window.CustomEvent&&function(){function e(e,t){t=t||{bubbles:!1,cancelable:!1,detail:void 0};var n=document.createEvent("CustomEvent");return n.initCustomEvent(e,t.bubbles,t.cancelable,t.detail),n}e.prototype=window.Event.prototype,window.CustomEvent=e}(),HTMLCanvasElement.prototype.toBlob||Object.defineProperty(HTMLCanvasElement.prototype,"toBlob",{value:function(e,t,n){for(var i=atob(this.toDataURL(t,n).split(",")[1]),o=i.length,r=new Uint8Array(o),a=0;a<o;a++)r[a]=i.charCodeAt(a);e(new Blob([r],{type:t||"image/png"}))}});var S,z,P,N=["Webkit","Moz","ms"],O=document.createElement("div").style;z=t("transform"),S=t("transformOrigin"),P=t("userSelect");var A={translate3d:{suffix:", 0px"},translate:{suffix:""}},T=function(e,t,n){this.x=parseFloat(e),this.y=parseFloat(t),this.scale=parseFloat(n)};T.parse=function(e){return e.style?T.parse(e.style[z]):e.indexOf("matrix")>-1||e.indexOf("none")>-1?T.fromMatrix(e):T.fromString(e)},T.fromMatrix=function(e){var t=e.substring(7).split(",");return t.length&&"none"!==e||(t=[1,0,0,1,0,0]),new T(l(t[4]),l(t[5]),parseFloat(t[0]))},T.fromString=function(e){var t=e.split(") "),n=t[0].substring(j.globals.translate.length+1).split(","),i=t.length>1?t[1].substring(6):1,o=n.length>1?n[0]:0,r=n.length>1?n[1]:0;return new T(o,r,i)},T.prototype.toString=function(){var e=A[j.globals.translate].suffix||"";return j.globals.translate+"("+this.x+"px, "+this.y+"px"+e+") scale("+this.scale+")"};var D=function(e){if(!e||!e.style[S])return this.x=0,void(this.y=0);var t=e.style[S].split(" ");this.x=parseFloat(t[0]),this.y=parseFloat(t[1])};D.prototype.toString=function(){return this.x+"px "+this.y+"px"};var q=function(e,t,n){var i;return function(){var o=this,r=arguments,a=function(){i=null,n||e.apply(o,r)},l=n&&!i;clearTimeout(i),i=setTimeout(a,t),l&&e.apply(o,r)}}(y,500),U={type:"canvas",format:"png",quality:1},$=["jpeg","webp","png"];if(window.jQuery){var Q=window.jQuery;Q.fn.croppie=function(e){if("string"===typeof e){var t=Array.prototype.slice.call(arguments,1),n=Q(this).data("croppie");return"get"===e?n.get():"result"===e?n.result.apply(n,t):"bind"===e?n.bind.apply(n,t):this.each(function(){var n=Q(this).data("croppie");if(n){var i=n[e];if(!Q.isFunction(i))throw"Croppie "+e+" method not found";i.apply(n,t),"destroy"===e&&Q(this).removeData("croppie")}})}return this.each(function(){var t=new j(this,e);t.$=Q,Q(this).data("croppie",t)})}}j.defaults={viewport:{width:100,height:100,type:"square"},boundary:{},orientationControls:{enabled:!0,leftClass:"",rightClass:""},customClass:"",showZoomer:!0,enableZoom:!0,mouseWheelZoom:!0,enableExif:!1,enforceBoundary:!0,enableOrientation:!1,update:function(){}},j.globals={translate:"translate3d"},n(j.prototype,{bind:function(e,t){return M.call(this,e,t)},get:function(){var e=W.call(this),t=e.points;return this.options.relative&&(t[0]/=this.elements.img.naturalWidth/100,t[1]/=this.elements.img.naturalHeight/100,t[2]/=this.elements.img.naturalWidth/100,t[3]/=this.elements.img.naturalHeight/100),e},result:function(e){return X.call(this,e)},refresh:function(){return k.call(this)},setZoom:function(e){m.call(this,e),i(this.elements.zoomer)},rotate:function(e){H.call(this,e)},destroy:function(){return Y.call(this)}}),e.Croppie=window.Croppie=j,"object"==typeof module&&module.exports&&(module.exports=j)});
+/*************************
+ * Croppie
+ * Copyright 2015
+ * Foliotek
+ * Version: 1.0.5
+ *************************/
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports'], factory);
+    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory(exports);
+    } else {
+        // Browser globals
+        factory((root.commonJsStrict = {}));
+    }
+}(this, function (exports) {
+
+    if (typeof Promise !== 'function') {
+        /*!
+         * @overview es6-promise - a tiny implementation of Promises/A+.
+         * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
+         * @license   Licensed under MIT license
+         *            See https://raw.githubusercontent.com/jakearchibald/es6-promise/master/LICENSE
+         * @version   3.0.2
+         */
+        (function () { "use strict"; function lib$es6$promise$utils$$objectOrFunction(x) { return typeof x === "function" || typeof x === "object" && x !== null } function lib$es6$promise$utils$$isFunction(x) { return typeof x === "function" } function lib$es6$promise$utils$$isMaybeThenable(x) { return typeof x === "object" && x !== null } var lib$es6$promise$utils$$_isArray; if (!Array.isArray) { lib$es6$promise$utils$$_isArray = function (x) { return Object.prototype.toString.call(x) === "[object Array]" } } else { lib$es6$promise$utils$$_isArray = Array.isArray } var lib$es6$promise$utils$$isArray = lib$es6$promise$utils$$_isArray; var lib$es6$promise$asap$$len = 0; var lib$es6$promise$asap$$toString = {}.toString; var lib$es6$promise$asap$$vertxNext; var lib$es6$promise$asap$$customSchedulerFn; var lib$es6$promise$asap$$asap = function asap(callback, arg) { lib$es6$promise$asap$$queue[lib$es6$promise$asap$$len] = callback; lib$es6$promise$asap$$queue[lib$es6$promise$asap$$len + 1] = arg; lib$es6$promise$asap$$len += 2; if (lib$es6$promise$asap$$len === 2) { if (lib$es6$promise$asap$$customSchedulerFn) { lib$es6$promise$asap$$customSchedulerFn(lib$es6$promise$asap$$flush) } else { lib$es6$promise$asap$$scheduleFlush() } } }; function lib$es6$promise$asap$$setScheduler(scheduleFn) { lib$es6$promise$asap$$customSchedulerFn = scheduleFn } function lib$es6$promise$asap$$setAsap(asapFn) { lib$es6$promise$asap$$asap = asapFn } var lib$es6$promise$asap$$browserWindow = typeof window !== "undefined" ? window : undefined; var lib$es6$promise$asap$$browserGlobal = lib$es6$promise$asap$$browserWindow || {}; var lib$es6$promise$asap$$BrowserMutationObserver = lib$es6$promise$asap$$browserGlobal.MutationObserver || lib$es6$promise$asap$$browserGlobal.WebKitMutationObserver; var lib$es6$promise$asap$$isNode = typeof process !== "undefined" && {}.toString.call(process) === "[object process]"; var lib$es6$promise$asap$$isWorker = typeof Uint8ClampedArray !== "undefined" && typeof importScripts !== "undefined" && typeof MessageChannel !== "undefined"; function lib$es6$promise$asap$$useNextTick() { return function () { process.nextTick(lib$es6$promise$asap$$flush) } } function lib$es6$promise$asap$$useVertxTimer() { return function () { lib$es6$promise$asap$$vertxNext(lib$es6$promise$asap$$flush) } } function lib$es6$promise$asap$$useMutationObserver() { var iterations = 0; var observer = new lib$es6$promise$asap$$BrowserMutationObserver(lib$es6$promise$asap$$flush); var node = document.createTextNode(""); observer.observe(node, { characterData: true }); return function () { node.data = iterations = ++iterations % 2 } } function lib$es6$promise$asap$$useMessageChannel() { var channel = new MessageChannel; channel.port1.onmessage = lib$es6$promise$asap$$flush; return function () { channel.port2.postMessage(0) } } function lib$es6$promise$asap$$useSetTimeout() { return function () { setTimeout(lib$es6$promise$asap$$flush, 1) } } var lib$es6$promise$asap$$queue = new Array(1e3); function lib$es6$promise$asap$$flush() { for (var i = 0; i < lib$es6$promise$asap$$len; i += 2) { var callback = lib$es6$promise$asap$$queue[i]; var arg = lib$es6$promise$asap$$queue[i + 1]; callback(arg); lib$es6$promise$asap$$queue[i] = undefined; lib$es6$promise$asap$$queue[i + 1] = undefined } lib$es6$promise$asap$$len = 0 } function lib$es6$promise$asap$$attemptVertx() { try { var r = require; var vertx = r("vertx"); lib$es6$promise$asap$$vertxNext = vertx.runOnLoop || vertx.runOnContext; return lib$es6$promise$asap$$useVertxTimer() } catch (e) { return lib$es6$promise$asap$$useSetTimeout() } } var lib$es6$promise$asap$$scheduleFlush; if (lib$es6$promise$asap$$isNode) { lib$es6$promise$asap$$scheduleFlush = lib$es6$promise$asap$$useNextTick() } else if (lib$es6$promise$asap$$BrowserMutationObserver) { lib$es6$promise$asap$$scheduleFlush = lib$es6$promise$asap$$useMutationObserver() } else if (lib$es6$promise$asap$$isWorker) { lib$es6$promise$asap$$scheduleFlush = lib$es6$promise$asap$$useMessageChannel() } else if (lib$es6$promise$asap$$browserWindow === undefined && typeof require === "function") { lib$es6$promise$asap$$scheduleFlush = lib$es6$promise$asap$$attemptVertx() } else { lib$es6$promise$asap$$scheduleFlush = lib$es6$promise$asap$$useSetTimeout() } function lib$es6$promise$$internal$$noop() { } var lib$es6$promise$$internal$$PENDING = void 0; var lib$es6$promise$$internal$$FULFILLED = 1; var lib$es6$promise$$internal$$REJECTED = 2; var lib$es6$promise$$internal$$GET_THEN_ERROR = new lib$es6$promise$$internal$$ErrorObject; function lib$es6$promise$$internal$$selfFulfillment() { return new TypeError("You cannot resolve a promise with itself") } function lib$es6$promise$$internal$$cannotReturnOwn() { return new TypeError("A promises callback cannot return that same promise.") } function lib$es6$promise$$internal$$getThen(promise) { try { return promise.then } catch (error) { lib$es6$promise$$internal$$GET_THEN_ERROR.error = error; return lib$es6$promise$$internal$$GET_THEN_ERROR } } function lib$es6$promise$$internal$$tryThen(then, value, fulfillmentHandler, rejectionHandler) { try { then.call(value, fulfillmentHandler, rejectionHandler) } catch (e) { return e } } function lib$es6$promise$$internal$$handleForeignThenable(promise, thenable, then) { lib$es6$promise$asap$$asap(function (promise) { var sealed = false; var error = lib$es6$promise$$internal$$tryThen(then, thenable, function (value) { if (sealed) { return } sealed = true; if (thenable !== value) { lib$es6$promise$$internal$$resolve(promise, value) } else { lib$es6$promise$$internal$$fulfill(promise, value) } }, function (reason) { if (sealed) { return } sealed = true; lib$es6$promise$$internal$$reject(promise, reason) }, "Settle: " + (promise._label || " unknown promise")); if (!sealed && error) { sealed = true; lib$es6$promise$$internal$$reject(promise, error) } }, promise) } function lib$es6$promise$$internal$$handleOwnThenable(promise, thenable) { if (thenable._state === lib$es6$promise$$internal$$FULFILLED) { lib$es6$promise$$internal$$fulfill(promise, thenable._result) } else if (thenable._state === lib$es6$promise$$internal$$REJECTED) { lib$es6$promise$$internal$$reject(promise, thenable._result) } else { lib$es6$promise$$internal$$subscribe(thenable, undefined, function (value) { lib$es6$promise$$internal$$resolve(promise, value) }, function (reason) { lib$es6$promise$$internal$$reject(promise, reason) }) } } function lib$es6$promise$$internal$$handleMaybeThenable(promise, maybeThenable) { if (maybeThenable.constructor === promise.constructor) { lib$es6$promise$$internal$$handleOwnThenable(promise, maybeThenable) } else { var then = lib$es6$promise$$internal$$getThen(maybeThenable); if (then === lib$es6$promise$$internal$$GET_THEN_ERROR) { lib$es6$promise$$internal$$reject(promise, lib$es6$promise$$internal$$GET_THEN_ERROR.error) } else if (then === undefined) { lib$es6$promise$$internal$$fulfill(promise, maybeThenable) } else if (lib$es6$promise$utils$$isFunction(then)) { lib$es6$promise$$internal$$handleForeignThenable(promise, maybeThenable, then) } else { lib$es6$promise$$internal$$fulfill(promise, maybeThenable) } } } function lib$es6$promise$$internal$$resolve(promise, value) { if (promise === value) { lib$es6$promise$$internal$$reject(promise, lib$es6$promise$$internal$$selfFulfillment()) } else if (lib$es6$promise$utils$$objectOrFunction(value)) { lib$es6$promise$$internal$$handleMaybeThenable(promise, value) } else { lib$es6$promise$$internal$$fulfill(promise, value) } } function lib$es6$promise$$internal$$publishRejection(promise) { if (promise._onerror) { promise._onerror(promise._result) } lib$es6$promise$$internal$$publish(promise) } function lib$es6$promise$$internal$$fulfill(promise, value) { if (promise._state !== lib$es6$promise$$internal$$PENDING) { return } promise._result = value; promise._state = lib$es6$promise$$internal$$FULFILLED; if (promise._subscribers.length !== 0) { lib$es6$promise$asap$$asap(lib$es6$promise$$internal$$publish, promise) } } function lib$es6$promise$$internal$$reject(promise, reason) { if (promise._state !== lib$es6$promise$$internal$$PENDING) { return } promise._state = lib$es6$promise$$internal$$REJECTED; promise._result = reason; lib$es6$promise$asap$$asap(lib$es6$promise$$internal$$publishRejection, promise) } function lib$es6$promise$$internal$$subscribe(parent, child, onFulfillment, onRejection) { var subscribers = parent._subscribers; var length = subscribers.length; parent._onerror = null; subscribers[length] = child; subscribers[length + lib$es6$promise$$internal$$FULFILLED] = onFulfillment; subscribers[length + lib$es6$promise$$internal$$REJECTED] = onRejection; if (length === 0 && parent._state) { lib$es6$promise$asap$$asap(lib$es6$promise$$internal$$publish, parent) } } function lib$es6$promise$$internal$$publish(promise) { var subscribers = promise._subscribers; var settled = promise._state; if (subscribers.length === 0) { return } var child, callback, detail = promise._result; for (var i = 0; i < subscribers.length; i += 3) { child = subscribers[i]; callback = subscribers[i + settled]; if (child) { lib$es6$promise$$internal$$invokeCallback(settled, child, callback, detail) } else { callback(detail) } } promise._subscribers.length = 0 } function lib$es6$promise$$internal$$ErrorObject() { this.error = null } var lib$es6$promise$$internal$$TRY_CATCH_ERROR = new lib$es6$promise$$internal$$ErrorObject; function lib$es6$promise$$internal$$tryCatch(callback, detail) { try { return callback(detail) } catch (e) { lib$es6$promise$$internal$$TRY_CATCH_ERROR.error = e; return lib$es6$promise$$internal$$TRY_CATCH_ERROR } } function lib$es6$promise$$internal$$invokeCallback(settled, promise, callback, detail) { var hasCallback = lib$es6$promise$utils$$isFunction(callback), value, error, succeeded, failed; if (hasCallback) { value = lib$es6$promise$$internal$$tryCatch(callback, detail); if (value === lib$es6$promise$$internal$$TRY_CATCH_ERROR) { failed = true; error = value.error; value = null } else { succeeded = true } if (promise === value) { lib$es6$promise$$internal$$reject(promise, lib$es6$promise$$internal$$cannotReturnOwn()); return } } else { value = detail; succeeded = true } if (promise._state !== lib$es6$promise$$internal$$PENDING) { } else if (hasCallback && succeeded) { lib$es6$promise$$internal$$resolve(promise, value) } else if (failed) { lib$es6$promise$$internal$$reject(promise, error) } else if (settled === lib$es6$promise$$internal$$FULFILLED) { lib$es6$promise$$internal$$fulfill(promise, value) } else if (settled === lib$es6$promise$$internal$$REJECTED) { lib$es6$promise$$internal$$reject(promise, value) } } function lib$es6$promise$$internal$$initializePromise(promise, resolver) { try { resolver(function resolvePromise(value) { lib$es6$promise$$internal$$resolve(promise, value) }, function rejectPromise(reason) { lib$es6$promise$$internal$$reject(promise, reason) }) } catch (e) { lib$es6$promise$$internal$$reject(promise, e) } } function lib$es6$promise$enumerator$$Enumerator(Constructor, input) { var enumerator = this; enumerator._instanceConstructor = Constructor; enumerator.promise = new Constructor(lib$es6$promise$$internal$$noop); if (enumerator._validateInput(input)) { enumerator._input = input; enumerator.length = input.length; enumerator._remaining = input.length; enumerator._init(); if (enumerator.length === 0) { lib$es6$promise$$internal$$fulfill(enumerator.promise, enumerator._result) } else { enumerator.length = enumerator.length || 0; enumerator._enumerate(); if (enumerator._remaining === 0) { lib$es6$promise$$internal$$fulfill(enumerator.promise, enumerator._result) } } } else { lib$es6$promise$$internal$$reject(enumerator.promise, enumerator._validationError()) } } lib$es6$promise$enumerator$$Enumerator.prototype._validateInput = function (input) { return lib$es6$promise$utils$$isArray(input) }; lib$es6$promise$enumerator$$Enumerator.prototype._validationError = function () { return new Error("Array Methods must be provided an Array") }; lib$es6$promise$enumerator$$Enumerator.prototype._init = function () { this._result = new Array(this.length) }; var lib$es6$promise$enumerator$$default = lib$es6$promise$enumerator$$Enumerator; lib$es6$promise$enumerator$$Enumerator.prototype._enumerate = function () { var enumerator = this; var length = enumerator.length; var promise = enumerator.promise; var input = enumerator._input; for (var i = 0; promise._state === lib$es6$promise$$internal$$PENDING && i < length; i++) { enumerator._eachEntry(input[i], i) } }; lib$es6$promise$enumerator$$Enumerator.prototype._eachEntry = function (entry, i) { var enumerator = this; var c = enumerator._instanceConstructor; if (lib$es6$promise$utils$$isMaybeThenable(entry)) { if (entry.constructor === c && entry._state !== lib$es6$promise$$internal$$PENDING) { entry._onerror = null; enumerator._settledAt(entry._state, i, entry._result) } else { enumerator._willSettleAt(c.resolve(entry), i) } } else { enumerator._remaining--; enumerator._result[i] = entry } }; lib$es6$promise$enumerator$$Enumerator.prototype._settledAt = function (state, i, value) { var enumerator = this; var promise = enumerator.promise; if (promise._state === lib$es6$promise$$internal$$PENDING) { enumerator._remaining--; if (state === lib$es6$promise$$internal$$REJECTED) { lib$es6$promise$$internal$$reject(promise, value) } else { enumerator._result[i] = value } } if (enumerator._remaining === 0) { lib$es6$promise$$internal$$fulfill(promise, enumerator._result) } }; lib$es6$promise$enumerator$$Enumerator.prototype._willSettleAt = function (promise, i) { var enumerator = this; lib$es6$promise$$internal$$subscribe(promise, undefined, function (value) { enumerator._settledAt(lib$es6$promise$$internal$$FULFILLED, i, value) }, function (reason) { enumerator._settledAt(lib$es6$promise$$internal$$REJECTED, i, reason) }) }; function lib$es6$promise$promise$all$$all(entries) { return new lib$es6$promise$enumerator$$default(this, entries).promise } var lib$es6$promise$promise$all$$default = lib$es6$promise$promise$all$$all; function lib$es6$promise$promise$race$$race(entries) { var Constructor = this; var promise = new Constructor(lib$es6$promise$$internal$$noop); if (!lib$es6$promise$utils$$isArray(entries)) { lib$es6$promise$$internal$$reject(promise, new TypeError("You must pass an array to race.")); return promise } var length = entries.length; function onFulfillment(value) { lib$es6$promise$$internal$$resolve(promise, value) } function onRejection(reason) { lib$es6$promise$$internal$$reject(promise, reason) } for (var i = 0; promise._state === lib$es6$promise$$internal$$PENDING && i < length; i++) { lib$es6$promise$$internal$$subscribe(Constructor.resolve(entries[i]), undefined, onFulfillment, onRejection) } return promise } var lib$es6$promise$promise$race$$default = lib$es6$promise$promise$race$$race; function lib$es6$promise$promise$resolve$$resolve(object) { var Constructor = this; if (object && typeof object === "object" && object.constructor === Constructor) { return object } var promise = new Constructor(lib$es6$promise$$internal$$noop); lib$es6$promise$$internal$$resolve(promise, object); return promise } var lib$es6$promise$promise$resolve$$default = lib$es6$promise$promise$resolve$$resolve; function lib$es6$promise$promise$reject$$reject(reason) { var Constructor = this; var promise = new Constructor(lib$es6$promise$$internal$$noop); lib$es6$promise$$internal$$reject(promise, reason); return promise } var lib$es6$promise$promise$reject$$default = lib$es6$promise$promise$reject$$reject; var lib$es6$promise$promise$$counter = 0; function lib$es6$promise$promise$$needsResolver() { throw new TypeError("You must pass a resolver function as the first argument to the promise constructor") } function lib$es6$promise$promise$$needsNew() { throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.") } var lib$es6$promise$promise$$default = lib$es6$promise$promise$$Promise; function lib$es6$promise$promise$$Promise(resolver) { this._id = lib$es6$promise$promise$$counter++; this._state = undefined; this._result = undefined; this._subscribers = []; if (lib$es6$promise$$internal$$noop !== resolver) { if (!lib$es6$promise$utils$$isFunction(resolver)) { lib$es6$promise$promise$$needsResolver() } if (!(this instanceof lib$es6$promise$promise$$Promise)) { lib$es6$promise$promise$$needsNew() } lib$es6$promise$$internal$$initializePromise(this, resolver) } } lib$es6$promise$promise$$Promise.all = lib$es6$promise$promise$all$$default; lib$es6$promise$promise$$Promise.race = lib$es6$promise$promise$race$$default; lib$es6$promise$promise$$Promise.resolve = lib$es6$promise$promise$resolve$$default; lib$es6$promise$promise$$Promise.reject = lib$es6$promise$promise$reject$$default; lib$es6$promise$promise$$Promise._setScheduler = lib$es6$promise$asap$$setScheduler; lib$es6$promise$promise$$Promise._setAsap = lib$es6$promise$asap$$setAsap; lib$es6$promise$promise$$Promise._asap = lib$es6$promise$asap$$asap; lib$es6$promise$promise$$Promise.prototype = { constructor: lib$es6$promise$promise$$Promise, then: function (onFulfillment, onRejection) { var parent = this; var state = parent._state; if (state === lib$es6$promise$$internal$$FULFILLED && !onFulfillment || state === lib$es6$promise$$internal$$REJECTED && !onRejection) { return this } var child = new this.constructor(lib$es6$promise$$internal$$noop); var result = parent._result; if (state) { var callback = arguments[state - 1]; lib$es6$promise$asap$$asap(function () { lib$es6$promise$$internal$$invokeCallback(state, child, callback, result) }) } else { lib$es6$promise$$internal$$subscribe(parent, child, onFulfillment, onRejection) } return child }, "catch": function (onRejection) { return this.then(null, onRejection) } }; function lib$es6$promise$polyfill$$polyfill() { var local; if (typeof global !== "undefined") { local = global } else if (typeof self !== "undefined") { local = self } else { try { local = Function("return this")() } catch (e) { throw new Error("polyfill failed because global object is unavailable in this environment") } } var P = local.Promise; if (P && Object.prototype.toString.call(P.resolve()) === "[object Promise]" && !P.cast) { return } local.Promise = lib$es6$promise$promise$$default } var lib$es6$promise$polyfill$$default = lib$es6$promise$polyfill$$polyfill; var lib$es6$promise$umd$$ES6Promise = { Promise: lib$es6$promise$promise$$default, polyfill: lib$es6$promise$polyfill$$default }; if (typeof define === "function" && define["amd"]) { define(function () { return lib$es6$promise$umd$$ES6Promise }) } else if (typeof module !== "undefined" && module["exports"]) { module["exports"] = lib$es6$promise$umd$$ES6Promise } else if (typeof this !== "undefined") { this["ES6Promise"] = lib$es6$promise$umd$$ES6Promise } lib$es6$promise$polyfill$$default() }).call(this);
+    }
+
+    var cssPrefixes = ['Webkit', 'Moz', 'ms'],
+        emptyStyles = document.createElement('div').style,
+        CSS_TRANS_ORG,
+        CSS_TRANSFORM,
+        CSS_USERSELECT;
+
+    function vendorPrefix(prop) {
+        if (prop in emptyStyles) {
+            return prop;
+        }
+
+        var capProp = prop[0].toUpperCase() + prop.slice(1),
+            i = cssPrefixes.length;
+
+        while (i--) {
+            prop = cssPrefixes[i] + capProp;
+            if (prop in emptyStyles) {
+                return prop;
+            }
+        }
+    }
+
+    CSS_TRANSFORM = vendorPrefix('transform');
+    CSS_TRANS_ORG = vendorPrefix('transformOrigin');
+    CSS_USERSELECT = vendorPrefix('userSelect');
+
+
+    function deepExtend(out) {
+        out = out || {};
+
+        for (var i = 1; i < arguments.length; i++) {
+            var obj = arguments[i];
+
+            if (!obj)
+                continue;
+
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    if (typeof obj[key] === 'object')
+                        out[key] = deepExtend({}, obj[key]);
+                    else
+                        out[key] = obj[key];
+                }
+            }
+        }
+        return out;
+    }
+
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+            var context = this, args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+    function dispatchChange(element) {
+        if ("createEvent" in document) {
+            var evt = document.createEvent("HTMLEvents");
+            evt.initEvent("change", false, true);
+            element.dispatchEvent(evt);
+        }
+        else {
+            element.fireEvent("onchange");
+        }
+    }
+
+    //http://jsperf.com/vanilla-css
+    function css(el, styles, val) {
+        if (typeof (styles) === 'string') {
+            var tmp = styles;
+            styles = {};
+            styles[tmp] = val;
+        }
+
+        for (var prop in styles) {
+            el.style[prop] = styles[prop];
+        }
+    }
+
+    /* Image Drawing Functions */
+    function getHtmlImage(data) {
+        var points = data.points,
+            div = document.createElement('div'),
+            img = document.createElement('img'),
+            width = points[2] - points[0],
+            height = points[3] - points[1];
+        // scale = data.zoom;
+
+        div.classList.add('croppie-result');
+        div.appendChild(img);
+        css(img, {
+            left: (-1 * points[0]) + 'px',
+            top: (-1 * points[1]) + 'px'
+            // transform: 'scale(' + scale + ')'
+        });
+        img.src = data.url;
+        css(div, {
+            width: width + 'px',
+            height: height + 'px'
+        });
+
+        return div;
+    }
+
+    function getCanvasImage(img, data) {
+        var points = data.points,
+            left = points[0],
+            top = points[1],
+            width = (points[2] - points[0]),
+            height = (points[3] - points[1]),
+            circle = data.circle,
+            canvas = document.createElement('canvas'),
+            ctx = canvas.getContext('2d'),
+            outWidth = width,
+            outHeight = height;
+
+        if (data.outputWidth && data.outputHeight) {
+            outWidth = data.outputWidth;
+            outHeight = data.outputHeight;
+        }
+
+        canvas.width = outWidth;
+        canvas.height = outHeight;
+
+        if (circle) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(outWidth / 2, outHeight / 2, outWidth / 2, 0, Math.PI * 2, true);
+            ctx.closePath();
+            ctx.clip();
+        }
+
+        ctx.drawImage(img, left, top, width, height, 0, 0, outWidth, outHeight);
+
+        return canvas.toDataURL();
+    }
+
+    /* Utilities */
+    function loadImage(src, imageEl) {
+        var img = imageEl || new Image(),
+            prom;
+
+        prom = new Promise(function (resolve, reject) {
+            if (src.substring(0,4).toLowerCase() === 'http') {
+                img.setAttribute('crossOrigin', 'anonymous');
+            }
+            img.onload = function () {
+                setTimeout(function () {
+                    resolve(img);
+                }, 1);
+            };
+        });
+
+        img.src = src;
+        return prom;
+    }
+
+    /* CSS Transform Prototype */
+    var _TRANSLATE = 'translate3d',
+        _TRANSLATE_SUFFIX = ', 0px';
+    var Transform = function (x, y, scale) {
+        this.x = parseFloat(x);
+        this.y = parseFloat(y);
+        this.scale = parseFloat(scale);
+    };
+
+    Transform.parse = function (v) {
+        if (v.style) {
+            return Transform.parse(v.style[CSS_TRANSFORM]);
+        }
+        else if (v.indexOf('matrix') > -1 || v.indexOf('none') > -1) {
+            return Transform.fromMatrix(v);
+        }
+        else {
+            return Transform.fromString(v);
+        }
+    };
+
+    Transform.fromMatrix = function (v) {
+        var vals = v.substring(7).split(',');
+        if (!vals.length || v === 'none') {
+            vals = [1, 0, 0, 1, 0, 0];
+        }
+
+        return new Transform(parseInt(vals[4], 10), parseInt(vals[5], 10), parseFloat(vals[0]));
+    };
+
+    Transform.fromString = function (v) {
+        var values = v.split(') '),
+            translate = values[0].substring(_TRANSLATE.length + 1).split(','),
+            scale = values.length > 1 ? values[1].substring(6) : 1,
+            x = translate.length > 1 ? translate[0] : 0,
+            y = translate.length > 1 ? translate[1] : 0;
+
+        return new Transform(x, y, scale);
+    };
+
+    Transform.prototype.toString = function () {
+        return _TRANSLATE + '(' + this.x + 'px, ' + this.y + 'px' + _TRANSLATE_SUFFIX + ') scale(' + this.scale + ')';
+    };
+
+    var TransformOrigin = function (el) {
+        if (!el || !el.style[CSS_TRANS_ORG]) {
+            this.x = 0;
+            this.y = 0;
+            return;
+        }
+        var css = el.style[CSS_TRANS_ORG].split(' ');
+        this.x = parseFloat(css[0]);
+        this.y = parseFloat(css[1]);
+    };
+
+    TransformOrigin.prototype.toString = function () {
+        return this.x + 'px ' + this.y + 'px';
+    };
+
+    /* Private Methods */
+    function _create() {
+        var self = this,
+            contClass = ['croppie-container'],
+            customViewportClass = self.options.viewport.type ? 'cr-vp-' + self.options.viewport.type : null,
+            boundary, img, viewport, overlay;
+
+        // Properties on class
+        self.data = {};
+        self.elements = {};
+
+        // Generating Markup
+        boundary = self.elements.boundary = document.createElement('div');
+        viewport = self.elements.viewport = document.createElement('div');
+        img = self.elements.img = document.createElement('img');
+        overlay = self.elements.overlay = document.createElement('div');
+
+        boundary.classList.add('cr-boundary');
+        css(boundary, {
+            width: self.options.boundary.width + 'px',
+            height: self.options.boundary.height + 'px'
+        });
+
+        viewport.classList.add('cr-viewport');
+        if (customViewportClass) {
+            viewport.classList.add(customViewportClass);
+        }
+        css(viewport, {
+            width: self.options.viewport.width + 'px',
+            height: self.options.viewport.height + 'px'
+        });
+
+        img.classList.add('cr-image');
+        overlay.classList.add('cr-overlay');
+
+        self.element.appendChild(boundary);
+        boundary.appendChild(img);
+        boundary.appendChild(viewport);
+        boundary.appendChild(overlay);
+
+        self.element.classList.add(contClass);
+        if (self.options.customClass) {
+            self.element.classList.add(self.options.customClass);
+        }
+
+        // Initialize drag & zoom
+        _initDraggable.call(this);
+
+        if (self.options.enableZoom) {
+            _initializeZoom.call(self);
+        }
+    }
+
+    function _setZoomerVal(v) {
+        if (this.options.enableZoom) {
+            this.elements.zoomer.value = fix(v, 2);
+        }
+    }
+
+    function _initializeZoom() {
+        var self = this,
+            wrap = self.elements.zoomerWrap = document.createElement('div'),
+            zoomer = self.elements.zoomer = document.createElement('input'),
+            origin,
+            viewportRect,
+            transform;
+
+        wrap.classList.add('cr-slider-wrap');
+        zoomer.type = 'range';
+        zoomer.classList.add('cr-slider');
+        zoomer.step = '0.01';
+        zoomer.value = 1;
+        zoomer.style.display = self.options.showZoomer ? '' : 'none';
+
+        self.element.appendChild(wrap);
+        wrap.appendChild(zoomer);
+
+        self._currentZoom = 1;
+        function start() {
+            _updateCenterPoint.call(self);
+            origin = new TransformOrigin(self.elements.img);
+            viewportRect = self.elements.viewport.getBoundingClientRect();
+            transform = Transform.parse(self.elements.img);
+        }
+
+        function change() {
+            _onZoom.call(self, {
+                value: parseFloat(zoomer.value),
+                origin: origin || new TransformOrigin(self.elements.img),
+                viewportRect: viewportRect || self.elements.viewport.getBoundingClientRect(),
+                transform: transform || Transform.parse(self.elements.img)
+            });
+        }
+
+        function scroll(ev) {
+            var delta, targetZoom;
+
+            if (ev.wheelDelta) {
+                delta = ev.wheelDelta / 1200; //wheelDelta min: -120 max: 120 // max x 10 x 2
+            } else if (ev.deltaY) {
+                delta = ev.deltaY / 1060; //deltaY min: -53 max: 53 // max x 10 x 2
+            } else if (ev.detail) {
+                delta = ev.detail / 60; //delta min: -3 max: 3 // max x 10 x 2
+            } else {
+                delta = 0;
+            }
+
+            targetZoom = self._currentZoom + delta;
+
+            ev.preventDefault();
+            start();
+            _setZoomerVal.call(self, targetZoom);
+            change();
+        }
+
+        self.elements.zoomer.addEventListener('mousedown', start);
+        self.elements.zoomer.addEventListener('touchstart', start);
+
+        self.elements.zoomer.addEventListener('input', change);// this is being fired twice on keypress
+        self.elements.zoomer.addEventListener('change', change);
+
+        if (self.options.mouseWheelZoom) {
+            self.elements.boundary.addEventListener('mousewheel', scroll);
+            self.elements.boundary.addEventListener('DOMMouseScroll', scroll);
+        }
+    }
+
+    function _onZoom(ui) {
+        var self = this,
+            transform = ui.transform,
+            vpRect = ui.viewportRect,
+            origin = ui.origin;
+
+        self._currentZoom = ui.value;
+        transform.scale = self._currentZoom;
+
+        var boundaries = _getVirtualBoundaries.call(self, vpRect),
+            transBoundaries = boundaries.translate,
+            oBoundaries = boundaries.origin;
+
+        if (transform.x >= transBoundaries.maxX) {
+            origin.x = oBoundaries.minX;
+            transform.x = transBoundaries.maxX;
+        }
+
+        if (transform.x <= transBoundaries.minX) {
+            origin.x = oBoundaries.maxX;
+            transform.x = transBoundaries.minX;
+        }
+
+        if (transform.y >= transBoundaries.maxY) {
+            origin.y = oBoundaries.minY;
+            transform.y = transBoundaries.maxY;
+        }
+
+        if (transform.y <= transBoundaries.minY) {
+            origin.y = oBoundaries.maxY;
+            transform.y = transBoundaries.minY;
+        }
+
+        var transCss = {};
+        transCss[CSS_TRANSFORM] = transform.toString();
+        transCss[CSS_TRANS_ORG] = origin.toString();
+        css(self.elements.img, transCss);
+
+        _debouncedOverlay.call(self);
+        _triggerUpdate.call(self);
+    }
+
+    function _getVirtualBoundaries(viewport) {
+        var self = this,
+            scale = self._currentZoom,
+            vpWidth = viewport.width,
+            vpHeight = viewport.height,
+            centerFromBoundaryX = self.options.boundary.width / 2,
+            centerFromBoundaryY = self.options.boundary.height / 2,
+            originalImgWidth = self._originalImageWidth,
+            originalImgHeight = self._originalImageHeight,
+            curImgWidth = originalImgWidth * scale,
+            curImgHeight = originalImgHeight * scale,
+            halfWidth = vpWidth / 2,
+            halfHeight = vpHeight / 2;
+
+
+        var maxX = ((halfWidth / scale) - centerFromBoundaryX) * -1;
+        var minX = maxX - ((curImgWidth * (1 / scale)) - (vpWidth * (1 / scale)));
+
+        var maxY = ((halfHeight / scale) - centerFromBoundaryY) * -1;
+        var minY = maxY - ((curImgHeight * (1 / scale)) - (vpHeight * (1 / scale)));
+
+        var originMinX = (1 / scale) * halfWidth;
+        var originMaxX = (curImgWidth * (1 / scale)) - originMinX;
+
+        var originMinY = (1 / scale) * halfHeight;
+        var originMaxY = (curImgHeight * (1 / scale)) - originMinY;
+
+        return {
+            translate: {
+                maxX: maxX,
+                minX: minX,
+                maxY: maxY,
+                minY: minY
+            },
+            origin: {
+                maxX: originMaxX,
+                minX: originMinX,
+                maxY: originMaxY,
+                minY: originMinY
+            }
+        };
+    }
+
+    function _updateCenterPoint() {
+        var self = this,
+            scale = self._currentZoom,
+            data = self.elements.img.getBoundingClientRect(),
+            vpData = self.elements.viewport.getBoundingClientRect(),
+            transform = Transform.parse(self.elements.img.style[CSS_TRANSFORM]),
+            pc = new TransformOrigin(self.elements.img),
+            top = (vpData.top - data.top) + (vpData.height / 2),
+            left = (vpData.left - data.left) + (vpData.width / 2),
+            center = {},
+            adj = {};
+
+        center.y = top / scale;
+        center.x = left / scale;
+
+        adj.y = (center.y - pc.y) * (1 - scale);
+        adj.x = (center.x - pc.x) * (1 - scale);
+
+        transform.x -= adj.x;
+        transform.y -= adj.y;
+
+        var newCss = {};
+        newCss[CSS_TRANS_ORG] = center.x + 'px ' + center.y + 'px';
+        newCss[CSS_TRANSFORM] = transform.toString();
+        css(self.elements.img, newCss);
+    }
+
+    function _initDraggable() {
+        var self = this,
+            isDragging = false,
+            originalX,
+            originalY,
+            originalDistance,
+            vpRect;
+
+        function mouseDown(ev) {
+            ev.preventDefault();
+            if (isDragging) return;
+            isDragging = true;
+            originalX = ev.pageX;
+            originalY = ev.pageY;
+
+            if (ev.touches) {
+                var touches = ev.touches[0];
+                originalX = touches.pageX;
+                originalY = touches.pageY;
+            }
+
+            transform = Transform.parse(self.elements.img);
+            window.addEventListener('mousemove', mouseMove);
+            window.addEventListener('touchmove', mouseMove);
+            window.addEventListener('mouseup', mouseUp);
+            window.addEventListener('touchend', mouseUp);
+            document.body.style[CSS_USERSELECT] = 'none';
+            vpRect = self.elements.viewport.getBoundingClientRect();
+        }
+
+        function mouseMove(ev) {
+            ev.preventDefault();
+            var pageX = ev.pageX,
+                pageY = ev.pageY;
+
+            if (ev.touches) {
+                var touches = ev.touches[0];
+                pageX = touches.pageX;
+                pageY = touches.pageY;
+            }
+
+            var deltaX = pageX - originalX,
+                deltaY = pageY - originalY,
+                imgRect = self.elements.img.getBoundingClientRect(),
+                top = transform.y + deltaY,
+                left = transform.x + deltaX,
+                newCss = {};
+
+            if (ev.type == 'touchmove') {
+                if (ev.touches.length > 1) {
+                    var touch1 = ev.touches[0];
+                    var touch2 = ev.touches[1];
+                    var dist = Math.sqrt((touch1.pageX - touch2.pageX) * (touch1.pageX - touch2.pageX) + (touch1.pageY - touch2.pageY) * (touch1.pageY - touch2.pageY));
+
+                    if (!originalDistance) {
+                        originalDistance = dist / self._currentZoom;
+                    }
+
+                    var scale = dist / originalDistance;
+
+                    _setZoomerVal.call(self, scale);
+                    dispatchChange(self.elements.zoomer);
+                    return;
+                }
+            }
+
+            if (vpRect.top > imgRect.top + deltaY && vpRect.bottom < imgRect.bottom + deltaY) {
+                transform.y = top;
+            }
+
+            if (vpRect.left > imgRect.left + deltaX && vpRect.right < imgRect.right + deltaX) {
+                transform.x = left;
+            }
+
+            newCss[CSS_TRANSFORM] = transform.toString();
+            css(self.elements.img, newCss);
+            _updateOverlay.call(self);
+            originalY = pageY;
+            originalX = pageX;
+        }
+
+        function mouseUp() {
+            isDragging = false;
+            window.removeEventListener('mousemove', mouseMove);
+            window.removeEventListener('touchmove', mouseMove);
+            window.removeEventListener('mouseup', mouseUp);
+            window.removeEventListener('touchend', mouseUp);
+            document.body.style[CSS_USERSELECT] = '';
+            _updateCenterPoint.call(self);
+            _triggerUpdate.call(self);
+            originalDistance = 0;
+        }
+
+        self.elements.overlay.addEventListener('mousedown', mouseDown);
+        self.elements.overlay.addEventListener('touchstart', mouseDown);
+    }
+
+    function _updateOverlay() {
+        var self = this,
+            boundRect = self.elements.boundary.getBoundingClientRect(),
+            imgData = self.elements.img.getBoundingClientRect();
+
+        css(self.elements.overlay, {
+            width: imgData.width + 'px',
+            height: imgData.height + 'px',
+            top: (imgData.top - boundRect.top) + 'px',
+            left: (imgData.left - boundRect.left) + 'px'
+        });
+    }
+    var _debouncedOverlay = debounce(_updateOverlay, 500);
+
+    function _triggerUpdate() {
+        var self = this;
+        if (_isVisible.call(self)) {
+            self.options.update.call(self, self.get());
+        }
+    }
+
+    function _isVisible() {
+        return this.elements.img.offsetHeight > 0 && this.elements.img.offsetWidth > 0;
+    }
+
+    function _updatePropertiesFromImage() {
+        var self = this,
+            minZoom = 0,
+            maxZoom = 1.5,
+            initialZoom = 1,
+            cssReset = {},
+            img = self.elements.img,
+            zoomer = self.elements.zoomer,
+            transformReset = new Transform(0, 0, initialZoom),
+            originReset = new TransformOrigin(),
+            isVisible = _isVisible.call(self),
+            imgData,
+            vpData,
+            boundaryData,
+            minW,
+            minH;
+
+        if (!isVisible || self.data.bound) {
+            // if the croppie isn't visible or it doesn't need binding
+            return;
+        }
+
+        self.data.bound = true;
+        cssReset[CSS_TRANSFORM] = transformReset.toString();
+        cssReset[CSS_TRANS_ORG] = originReset.toString();
+        css(img, cssReset);
+
+        imgData = img.getBoundingClientRect();
+        vpData = self.elements.viewport.getBoundingClientRect();
+        boundaryData = self.elements.boundary.getBoundingClientRect();
+        self._originalImageWidth = imgData.width;
+        self._originalImageHeight = imgData.height;
+
+        if (self.options.enableZoom) {
+            minW = vpData.width / imgData.width;
+            minH = vpData.height / imgData.height;
+            minZoom = Math.max(minW, minH);
+
+            if (minZoom >= maxZoom) {
+                maxZoom = minZoom + 1;
+            }
+
+            zoomer.min = fix(minZoom, 2);
+            zoomer.max = fix(maxZoom, 2);
+            initialZoom = Math.max((boundaryData.width / imgData.width), (boundaryData.height / imgData.height));
+            _setZoomerVal.call(self, initialZoom);
+            dispatchChange(zoomer);
+        }
+
+        self._currentZoom = transformReset.scale = initialZoom;
+        cssReset[CSS_TRANSFORM] = transformReset.toString();
+        css(img, cssReset);
+
+        if (self.data.points.length) {
+            _bindPoints.call(self, self.data.points);
+        }
+        else {
+            _centerImage.call(self);
+        }
+
+
+        _updateOverlay.call(self);
+    }
+
+    function _bindPoints(points) {
+        if (points.length != 4) {
+            throw "Croppie - Invalid number of points supplied: " + points;
+        }
+        var self = this,
+            pointsWidth = points[2] - points[0],
+            // pointsHeight = points[3] - points[1],
+            vpData = self.elements.viewport.getBoundingClientRect(),
+            boundRect = self.elements.boundary.getBoundingClientRect(),
+            vpOffset = {
+                left: vpData.left - boundRect.left,
+                top: vpData.top - boundRect.top
+            },
+            scale = vpData.width / pointsWidth,
+            originTop = points[1],
+            originLeft = points[0],
+            transformTop = (-1 * points[1]) + vpOffset.top,
+            transformLeft = (-1 * points[0]) + vpOffset.left,
+            newCss = {};
+
+        newCss[CSS_TRANS_ORG] = originLeft + 'px ' + originTop + 'px';
+        newCss[CSS_TRANSFORM] = new Transform(transformLeft, transformTop, scale).toString();
+        css(self.elements.img, newCss);
+
+        _setZoomerVal.call(self, scale);
+        self._currentZoom = scale;
+    }
+
+    function _centerImage() {
+        var self = this,
+            imgDim = self.elements.img.getBoundingClientRect(),
+            vpDim = self.elements.viewport.getBoundingClientRect(),
+            boundDim = self.elements.boundary.getBoundingClientRect(),
+            vpLeft = vpDim.left - boundDim.left,
+            vpTop = vpDim.top - boundDim.top,
+            w = vpLeft - ((imgDim.width - vpDim.width) / 2),
+            h = vpTop - ((imgDim.height - vpDim.height) / 2),
+            transform = new Transform(w, h, self._currentZoom);
+
+        css(self.elements.img, CSS_TRANSFORM, transform.toString());
+    }
+
+    function _bind(options, cb) {
+        var self = this,
+            url,
+            points = [];
+
+        if (typeof (options) === 'string') {
+            url = options;
+            options = {};
+        }
+        else if (Array.isArray(options)) {
+            points = options.slice();
+        }
+        else if (typeof (options) == 'undefined' && self.data.url) { //refreshing
+            _updatePropertiesFromImage.call(self);
+            _triggerUpdate.call(self);
+            return null;
+        }
+        else {
+            url = options.url;
+            points = options.points || [];
+        }
+
+        self.data.bound = false;
+        self.data.url = url || self.data.url;
+        self.data.points = (points || self.data.points).map(function (p) {
+            return parseFloat(p);
+        });
+        var prom = loadImage(url, self.elements.img);
+        prom.then(function () {
+            _updatePropertiesFromImage.call(self);
+            _triggerUpdate.call(self);
+            if (cb) {
+                cb();
+            }
+        });
+        return prom;
+    }
+
+    function fix(v, decimalPoints) {
+        return parseFloat(v).toFixed(decimalPoints || 0);
+    }
+
+    function _get() {
+        var self = this,
+            imgData = self.elements.img.getBoundingClientRect(),
+            vpData = self.elements.viewport.getBoundingClientRect(),
+            x1 = vpData.left - imgData.left,
+            y1 = vpData.top - imgData.top,
+            x2 = x1 + vpData.width,
+            y2 = y1 + vpData.height,
+            scale = self._currentZoom;
+
+        if (scale === Infinity || isNaN(scale)) {
+            scale = 1;
+        }
+
+        x1 = Math.max(0, x1 / scale);
+        y1 = Math.max(0, y1 / scale);
+        x2 = Math.max(0, x2 / scale);
+        y2 = Math.max(0, y2 / scale);
+
+        return {
+            points: [fix(x1), fix(y1), fix(x2), fix(y2)],
+            zoom: scale
+        };
+    }
+
+    function _result(options) {
+        var self = this,
+            data = _get.call(self),
+            opts = options || { type: 'canvas', size: 'viewport' },
+            type = (typeof (opts) === 'string' ? opts : opts.type),
+            size = opts.size || 'viewport',
+            vpRect,
+            prom;
+
+        if (size === 'viewport') {
+            vpRect = self.elements.viewport.getBoundingClientRect();
+            data.outputWidth = vpRect.width;
+            data.outputHeight = vpRect.height;
+        }
+
+        data.circle = self.options.viewport.type === 'circle';
+        data.url = self.data.url;
+
+        prom = new Promise(function (resolve, reject) {
+            if (type === 'canvas') {
+                loadImage(data.url).then(function (img) {
+                    resolve(getCanvasImage(img, data));
+                });
+            }
+            else {
+                resolve(getHtmlImage(data));
+            }
+        });
+        return prom;
+    }
+
+    function _refresh() {
+        console.warn("Croppie.refresh() is deprecated.  Please use Croppie.bind() without any arguments instead.  refresh() will be removed in a later release.");
+        _updatePropertiesFromImage.call(this);
+    }
+
+    function _destroy() {
+        var self = this;
+        self.element.removeChild(self.elements.boundary);
+        if (self.options.enableZoom) {
+            self.element.removeChild(self.elements.zoomerWrap);
+        }
+        delete self.elements;
+    }
+
+    if (this.jQuery) {
+        var $ = this.jQuery;
+        $.fn.croppie = function (opts) {
+            var ot = typeof opts;
+
+            if (ot === 'string') {
+                var args = Array.prototype.slice.call(arguments, 1);
+                var singleInst = $(this).data('croppie');
+
+                if (opts === 'get') {
+                    return singleInst.get();
+                }
+                else if (opts === 'result') {
+                    return singleInst.result.apply(singleInst, args);
+                }
+
+                return this.each(function () {
+                    var i = $(this).data('croppie');
+                    if (!i) return;
+
+                    var method = i[opts];
+                    if ($.isFunction(method)) {
+                        method.apply(i, args);
+                        if (opts === 'destroy') {
+                            $(this).removeData('croppie');
+                        }
+                    }
+                    else {
+                        throw 'Croppie ' + opts + ' method not found';
+                    }
+                });
+            }
+            else {
+                return this.each(function () {
+                    var i = new Croppie(this, opts);
+                    $(this).data('croppie', i);
+                });
+            }
+        };
+    }
+
+    function Croppie(element, opts) {
+        this.element = element;
+        this.options = deepExtend({}, Croppie.defaults, opts);
+
+        // backwards compatibility
+        if (typeof(opts.showZoom) != 'undefined') {
+            this.options.enableZoom = this.options.showZoomer = opts.showZoom;
+        }
+
+        _create.call(this);
+    }
+
+    Croppie.defaults = {
+        viewport: {
+            width: 100,
+            height: 100,
+            type: 'square'
+        },
+        boundary: {
+            width: 300,
+            height: 300
+        },
+        customClass: '',
+        showZoomer: true,
+        enableZoom: true,
+        mouseWheelZoom: true,
+        update: function () { }
+    };
+
+    deepExtend(Croppie.prototype, {
+        bind: function (options, cb) {
+            return _bind.call(this, options, cb);
+        },
+        get: function () {
+            return _get.call(this);
+        },
+        result: function (type) {
+            return _result.call(this, type);
+        },
+        refresh: function () {
+            return _refresh.call(this);
+        },
+        setZoom: function (v) {
+            _setZoomerVal.call(this, v);
+            dispatchChange(this.elements.zoomer);
+        },
+        destroy: function () {
+            return _destroy.call(this);
+        }
+    });
+
+    exports.Croppie = window.Croppie = Croppie;
+}));

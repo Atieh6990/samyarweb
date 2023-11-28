@@ -4,10 +4,10 @@ pageFive = {
 
 pageFive.init = function (data) {
     $('#upload-demo').empty();
-    menu.titleBar("","");
+    menu.titleBar("", "");
     menu.manageTopScreen();
     pageFive.intCrop();
-    
+
 }
 pageFive.parser = function (data) {
 
@@ -27,19 +27,11 @@ pageFive.intCrop = function () {
 
     pageFive.imgCrop = $('#upload-demo').croppie({
         enableExif: true,
-        
         viewport: {width: 250, height: 250, type: 'circle'},
         boundary: {height: 320},
         showZoomer: true,
         enableOrientation: true,
-          
-
     });
-
-//on button click
-    /* pageFive.imgCrop.result('blob').then(function (blob) {
-     // do something with cropped blob
-     });*/
 
 };
 pageFive.resultSubmit = function (data) {
@@ -64,11 +56,13 @@ readFile = function (input) {
             $('.upload-demo').addClass('ready');
             pageFive.imgCrop.croppie('bind', {
                 url: e.target.result,
-               
-            }).then(function (resp) {
-                mylog.log('jQuery bind complete');
-                $('#five-save-img').removeClass('hidden');
-            });
+
+            })
+            $('#five-save-img').removeClass('hidden');
+            //     .then(function (resp) {
+            //     mylog.log('jQuery bind complete');
+            //     $('#five-save-img').removeClass('hidden');
+            // });
 
         }
 
@@ -77,10 +71,13 @@ readFile = function (input) {
         mylog.log("Sorry - you're browser doesn't support the FileReader API");
     }
 }
+
 function funuploadresult9() {
     pageFive.imgCrop.croppie('result', {
-        type: 'base64',
-        size: 'viewport'
+        // type: 'base64',
+        // size: 'viewport'
+        type: 'canvas',
+        size: 'original'
     }).then(function (resp) {
 
         var data = {
@@ -91,9 +88,10 @@ function funuploadresult9() {
 
     });
 }
+
 $(document).ready(function () {
     $('#five-avatar').on('change', function () {
-        //alert("this"+this);
+       // console.log("onChange !@")
         $('#saveImg').removeClass('hidden');
         readFile(this);
 

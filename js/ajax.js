@@ -75,7 +75,7 @@ function ajax(type, link, funSuccess, sendData) {
             mylog.log("start");
         },
         error: function (xhr, textStatus, errorThrown) {
-            mylog.log('erorr = ' + xhr + ' ' + textStatus + '' + errorThrown);
+            // alert('erorr = ' + xhr + ' ' + textStatus + '' + errorThrown);
             if (textStatus == 'timeout' || textStatus == 'error') {
                 managementRel.hideLoading();
                 this.tryCount++;
@@ -84,7 +84,7 @@ function ajax(type, link, funSuccess, sendData) {
                     $.ajax(this);
                     return;
                 } else {
-                    managementRel.tost("اختلال در برقراری ارتباط با اینترنت");
+                    managementRel.tost("00 اختلال در برقراری ارتباط با اینترنت");
                     mylog.log('a');
                     //document.getElementById('dis'+dis).style.display = 'block';
                 }

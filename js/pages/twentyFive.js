@@ -37,7 +37,7 @@ pageTwentyFive.manage = function (data) {
     if (pageTwentyFive.data.length != 0) {
         pageTwentyFive.create();
     } else {
-        managementRel.tost("اختلال در برقراری ارتباط با اینترنت");
+        managementRel.tost("44  اختلال در برقراری ارتباط با اینترنت");
     }
 };
 pageTwentyFive.parser = function (data2) {
