@@ -1094,10 +1094,11 @@ pageTwentyFour.showTab = function (id) {  //neshoon dadane safe
 
     pageTwentyFour.selectedLevel = id;
     $(".fc-levelS-item").removeClass("fc-tab-over");
-    //  console.log("ino bede->" + "fc-tabItem-" + id);
-    if (id == 0 || id == ((pageTwentyFour.levelID.length) + (1))) {
-          $("#fc-tabItem-8").addClass("fc-tab-over");
-          // $("#fc-tabItem-2").addClass("fc-tab-over");
+    // console.log("ino bede->" + id + ' *** ' + ((pageTwentyFour.levelID.length) + (1)));
+    // if (id == 0 || id == ((pageTwentyFour.levelID.length) + (1))) {
+    if (id == 8) {
+        $("#fc-tabItem-8").addClass("fc-tab-over");
+        // $("#fc-tabItem-2").addClass("fc-tab-over");
     } else {
         $("#fc-tabItem-" + id).addClass("fc-tab-over");
     }
