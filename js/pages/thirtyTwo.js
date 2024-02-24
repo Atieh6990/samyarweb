@@ -10,36 +10,34 @@ pageThirtyTwo.init = function () {
     pageThirtyTwo.calcPos()
     //menu.titleBar("images/sell-history.png", "Ú¯Ø²Ø§Ø±Ø´ ÙØ±ÙˆØ´");
 
-    const formatsToSupport = [
-        Html5QrcodeSupportedFormats.QR_CODE,
-        Html5QrcodeSupportedFormats.UPC_A,
-        Html5QrcodeSupportedFormats.UPC_E,
-        Html5QrcodeSupportedFormats.AZTEC,
-        Html5QrcodeSupportedFormats.CODABAR,
-        Html5QrcodeSupportedFormats.CODE_39,
-        Html5QrcodeSupportedFormats.CODE_93,
-        Html5QrcodeSupportedFormats.CODE_128,
-        Html5QrcodeSupportedFormats.DATA_MATRIX,
-        Html5QrcodeSupportedFormats.MAXICODE,
-        Html5QrcodeSupportedFormats.ITF,
-        Html5QrcodeSupportedFormats.EAN_13,
-        Html5QrcodeSupportedFormats.EAN_8,
-        Html5QrcodeSupportedFormats.PDF_417,
-        Html5QrcodeSupportedFormats.RSS_14,
-        Html5QrcodeSupportedFormats.RSS_EXPANDED,
-        Html5QrcodeSupportedFormats.UPC_EAN_EXTENSION,
-    ];
-    // alert("0000")
-    var html5QrCode = new Html5Qrcode("reader", /* verbose= */ true);
-    var qrCodeSuccessCallback = (decodedText, decodedResult) => {
-        // alert("decodedText => " + decodedText + " **** decodedResult" + decodedResult)
-        managementRel.tost('بارکد با موفقیت اسکن شد.');
-        $("#input_serial_32").val(decodedText);
-    };
-    // alert("1111")
-    var config = {fps: 10, formatsToSupport: formatsToSupport};
-    html5QrCode.start({facingMode: "environment"}, config, qrCodeSuccessCallback);
-    // alert("2222")
+    // const formatsToSupport = [
+    //     Html5QrcodeSupportedFormats.QR_CODE,
+    //     Html5QrcodeSupportedFormats.UPC_A,
+    //     Html5QrcodeSupportedFormats.UPC_E,
+    //     Html5QrcodeSupportedFormats.AZTEC,
+    //     Html5QrcodeSupportedFormats.CODABAR,
+    //     Html5QrcodeSupportedFormats.CODE_39,
+    //     Html5QrcodeSupportedFormats.CODE_93,
+    //     Html5QrcodeSupportedFormats.CODE_128,
+    //     Html5QrcodeSupportedFormats.DATA_MATRIX,
+    //     Html5QrcodeSupportedFormats.MAXICODE,
+    //     Html5QrcodeSupportedFormats.ITF,
+    //     Html5QrcodeSupportedFormats.EAN_13,
+    //     Html5QrcodeSupportedFormats.EAN_8,
+    //     Html5QrcodeSupportedFormats.PDF_417,
+    //     Html5QrcodeSupportedFormats.RSS_14,
+    //     Html5QrcodeSupportedFormats.RSS_EXPANDED,
+    //     Html5QrcodeSupportedFormats.UPC_EAN_EXTENSION,
+    // ];
+    // var html5QrCode = new Html5Qrcode("reader", /* verbose= */ true);
+    // var qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    //     managementRel.tost('بارکد با موفقیت اسکن شد.');
+    //     $("#input_serial_32").val(decodedText);
+    // };
+    //
+    // var config = {fps: 10, formatsToSupport: formatsToSupport};
+    // html5QrCode.start({facingMode: "environment"}, config, qrCodeSuccessCallback);
+
     setTimeout(function () {
         // alert("4444")
         $(".submit-32").attr("style", "height :" + ((150 * window.innerHeight) / 1920) + 'px' + " ; display :flex !important");
