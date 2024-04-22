@@ -162,8 +162,8 @@ pageThirtyTwo.validForm = function () {
                 return false
             }
 
-            if (inpVal.length < 15) {
-                managementRel.tost('شماره سریال کمتر از 15 کاراکتر ثبت نخواهد شد.');
+            if (inpVal.length < 14) {
+                managementRel.tost('شماره سریال کمتر از 14 کاراکتر ثبت نخواهد شد.');
                 return false
             }
             var data = {
