@@ -1,8 +1,9 @@
 pageTwentyFour = {
     starAppModule: "",
 };
-// var urlForecast = 'https://samyar.rasgames.ir/samyarpishbini/api/';
-var urlForecast = 'http://localhost/samyarpishbini/api/';
+// in page baraye jamejahanie 2022 va jame melathaye asia 2023 ast va dar tarikhe 16.11.2022 taghir peyda karde ast. file taghir nayafte(baraye league ha) bename twentyFour.js dar proje vojod darad
+var urlForecast = 'https://samyar.rasgames.ir/samyarpishbini/api/';
+// var urlForecast = 'http://localhost/samyarpishbini/api/';
 
 pageTwentyFour.init = function () {
 
@@ -160,7 +161,8 @@ pageTwentyFour.create = function () {
           //  $('ul.tabs').tabs('select_tab', "fc-tabItem-1");
       });*/
     //  pageTwentyFour.drawGroupLevel();
-    console.log('level id league ->' + pageTwentyFour.levelID);
+    pageTwentyFour.levelID.sort();
+    console.log('level id fifa ->' + pageTwentyFour.levelID);
     for (var j = 0; j < pageTwentyFour.levelID.length; j++) {
         if (pageTwentyFour.levelID[j] != '1') {
             pageTwentyFour.drawLevels(pageTwentyFour.levelID[j], 0, 0);
@@ -1092,15 +1094,14 @@ pageTwentyFour.showTab = function (id) {  //neshoon dadane safe
 
     pageTwentyFour.selectedLevel = id;
     $(".fc-levelS-item").removeClass("fc-tab-over");
-    //  console.log("ino bede->" + "#fc-tabItem-" + id);
-
-    if (id == 0) {
-        $("#fc-tabItem-1").addClass("fc-tab-over");
+    // console.log("ino bede->" + id + ' *** ' + ((pageTwentyFour.levelID.length) + (1)));
+    // if (id == 0 || id == ((pageTwentyFour.levelID.length) + (1))) {
+    if (id == 8) {
+        $("#fc-tabItem-8").addClass("fc-tab-over");
+        // $("#fc-tabItem-2").addClass("fc-tab-over");
     } else {
         $("#fc-tabItem-" + id).addClass("fc-tab-over");
     }
-
-
     if ($(".fc-tables").css("display") == 'block') {
         $('body').addClass('stop-scrolling');
     } else {

@@ -1,7 +1,6 @@
 pageTwentyFour = {
     starAppModule: "",
 };
-// in page baraye jamejahanie 2022 va jame melathaye asia 2023 ast va dar tarikhe 16.11.2022 taghir peyda karde ast. file taghir nayafte(baraye league ha) bename twentyFour_leagueIran2023.js dar proje vojod darad
 var urlForecast = 'https://samyar.rasgames.ir/samyarpishbini/api/';
 // var urlForecast = 'http://localhost/samyarpishbini/api/';
 
@@ -142,7 +141,7 @@ pageTwentyFour.create = function () {
         elM.addClass("fc-levelS-item fc-middle-font");
         //el.css({"height": handelPage.height * (0.046) + 'px', "line-height": handelPage.height * (0.046) + 'px'});
         elM.css({"height": handelPage.height * (0.06) + 'px'});
-        elM.attr('onClick', 'pageTwentyFour.showTab(' + (pageTwentyFour.levelID[i] == 1 ? 0 : pageTwentyFour.levelID[i]) + ');pageTwentyFour.sendMessage(' + (pageTwentyFour.levelID[i] == 1 ? 0 : pageTwentyFour.levelID[i]) + ',0)');
+        elM.attr('onClick', 'pageTwentyFour.showTab(' + (pageTwentyFour.levelID[i] == 1 ? 1 : pageTwentyFour.levelID[i]) + ');pageTwentyFour.sendMessage(' + (pageTwentyFour.levelID[i] == 1 ? 1 : pageTwentyFour.levelID[i]) + ',0)');
         elM.attr("id", "fc-tabItem-" + pageTwentyFour.levelID[i]);
         elM.attr("levelid", pageTwentyFour.levelID[i]);
         elM.html(pageTwentyFour.levelname[i]);
@@ -161,12 +160,11 @@ pageTwentyFour.create = function () {
           //  $('ul.tabs').tabs('select_tab', "fc-tabItem-1");
       });*/
     //  pageTwentyFour.drawGroupLevel();
-    pageTwentyFour.levelID.sort();
-    console.log('level id fifa ->' + pageTwentyFour.levelID);
+    // console.log('level id league ->' + pageTwentyFour.levelID);
     for (var j = 0; j < pageTwentyFour.levelID.length; j++) {
-        if (pageTwentyFour.levelID[j] != '1') {
-            pageTwentyFour.drawLevels(pageTwentyFour.levelID[j], 0, 0);
-        }
+        // if (pageTwentyFour.levelID[j] != '1') {
+        pageTwentyFour.drawLevels(pageTwentyFour.levelID[j], 0, 0);
+        // }
     }
     pageTwentyFour.showTab(pageTwentyFour.levelID[0]);
     pageTwentyFour.handleHeight(".fc-level-content", 70);
@@ -174,7 +172,7 @@ pageTwentyFour.create = function () {
 };
 pageTwentyFour.drawGroupLevel = function () {
     var grouped = pageTwentyFour.filterByProperty(pageTwentyFour.groups, 'level_id', 1);
-    console.log('grouped->' + JSON.stringify(grouped));
+    // console.log('grouped->' + JSON.stringify(grouped));
 
     for (var i = 0; i < grouped.length; i++) {
         var GroupItem = $("<div></div>");
@@ -265,15 +263,17 @@ pageTwentyFour.drawGroupLevel = function () {
 
 pageTwentyFour.return = function () {
     //alert('selected level->'+pageTwentyFour.selectedLevel+',table css->'+$(".fc-tables").css("display"));
-    //  alert($("body").scrollTop());
+    //  alert(pageTwentyFour.selectedLevel);
     if ($('#forecast-holder').is(':empty')) {
-        if (pageTwentyFour.selectedLevel == '1') {
-            pageTwentyFour.showTab(0);
-        } else if ($(".fc-tables").css("display") == 'block') {
+        // if (pageTwentyFour.selectedLevel == '1') {
+        //     alert('if')
+        //     pageTwentyFour.showTab(0);
+        // }
+        // else
+        if ($(".fc-tables").css("display") == 'block') {
             pageTwentyFour.drawFooter(groupTableSlected[0], groupTableSlected[1]);
             pageTwentyFour.showTab(1);
         } else {
-            // alert('inja');
             pageTwentyFour.reset();
             pageTwentyFour.resetNav();
             handelPage.page = managePage.retun();
@@ -298,12 +298,13 @@ pageTwentyFour.filterByProperty = function (array, prop, value) {
 };
 var groupTableSlected = [];
 pageTwentyFour.drawLevels = function (id, groupID, name) {
+
     $("#fc-content-holder").css({"margin-top": parseInt($(".fc-toolbar-header").css("height")) + 'px'});
-    if (id == 8) {  //my forecasts
+    if (id == 1) {  //my forecasts
         var leveled = pageTwentyFour.filterByProperty(pageTwentyFour.matches, 'is_forecast', '1');
     } else if (id != 1) {  //hame bejoz levele1
         var leveled = pageTwentyFour.filterByProperty(pageTwentyFour.matches, 'level_id', id);
-    } else {  //levele 1
+    } else {
         var level1 = pageTwentyFour.filterByProperty(pageTwentyFour.matches, 'level_id', id);
         var leveled = pageTwentyFour.filterByProperty(level1, 'group_id', groupID);
     }
@@ -319,14 +320,14 @@ pageTwentyFour.drawLevels = function (id, groupID, name) {
     for (var i = 0; i < leveled.length; i++) {
 
         if ((id == 1) && (i == 0)) {
-            var el = $("<div></div>");
-            el.addClass("fc-match-groupBar fc-small-font");
-            el.css({
-                "height": (handelPage.height * (0.039)) + "px",
-                "line-height": (handelPage.height * (0.039)) + "px ",
-            });
-            el.html(name);
-            elHolder.append(el);
+            // var el = $("<div></div>");
+            // el.addClass("fc-match-groupBar fc-small-font");
+            // el.css({
+            //     "height": (handelPage.height * (0.039)) + "px",
+            //     "line-height": (handelPage.height * (0.039)) + "px ",
+            // });
+            // el.html(name);
+            // elHolder.append(el);
 
             pageTwentyFour.drawFooter(leveled[i]['group_id'], name);
 
@@ -1062,7 +1063,7 @@ pageTwentyFour.closeforecast = function () {  //bastane box e forecast
 };
 pageTwentyFour.sendMessage = function (id, msg) {
     if (msg == 0) {
-        console.log('matches --------------------->' + $('#fc-lvlHolder-' + id).children().length);
+        // console.log('matches --------------------->' + $('#fc-lvlHolder-' + id).children().length);
         childNum = $('#fc-lvlHolder-' + id).children().length;
         if ((childNum == 0) && (id != 0)) {
             managementRel.tost("بازی وجود ندارد");
@@ -1073,7 +1074,6 @@ pageTwentyFour.sendMessage = function (id, msg) {
 }
 ;
 pageTwentyFour.showTab = function (id) {  //neshoon dadane safe
-
     $("#fc-content-holder").css("height", handelPage.height);
     $(".fc-level-holder").css({"display": "none"});
     // pageTwentyFour.manageScroll();
@@ -1082,8 +1082,8 @@ pageTwentyFour.showTab = function (id) {  //neshoon dadane safe
     //  groupTableSlected=[];
 
     if (id == 0) {
-        $(".fc-level-content").css({"display": "block"});
-        $(".fc-match-footerbar").remove();
+        // $(".fc-level-content").css({"display": "block"});
+        // $(".fc-match-footerbar").remove();
     } else if (id == 1) {
 
         $("#fc-lvlHolder-" + id).css({"display": "block"});
@@ -1094,14 +1094,14 @@ pageTwentyFour.showTab = function (id) {  //neshoon dadane safe
 
     pageTwentyFour.selectedLevel = id;
     $(".fc-levelS-item").removeClass("fc-tab-over");
-    // console.log("ino bede->" + id + ' *** ' + ((pageTwentyFour.levelID.length) + (1)));
-    // if (id == 0 || id == ((pageTwentyFour.levelID.length) + (1))) {
-    if (id == 8) {
-        $("#fc-tabItem-8").addClass("fc-tab-over");
-        // $("#fc-tabItem-2").addClass("fc-tab-over");
+
+    if (id == 0) {
+        $("#fc-tabItem-1").addClass("fc-tab-over");
     } else {
         $("#fc-tabItem-" + id).addClass("fc-tab-over");
     }
+
+
     if ($(".fc-tables").css("display") == 'block') {
         $('body').addClass('stop-scrolling');
     } else {

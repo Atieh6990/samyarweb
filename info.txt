@@ -33,7 +33,7 @@
         <script type="text/javascript" src="js/pages/twentyone.js"></script>
         <script type="text/javascript" src="js/pages/twentytwo.js"></script>
         <script type="text/javascript" src="js/pages/twentythree.js"></script>
-        <script type="text/javascript" src="js/pages/twentyFour.js"></script>
+        <script type="text/javascript" src="js/pages/twentyFour_groups.js"></script>
         <script type="text/javascript" src="js/pages/twentyFive.js"></script>
         <script type="text/javascript" src="js/pages/twentySix.js"></script>
         <script type="text/javascript" src="js/pages/twentySeven.js"></script>
