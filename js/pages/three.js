@@ -417,10 +417,12 @@ pageThree.getCard = function (data) {
         this.bank_number = this.user_finance['bank_number'];
         this.bank_id = this.user_finance['bank_id'];
         this.bank_name = this.user_finance['bank_name'];
+        this.bank_sheba = this.user_finance['bank_shaba'];
 
         $("#three-two-bank").val(this.bank_id);
         $("#three-two-cart").val(this.bank_card);
         $("#three-two-number").val(this.bank_number);
+        $("#three-two-shaba").val(this.bank_sheba);
         Materialize.updateTextFields();
     }
 }
