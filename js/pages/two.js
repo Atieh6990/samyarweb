@@ -373,6 +373,7 @@ pageTwo.successLogin = function (data) {
         pageTwo.token = obj['data']['token'];
         pageTwo.userScore = obj['data']['score'];
         pageTwo.rank = obj['data']['rank'];
+        pageTwo.isStore = obj['data']['isStore'];
 
         setTimeout(function () {
             pageTwentyFour.ajaxForecast("POST", urlForecast + 'user/store', pageTwo.getStore, {});

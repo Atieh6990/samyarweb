@@ -574,7 +574,7 @@ var mylog = new Logger(); // Initializes logger.
 
 var handelPage = {
     page: 1,
-    pageName: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twentyone", "twentytwo", "twentythree", "twentyFour", "twentyFive", "twentySix", "twentySeven", "twentyEight", "twentyNine", "thirty", "thirtyOne", "thirtyTwo", "thirtythree", "thirtyfour", "thirtyfive", "thirtySix"]
+    pageName: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twentyone", "twentytwo", "twentythree", "twentyFour", "twentyFive", "twentySix", "twentySeven", "twentyEight", "twentyNine", "thirty", "thirtyOne", "thirtyTwo", "thirtythree", "thirtyfour", "thirtyfive", "thirtySix","thirtySeven"]
 };
 handelPage.initShowPage = function (index) {
     handelPage.page = index;
@@ -828,6 +828,10 @@ handelPage.managerEnter = function (index) {
             thirtySix.init();
 
             break;
+        case 37:
+            thirtySeven.init();
+
+            break;
     }
     if (pageTwo.slide)
         pageTwo.slide._pusse();
@@ -1014,6 +1018,10 @@ handelPage.managerReturn = function () {
                     break;
                 case 36:
                     thirtySix.return();
+
+                    break;
+                case 37:
+                    thirtySeven.return();
 
                     break;
                 default :
@@ -1283,7 +1291,9 @@ menu.clickItemsPg1 = function (id) {
             case "25": //
                 handelPage.managerEnter(25);
                 break;
-
+            case "37": //
+                handelPage.managerEnter(37);
+                break;
             default:
 
                 break;
