@@ -400,7 +400,12 @@
     justify-content: space-between;
     box-shadow: 2px 2px 7px -4px #888888;
 }
+.surveyPadding{
+    padding: 2% 5% 2% 2%;
+}
+.backGradientVam30{
 
+}
 .Survey-img-l-two {
     height: 45px;
     margin-left: 5%
