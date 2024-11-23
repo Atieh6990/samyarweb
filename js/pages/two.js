@@ -68,6 +68,9 @@ pageTwo.init = function () {
 pageTwo.getStore = function (data) {
     this.data = jQuery.parseJSON(data)
     if (this.data["success"] == "true") {
+        if(this.data["data"]["store_id"] !==1094){//be darkhast team e samyar promotion vam30 faghat baraye forooshgah raikar namayesh dade mishe
+            $(".backGradientVam30").css('display' ,'none')
+        }
         $(".exam-m-up-two").html(this.data["data"]["store_name"])
         $(".exam-m-down-two").html(managementRel.getCookie("city") + " - " + this.data["data"]["store_adrs"])
         //  console.log("================================",jQuery.parseJSON(data)["data"])
