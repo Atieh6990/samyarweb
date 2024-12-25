@@ -50,10 +50,36 @@
     top: 29%;
 
 }
-#img-bar-profile{
+
+
+.notifAlarm {
+    position: absolute;
+    right: 7%;
+    top: 15%;
+    background-color: red;
+    border-radius: 50%;
+}
+
+#img-bar-profile {
     height: 100%;
     left: 3%;
     border: 2px solid #fff;
     border-radius: 50%;
     position: absolute;
 }
+
+
+
+.notifCountSideMenu{
+    margin-right: 3%;
+    color: #FFFFFF;
+    border-radius: 50%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+

@@ -68,8 +68,8 @@ pageTwo.init = function () {
 pageTwo.getStore = function (data) {
     this.data = jQuery.parseJSON(data)
     if (this.data["success"] == "true") {
-        if(this.data["data"]["store_id"] !==1094){//be darkhast team e samyar promotion vam30 faghat baraye forooshgah raikar namayesh dade mishe
-            $(".backGradientVam30").css('display' ,'none')
+        if (this.data["data"]["store_id"] !== 1094) {//be darkhast team e samyar promotion vam30 faghat baraye forooshgah raikar namayesh dade mishe
+            $(".backGradientVam30").css('display', 'none')
         }
         $(".exam-m-up-two").html(this.data["data"]["store_name"])
         $(".exam-m-down-two").html(managementRel.getCookie("city") + " - " + this.data["data"]["store_adrs"])
@@ -324,8 +324,8 @@ pageTwo.resulNews = function (data) {
     // alert("2 sare forecast");
 
 
-    console.log('dataAjax', dataAjax)
-    console.log('setParamsAjax(dataAjax)', setParamsAjax(dataAjax))
+    // console.log('dataAjax', dataAjax)
+    // console.log('setParamsAjax(dataAjax)', setParamsAjax(dataAjax))
 
     ajax("POST", urlForecast + 'login', pageTwo.successLogin, "act=contest&type=get" + setParamsAjax(dataAjax));  //ajax e login
 
@@ -377,6 +377,28 @@ pageTwo.successLogin = function (data) {
         pageTwo.userScore = obj['data']['score'];
         pageTwo.rank = obj['data']['rank'];
         pageTwo.isStore = obj['data']['isStore'];
+        pageTwo.pmCount = obj['data']['pm_count'];
+
+        if(pageTwo.pmCount>0){
+        // if (1 === 1) {
+            var notifAlarmWidth = parseInt(($('#img-bar').width())/2)
+            var notifAlarmElm =  $('#notifAlarm')
+            notifAlarmElm.css({
+                width: notifAlarmWidth + 'px',
+                height: notifAlarmWidth + 'px'
+            })
+            notifAlarmElm.addClass('notifAlarm')
+
+
+            var countChatWidth = parseInt($('#chatTxtInSideMenu').width());
+            var countChatElm = $('#notifCountSideMenu')
+            countChatElm.css({
+                width: countChatWidth + 'px',
+                height: countChatWidth + 'px'
+            });
+            countChatElm.addClass('notifCountSideMenu')
+            countChatElm.html(pageTwo.pmCount)
+        }
 
         setTimeout(function () {
             pageTwentyFour.ajaxForecast("POST", urlForecast + 'user/store', pageTwo.getStore, {});

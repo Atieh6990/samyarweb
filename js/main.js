@@ -1411,6 +1411,9 @@ menu.clickItems = function (id) {
                 gaU('send', 'pageview', 'menu-contest-list');
                 handelPage.managerEnter(20);
                 break;
+            case "21":
+                pageEighteen.sellHistory()//ba hamahangi teama samyar be side menu ezafe shode
+                break;
             case "22":
 
                 handelPage.managerEnter(22);

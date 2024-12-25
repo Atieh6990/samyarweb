@@ -201,7 +201,7 @@ pageThirtyTwo.calcPos = function () {
     $(".serial_32").attr("style", "height :" + ((150 * window.innerHeight) / 1920) + 'px' + "");
     $("#form-32").attr("style", "height :" + ((150 * window.innerHeight) / 1920) + 'px' + "");
 
-    $("#reader").attr("style", "width :90%");
+    // $("#reader").attr("style", "width :90%");
     // $("#reader").attr("style", "width :" + ((250 * window.innerWidth) / 1920) + 'px' + "");
 
 }

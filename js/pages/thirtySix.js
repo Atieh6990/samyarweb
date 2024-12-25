@@ -184,7 +184,7 @@ thirtySix.calcPos = function () {
     $(".serial_36").attr("style", "height :" + ((150 * window.innerHeight) / 1920) + 'px' + "");
     $("#form-36").attr("style", "height :" + ((500 * window.innerHeight) / 1920) + 'px' + "");
 
-    $("#reader_36").attr("style", "width :90%;position:relative;margin: 25% auto");
+    // $("#reader_36").attr("style", "width :90%;position:relative;margin: 25% auto");
     // $("#reader").attr("style", "width :" + ((250 * window.innerWidth) / 1920) + 'px' + "");
 
 }
