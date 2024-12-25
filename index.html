@@ -235,8 +235,8 @@
 <!--    <script type="text/javascript" src="js/pages/twentyone.js"></script>-->
 <!--    <script type="text/javascript" src="js/pages/twentytwo.js"></script>-->
 <!--    <script type="text/javascript" src="js/pages/twentythree.js"></script>-->
-<!--&lt;!&ndash;    <script type="text/javascript" src="js/pages/twentyFour_groups.js"></script>&ndash;&gt;-->
-<!--        <script type="text/javascript" src="js/pages/twentyFour.js"></script>-->
+<!--    &lt;!&ndash;    <script type="text/javascript" src="js/pages/twentyFour_groups.js"></script>&ndash;&gt;-->
+<!--    <script type="text/javascript" src="js/pages/twentyFour.js"></script>-->
 <!--    <script type="text/javascript" src="js/pages/twentyFive.js"></script>-->
 <!--    <script type="text/javascript" src="js/pages/twentySix.js"></script>-->
 <!--    <script type="text/javascript" src="js/pages/twentySeven.js"></script>-->
@@ -255,7 +255,7 @@
 <!--    <script type="text/javascript" src="js/zoomage.js"></script>-->
 
 
-        <script type="text/javascript" src="compressed.js?t=30"></script>
+            <script type="text/javascript" src="compressed.js?t=31"></script>
 
     <script type="text/javascript">
 
@@ -322,22 +322,34 @@
                     <div class="menuLine"></div>
                 </div>
 
-                <div id="me_14" onclick="menu.clickItems(id)" class="menuItem">
+
+                <div id="me_18" onclick="menu.clickItems(id)" class="menuItem">
                     <div class="menuItemIn">
-                        <img src="images/menu/comment.png" class="menuIcon">
-                        <div class="menuTxt">نظرسنجی</div>
+                        <img src="images/menu/sell.png" class="menuIcon">
+                        <div class="menuTxt">ثبت سریال</div>
                     </div>
                     <div class="menuLine"></div>
                 </div>
 
-
-                <div id="me_6" onclick="menu.clickItems(id)" class="menuItem">
+                <div id="me_21" onclick="menu.clickItems(id)" class="menuItem">
                     <div class="menuItemIn">
-                        <img src="images/menu/product-information.png" class="menuIcon">
-                        <div class="menuTxt">اطلاعات محصولات</div>
+                        <img src="images/menu/installReport.png" class="menuIcon">
+                        <div class="menuTxt">گزارش نصب</div>
                     </div>
                     <div class="menuLine"></div>
                 </div>
+
+                <div id="me_16" onclick="menu.clickItems(id)" class="menuItem">
+                    <div class="menuItemIn">
+                        <img src="images/menu/chat.png" class="menuIcon">
+                        <div class="menuTxt">
+                            <div id="chatTxtInSideMenu">چت</div>
+                            <div id="notifCountSideMenu"></div>
+                        </div>
+                    </div>
+                    <div class="menuLine"></div>
+                </div>
+
 
                 <div id="me_3_1" onclick="menu.clickItems(id)" class="menuItem">
                     <div class="menuItemIn">
@@ -356,13 +368,6 @@
                     <div class="menuLine"></div>
                 </div>
 
-                <div id="me_18" onclick="menu.clickItems(id)" class="menuItem">
-                    <div class="menuItemIn">
-                        <img src="images/menu/sell.png" class="menuIcon">
-                        <div class="menuTxt">پروموشن فروش</div>
-                    </div>
-                    <div class="menuLine"></div>
-                </div>
 
                 <div id="me_20" onclick="menu.clickItems(id)" class="menuItem">
                     <div class="menuItemIn">
@@ -388,13 +393,21 @@
                     <div class="menuLine"></div>
                 </div>
 
-                <div id="me_16" onclick="menu.clickItems(id)" class="menuItem">
+                <div id="me_6" onclick="menu.clickItems(id)" class="menuItem">
                     <div class="menuItemIn">
-                        <img src="images/menu/chat.png" class="menuIcon">
-                        <div class="menuTxt">چت</div>
+                        <img src="images/menu/product-information.png" class="menuIcon">
+                        <div class="menuTxt">اطلاعات محصولات</div>
                     </div>
                     <div class="menuLine"></div>
                 </div>
+                <div id="me_14" onclick="menu.clickItems(id)" class="menuItem">
+                    <div class="menuItemIn">
+                        <img src="images/menu/comment.png" class="menuIcon">
+                        <div class="menuTxt">نظرسنجی</div>
+                    </div>
+                    <div class="menuLine"></div>
+                </div>
+
             </div>
         </div>
 
@@ -403,12 +416,14 @@
     <div class="menu-bar hidden">
         <div id="statusbar"></div>
         <div class="contet-menu-bar">
-            <!-- <div style="position:absolute;width:50px;height:50px;z-index:200;left:200px;background:red;"
-                   onclick="menu.clickItems('me_25')"></div>-->
+            <!--            <div style="position:absolute;width:50px;height:50px;z-index:200;left:200px;background:red;"-->
+            <!--                   onclick="menu.clickItems('me_25')"></div>-->
             <div id="side-help" style=""></div>
-            <a id="sidenav-main" href="#" style="" onclick="" data-activates="slide-out" class="button-collapse "><img
-                    id="img-bar"
-                    src="images/1-1.png"></a>
+            <a id="sidenav-main" href="#" style="" onclick="" data-activates="slide-out" class="button-collapse ">
+                <img id="img-bar" src="images/1-1.png">
+                <div id="notifAlarm"></div>
+            </a>
+
             <!--div id="img-bar-profile"><img style="height: 100%" src="images/logo.png"></div-->
             <div id="menu-title"></div>
             <div id="menu-back" onclick="handelPage.managerReturn()"></div>
@@ -543,7 +558,7 @@
                                 <img class="sc-img-two" src="images/p2/sale-p2.png">
                             </div>
                             <div class="sc-foot-two">
-                                پروموشن فروش
+                                ثبت سریال
                             </div>
 
                         </div>
@@ -631,7 +646,6 @@
                     </div>
 
                 </div>
-
 
 
                 <div onclick="menu.clickItemsPg1('me_3_1')" class="Survey-two mt-20-m">
@@ -2101,13 +2115,12 @@
                     <input type="submit" class="hidden" id="form-btn-32">
                 </form>
 
-                <div id="reader" style="position:relative;margin: 10% auto"></div>
+                <!--                <div id="reader" style="position:relative;margin: 10% auto"></div>-->
 
 
                 <div class="submit-32" onclick="$('#form-btn-32').click()">&#1579;&#1576;&#1578; &#1606;&#1607;&#1575;&#1740;&#1740;</div>
 
-                <div class="history-32" onclick="pageEighteen.sellHistory()">&#1711;&#1586;&#1575;&#1585;&#1588;
-                    &#1601;&#1585;&#1608;&#1588;
+                <div class="history-32" onclick="pageEighteen.sellHistory()">گزارش نصب
                     <img src="./images/sell-history.png" class="sell-himage"/>
                 </div>
 
@@ -2226,13 +2239,12 @@
                     <input type="submit" class="hidden" id="form-btn-36">
                 </form>
 
-                <div id="reader_36" style="position:relative;margin: 50% auto"></div>
+                <!--                <div id="reader_36" style="position:relative;margin: 50% auto"></div>-->
 
 
                 <div class="submit-36" onclick="$('#form-btn-36').click()">&#1579;&#1576;&#1578; &#1606;&#1607;&#1575;&#1740;&#1740;</div>
 
-                <div class="history-36" onclick="pageEighteen.sellHistory()">&#1711;&#1586;&#1575;&#1585;&#1588;
-                    &#1601;&#1585;&#1608;&#1588;
+                <div class="history-36" onclick="pageEighteen.sellHistory()">گزارش نصب
                     <img src="./images/sell-history.png" class="sell-himage"/>
                 </div>
 

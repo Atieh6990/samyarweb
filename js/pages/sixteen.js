@@ -3,6 +3,10 @@ pageSixteen = {
 };
 tk1='1256';
 pageSixteen.init = function () {
+    $("#notifCountSideMenu").css({"display": 'none'});
+    $("#notifAlarm").css({"display": 'none'});
+    pageTwo.pmCount = 0
+
     //$("#sixteen-detail-box").empty();
     if (typeof webkit != "undefined")
         $(".wrapper .inner .content").css('margin-bottom', '170px');
