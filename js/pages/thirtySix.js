@@ -29,28 +29,28 @@ thirtySix.init = function () {
         Html5QrcodeSupportedFormats.RSS_EXPANDED,
         Html5QrcodeSupportedFormats.UPC_EAN_EXTENSION,
     ];
-    var html5QrCode = new Html5Qrcode("reader_36", /* verbose= */ true);
-    var qrCodeSuccessCallback = (decodedText, decodedResult) => {
-        // alert("decodedText => " + decodedText + " **** decodedResult" + decodedResult)
-        managementRel.tost('بارکد با موفقیت اسکن شد.');
-
-        if (document.querySelector('#serial_36_0').checked) {
-            $("#input_serial_36_0").val(decodedText)
-        }
-        if (document.querySelector('#serial_36_1').checked) {
-            $("#input_serial_36_1").val(decodedText)
-        }
-
-
-        // if ($("#input_serial_36_0").val() == "") {
-        //     $("#input_serial_36_0").val(decodedText)
-        // } else {
-        //     $("#input_serial_36_1").val(decodedText)
-        // }
-    };
-
-    var config = {fps: 10, formatsToSupport: formatsToSupport};
-    html5QrCode.start({facingMode: "environment"}, config, qrCodeSuccessCallback);
+    // var html5QrCode = new Html5Qrcode("reader_36", /* verbose= */ true);
+    // var qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    //     // alert("decodedText => " + decodedText + " **** decodedResult" + decodedResult)
+    //     managementRel.tost('بارکد با موفقیت اسکن شد.');
+    //
+    //     if (document.querySelector('#serial_36_0').checked) {
+    //         $("#input_serial_36_0").val(decodedText)
+    //     }
+    //     if (document.querySelector('#serial_36_1').checked) {
+    //         $("#input_serial_36_1").val(decodedText)
+    //     }
+    //
+    //
+    //     // if ($("#input_serial_36_0").val() == "") {
+    //     //     $("#input_serial_36_0").val(decodedText)
+    //     // } else {
+    //     //     $("#input_serial_36_1").val(decodedText)
+    //     // }
+    // };
+    //
+    // var config = {fps: 10, formatsToSupport: formatsToSupport};
+    // html5QrCode.start({facingMode: "environment"}, config, qrCodeSuccessCallback);
 
     setTimeout(function () {
         $(".submit-36").attr("style", "height :" + ((150 * window.innerHeight) / 1920) + 'px' + " ; display :flex !important");
