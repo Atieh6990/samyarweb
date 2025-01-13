@@ -165,6 +165,8 @@ thirtySix.submit = function (data2) {
     if ((obj['success'] == true) || (obj['success'] === true) || (obj['success'] == 'true')) {
         // console.log("1");
         managementRel.tost(obj['data']['msg']);
+        thirtySix.reset()
+        pageEighteen.sellHistory()
     } else {
         // console.log("2");
         if (obj['error']) {

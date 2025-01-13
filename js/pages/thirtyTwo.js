@@ -65,7 +65,7 @@ pageThirtyTwo.parse = function (data2) {
             }
         }
     } else {
-        managementRel.tost("33  اختلال در برقراری ارتباط با اینترنت");
+        managementRel.tost("  اختلال در برقراری ارتباط با اینترنت");
     }
 
 };
@@ -182,6 +182,8 @@ pageThirtyTwo.submit = function (data2) {
     if ((obj['success'] == true) || (obj['success'] === true) || (obj['success'] == 'true')) {
         // console.log("1");
         managementRel.tost(obj['data']['msg']);
+        pageThirtyTwo.reset()
+        pageEighteen.sellHistory()
     } else {
         // console.log("2");
         if (obj['error']) {
