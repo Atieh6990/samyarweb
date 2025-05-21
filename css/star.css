@@ -3,14 +3,14 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : Oct 4, 2017, 11:58:32 AM
     Author     : user
 */
 
 .star-BackMainDiv{
     width: 100%;
-    height:200px;
+    /*height:200px;*/
     z-index: 2222222;
 }
 .star-nameApp{
@@ -96,7 +96,7 @@ and open the template in the editor.
 }
 .star-message{
     /*    width:390px;*/
-    height:110px;
+    height:45px;
     position:relative;
     /*    margin-left:428px;*/
     /*    margin-top:95px;*/
@@ -112,7 +112,7 @@ and open the template in the editor.
 
     .star-parent{
         left: 14%;
-    }  
+    }
 
 
 

@@ -387,7 +387,7 @@ managementRel.getCookie = function (name) {
             // document.cookie =name+"="+val;
         }
 
-    } else{
+    } else {
         // console.log('name' , name)
         // console.log('localStorage.getItem(name)' , localStorage.getItem(name))
         return localStorage.getItem(name);
@@ -574,7 +574,7 @@ var mylog = new Logger(); // Initializes logger.
 
 var handelPage = {
     page: 1,
-    pageName: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twentyone", "twentytwo", "twentythree", "twentyFour", "twentyFive", "twentySix", "twentySeven", "twentyEight", "twentyNine", "thirty", "thirtyOne", "thirtyTwo", "thirtythree", "thirtyfour", "thirtyfive", "thirtySix","thirtySeven"]
+    pageName: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twentyone", "twentytwo", "twentythree", "twentyFour", "twentyFive", "twentySix", "twentySeven", "twentyEight", "twentyNine", "thirty", "thirtyOne", "thirtyTwo", "thirtythree", "thirtyfour", "thirtyfive", "thirtySix", "thirtySeven", "thirtyEight", "thirtyNine"]
 };
 handelPage.initShowPage = function (index) {
     handelPage.page = index;
@@ -832,6 +832,12 @@ handelPage.managerEnter = function (index) {
             thirtySeven.init();
 
             break;
+        case 38:
+            thirtyEight.init();
+            break;
+        case 39:
+            thirtyNine.init();
+            break;
     }
     if (pageTwo.slide)
         pageTwo.slide._pusse();
@@ -1023,6 +1029,12 @@ handelPage.managerReturn = function () {
                 case 37:
                     thirtySeven.return();
 
+                    break;
+                case 38:
+                    thirtyEight.return();
+                    break;
+                case 39:
+                    thirtyNine.return();
                     break;
                 default :
                     pageThirty.return();
@@ -1277,7 +1289,11 @@ menu.clickItemsPg1 = function (id) {
                 break;
             case "20":
                 gaU('send', 'pageview', 'pg1-contest-list');
-                handelPage.managerEnter(20);
+                if (managementRel.getCookie('national') === '0012981613' || managementRel.getCookie('national') === '1360401415') {
+                    handelPage.managerEnter(38);
+                } else {
+                    handelPage.managerEnter(20);
+                }
                 break;
             case "22":
 
@@ -1722,7 +1738,7 @@ list.prototype = {
 
             }
             if (this.obj.model == "F") {
-                /// alert("F");
+
                 //   this.el.attr("style", "width:" + this.obj.width + "px");
                 ((i % 2 == 0) ? this.el.css("background", "#ebebeb") : "");
                 $("." + this.obj.baseClass).css({'height': handelPage.height * (0.074) + 'px'});
@@ -1748,28 +1764,32 @@ list.prototype = {
                 this.elm.append(this.elTtitle);
                 var classTitle = this.obj.textClass;
 
-                //  alert(this.obj.rejected[i]);
+                if (this.obj.installConfirm[i] === 0) {  //age barresi & reject
+                    if (this.obj.rejected[i] === 0) {
+                        this.imgel.attr("src", './images/sellload.png');
+                        this.elTtitle.html("در حال بررسی");
+                    } else if (this.obj.rejected[i] === 1) {
+                        this.imgel.attr("src", './images/sellreject.png');
+                        this.elTtitle.append("<span style='color:#f44336'>رد شده</span>");
+                        if (this.obj.duplicate[i] === 1) {
 
-                if (this.obj.scored[i] == 1) {  //age ok e
-                    this.imgel.attr("src", './images/sellok.png');
-                    this.elTtitle.html("تایید شده");
-                } else if (this.obj.rejected[i] == 1) {  //age rad shode
-                    this.imgel.attr("src", './images/sellreject.png');
-                    this.elTtitle.append("<span style='color:#f44336'>رد شده</span>");
-                    if (this.obj.duplicate[i] == 1) {
-
-                        this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp تکراری </span>");
-                    } else if (this.obj.invalid[i] == 1) {
-                        this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp نامعتبر </span>");
-                    } else { //pannel
-                        this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp نامعتبر </span>");
+                            this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp تکراری </span>");
+                        } else if (this.obj.invalid[i] === 1) {
+                            this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp نامعتبر </span>");
+                        } else { //pannel
+                            this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp نامعتبر </span>");
+                        }
                     }
 
-                } else {  //age dar hale barrasi e
-                    this.imgel.attr("src", './images/sellload.png');
-                    this.elTtitle.html("در حال بررسی");
-
+                } else if (this.obj.installConfirm[i] === 1) {
+                    this.imgel.attr("src", './images/sellok.png');
+                    if (this.obj.paymentConfirm[i] === 0) {
+                        this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp تایید نصب </span>");
+                    } else if (this.obj.paymentConfirm[i] === 1 && this.obj.scored[i] === 1) {
+                        this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp تایید واریز </span>");
+                    }
                 }
+
 
                 this.imgel.load(function () {
                     var picwidth = parseFloat($(".img-item-31").css("width"));
