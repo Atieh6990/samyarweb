@@ -1,4 +1,5 @@
-pageThirtyOne = {};
+pageThirtyOne = {
+};
 
 pageThirtyOne.init = function () {
     pageThirtyOne.reset();
@@ -25,6 +26,8 @@ pageThirtyOne.parse = function (data2) {
                 pageThirtyOne.isDuplicate[i] = obj['data'][i]['is_duplicate'];
                 pageThirtyOne.isInvalid[i] = obj['data'][i]['is_invalid'];
                 pageThirtyOne.status[i] = obj['data'][i]['status'];
+                pageThirtyOne.installConfirm[i] = obj['data'][i]['is_install_confirm'];
+                pageThirtyOne.paymentConfirm[i] = obj['data'][i]['is_payment_confirm'];
             }
         }
     } else {
@@ -44,6 +47,8 @@ pageThirtyOne.reset = function () {
     pageThirtyOne.data = [];
     pageThirtyOne.list = "";
     pageThirtyOne.status = [];
+    pageThirtyOne.installConfirm=[]
+    pageThirtyOne.paymentConfirm=[]
 };
 pageThirtyOne.create = function () {
     $(".report-holder-31").css({"height": handelPage.height * (0.066) + 'px'});
@@ -64,6 +69,8 @@ pageThirtyOne.create = function () {
         rejected: pageThirtyOne.isRejected,
         invalid: pageThirtyOne.isInvalid,
         duplicate: pageThirtyOne.isDuplicate,
+        installConfirm: pageThirtyOne.installConfirm,
+        paymentConfirm: pageThirtyOne.paymentConfirm,
         height: handelPage.height * 0.076,
         width: parseFloat($(".report-holder-31").css("width")),
         baseId: "sold-item-31-",

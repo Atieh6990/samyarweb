@@ -7,29 +7,30 @@ var starObj;
 function starModule(obj) {
 
 
-	mylog.log('obj------------->' + obj);
+	// console.log('obj------------->' + obj);
 	this.data = [];
 	for (var i in obj) {
 		this.data[i] = obj[i];
 	}
-	mylog.log('this.data[i] ---> ' + this.data[i]);
+	// mylog.log('this.data[i] ---> ' + this.data[i]);
 	starObj = this;
 
 }
 starModule.prototype = {
 	xPos: -1, isStarActive: 0,
-	_init: function (apppendTo, videoRate, videoID, isRate, rateUser) {
+	_init: function (apppendTo, videoRate, videoID, isRate, rateUser , RaceNumber) {
 		starObj.data.appendTo = apppendTo;
 		starObj.data.isRate = isRate;
 		starObj.data.videoRate = videoRate;
 		starObj.data.videoID = videoID;
 		starObj.data.rateUser = rateUser;
+		starObj.data.RaceNumber = RaceNumber;
 		starObj._manage();
 		this.isStarActive = 1;
-		mylog.log('append----> ' + starObj.data.appendTo);
-		mylog.log('starObj.data.videoID----> ' + starObj.data.videoID);
-		mylog.log('starObj.data.videoRate----> ' + starObj.data.videoRate);
-		mylog.log('starObj.data.rateUser ----> ' + starObj.data.rateUser);
+		// console.log('append----> ' + starObj.data.appendTo);
+		// console.log('starObj.data.videoID----> ' + starObj.data.videoID);
+		// console.log('starObj.data.videoRate----> ' + starObj.data.videoRate);
+		// console.log('starObj.data.rateUser ----> ' + starObj.data.rateUser);
 	},
 	_manage: function () {
 
@@ -46,7 +47,8 @@ starModule.prototype = {
 		this.starBackDiv.addClass("star-BackMainDiv");
 		// this.starBackDiv.css("left", this.data.left);
 		// this.starBackDiv.css("top", this.data.top);
-		$('#parentStar').append(this.starBackDiv);
+		// $('#parentStar').append(this.starBackDiv);
+		$(''+starObj.data.appendTo+'').append(this.starBackDiv);
 
 
 
@@ -144,7 +146,12 @@ starModule.prototype = {
 
 				onSet: function (rating, rateYoInstance) {
 
-					alert("Rating: " + parseInt(rating));
+					if(starObj.data.RaceNumber === 8){//tajrobeye khoobe foroosh
+						thirtyNine.submitRate(parseInt(rating))
+						return false
+					}
+
+					// alert("Rating: " + parseInt(rating));
 					var data = {
 						userID: managementRel.getCookie("id"),
 						vidID: pageTwentyTwo.TwentyTwoObj['id'][pageTwentyTwo.index[2]],
@@ -186,6 +193,13 @@ starModule.prototype = {
 
 			});
 			$('.star-rateText').empty();
+
+
+			if(starObj.data.RaceNumber === 8){//tajrobeye khoobe foroosh
+				thirtyNine.submitRate(this.data.rateUser)
+				return false
+			}
+
 			var data = {
 				userID: managementRel.getCookie("id"),
 				vidID: pageTwentyTwo.TwentyTwoObj['id'][pageTwentyTwo.index[2]],
@@ -204,7 +218,7 @@ starModule.prototype = {
 
 		$('.star-message').empty();
 		var obj = jQuery.parseJSON(data);
-		mylog.log('obj rateeee---->' + obj);
+		// mylog.log('obj rateeee---->' + obj);
 		if (obj['status'] == "ok") {
 			$('.star-message').html(obj['description2']);
 		} else {
