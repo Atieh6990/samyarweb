@@ -22,11 +22,6 @@ thirtyEight = {
 
 thirtyEight.init = function () {
 
-    console.log(managementRel.webencodebase64(2841))
-
-
-
-    console.log('fuck 38')
     thirtyEight.calcPos()
     thirtyEight.hoverHeader(thirtyEight.headerSelect)
 
@@ -133,7 +128,7 @@ thirtyEight.handleFileChange = function (event) {
     const input = event.target;
     const index = input.dataset.index;
     const file = input?.files[0];
-    // console.log('input', input, 'index', parseInt(index), 'file', file)
+    console.log('input', input, 'index', parseInt(index), 'file', file,file.type , typeof file.type , file.size)
 
     const errors = [
         {condition: file.size > maxFileSize, code: 0},
