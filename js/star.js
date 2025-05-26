@@ -121,7 +121,7 @@ starModule.prototype = {
 		}
 
 
-		//  alert('is rate--->' + starObj.data.isRate);
+		 // alert('is rate--->' + starObj.data.isRate);
 		if (starObj.data.isRate == "0") {
 			//  alert('rate 0');
 
@@ -214,7 +214,7 @@ starModule.prototype = {
 	},
 	_manageRate: function (data) {
 
-		// console.log('obj rateeee---->' + data);
+		// alert('obj rateeee---->' + data);
 
 		$('.star-message').empty();
 		var obj = jQuery.parseJSON(data);
@@ -251,7 +251,6 @@ starModule.prototype = {
 		this._giveStar();
 	},
 	_giveStar: function () {
-		// alert(parseInt(this.data.videoRate));
 
 		for (var i = 0; i < 5; i++) {
 
@@ -283,7 +282,7 @@ starModule.prototype = {
 		}
 	},
 	_sucessRate: function (data) {
-		mylog.log(data);
+		// mylog.log(data);
 		this.objRa = jQuery.parseJSON(data);
 		this.statusRa = this.objRa['status'];
 		if (this.statusRa == "ok") {

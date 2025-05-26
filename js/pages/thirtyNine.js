@@ -18,17 +18,18 @@ thirtyNine.init = function () {
     ajax("POST", dir, thirtyNine.manage, "act=contest&type=detailN" + setParamsAjax(data));
 };
 thirtyNine.manage = function (data) {
-
-    // thirtyNine.obj = pageTwentyTwo.parser(data)
     thirtyNine.obj = jQuery.parseJSON(data)
-    // console.log("000", (thirtyNine.obj))
     thirtyNine.starModule_39 = new starModule({});
     thirtyNine.create();
 }
 thirtyNine.create = function () {
     const Vid = $('#video_39')
     Vid.attr('src', thirtyNine.obj.detail.url);
-    thirtyNine.starModule_39._init("#parentStar_39", parseInt(thirtyNine.obj.detail.rate_count), parseInt(thirtyNine.vidID), parseInt(thirtyNine.obj.detail.is_rated), parseInt(thirtyNine.obj.detail.rate_user), thirtyEight.cntID);
+
+    if (parseInt(thirtyNine.obj.detail.is_vote) === 1) {
+        thirtyNine.starModule_39._init("#parentStar_39", parseInt(thirtyNine.obj.detail.rate_count), parseInt(thirtyNine.vidID), parseInt(thirtyNine.obj.detail.is_rated), parseInt(thirtyNine.obj.detail.rate_user), thirtyEight.cntID);
+    }
+
     $('#score-user_39').html(' امتیاز این کاربر : ' + thirtyNine.obj.detail.value);
     $('#user-name_39').html('<span style="text-indent: 25px"> ارسال کننده : ' + thirtyNine.obj.detail.username + ' </span><br><span style="text-indent: 25px"> فروشگاه : ' + thirtyNine.obj.detail.store + ' </span><br><span style="text-indent: 25px"> شهر : ' + thirtyNine.obj.detail.city + ' </span><br><span style="text-indent: 25px"> امتیاز ویدئو : ' + thirtyNine.obj.detail.value + ' </span><br>')
 }
@@ -39,7 +40,6 @@ thirtyNine.submitRate = function (rate) {
         rate: rate,
     };
     ajax("POST", 'https://samyar.rasgames.ir/v1/', thirtyNine.doneRate, "act=contest&type=rateN" + setParamsAjax(data));
-
 }
 thirtyNine.doneRate = function (data) {
     const rateRes = $('.star-rateText')

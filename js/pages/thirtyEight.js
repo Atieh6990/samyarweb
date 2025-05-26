@@ -67,10 +67,13 @@ thirtyEight.reset = function () {
     thirtyEight.videoListRateCount = [];
     thirtyEight.detailvideos = []
     thirtyEight.toggleUploadPopup(false)
+    thirtyEight.toggleRulesPopup(false)
     $('.uploadVideo_38').empty()
     $('.videList_Pchild_38').empty()
     $('.rulesContent_38').empty()
     document.getElementById('customCheckbox_38').checked = false;
+    const rulesContent = document.querySelector(".popUpRulesParent_38");
+    rulesContent.scrollTop = 0;
 };
 thirtyEight.create = function () {
 
@@ -91,6 +94,8 @@ thirtyEight.drawVideoList = function () {
         thirtyEight.videoListRateCount.push(video['rate_count'] || null);
     });
 
+
+    // console.log(thirtyEight.videoListName)
     const height = (345 * window.innerHeight) / 1280;
     const width = (300 * window.innerWidth) / 720;
     const starWidth = (20 * window.innerWidth) / 720;
@@ -127,8 +132,12 @@ thirtyEight.handleFileChange = function (event) {
     let allowed = true;
     const input = event.target;
     const index = input.dataset.index;
-    const file = input?.files[0];
-    console.log('input', input, 'index', parseInt(index), 'file', file,file.type , typeof file.type , file.size)
+    const file = input.files[0];
+    // let file= input.file[0]
+    // if (input) {
+    //     file = input.file[0]
+    // }
+    // console.log('input', input, 'index', parseInt(index), 'file', file, file.type, typeof file.type, file.size)
 
     const errors = [
         {condition: file.size > maxFileSize, code: 0},
@@ -136,9 +145,9 @@ thirtyEight.handleFileChange = function (event) {
         {condition: !thirtyEight.acceptRules, code: 2}
     ];
 
-    for (const error of errors) {
-        if (error.condition) {
-            thirtyEight.manageUploadFile(error.code, parseInt(index));
+    for (const error in errors) {
+        if (errors[error].condition) {
+            thirtyEight.manageUploadFile(errors[error].code, parseInt(index));
             allowed = false;
             break;
         }
@@ -389,7 +398,7 @@ thirtyEight.toggleUploadPopup = function (show, text) {
 
     const action = thirtyEight.showUploadPopup ? 'show' : 'hide';
 
-    popup.removeClass(`hideUploadPopup showUploadPopup`).addClass(`${action}UploadPopup`);
+    popup.removeClass('hideUploadPopup showUploadPopup').addClass(''+action+'UploadPopup');
     $('#popUpBoxParent_38').empty();
 
     if (thirtyEight.showUploadPopup) {
@@ -399,7 +408,7 @@ thirtyEight.toggleUploadPopup = function (show, text) {
 thirtyEight.toggleRulesPopup = function (show) {
     let popup = $('#popupRules_38')
     const action = show ? 'show' : 'hide';
-    popup.removeClass(`hideUploadPopup showUploadPopup`).addClass(`${action}UploadPopup`);
+    popup.removeClass('hideUploadPopup showUploadPopup').addClass(''+action+'UploadPopup');
 }
 thirtyEight.hoverHeader = function (index) {
     const removeIndex = (index === 0) ? 1 : 0;
