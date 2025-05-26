@@ -1289,7 +1289,7 @@ menu.clickItemsPg1 = function (id) {
                 break;
             case "20":
                 gaU('send', 'pageview', 'pg1-contest-list');
-                if (managementRel.getCookie('national') === '0012981613' || managementRel.getCookie('national') === '1360401415') {
+                if (managementRel.getCookie('national') === '0012981613' || managementRel.getCookie('national') === '1360401415' || managementRel.getCookie('national') === '0016885090' || managementRel.getCookie('national') === '0083488883' || managementRel.getCookie('national') === '0010055398' || managementRel.getCookie('national') === '0453470432' || managementRel.getCookie('national') === '4621681370' || managementRel.getCookie('national') === '1920018425') {
                     handelPage.managerEnter(38);
                 } else {
                     handelPage.managerEnter(20);
