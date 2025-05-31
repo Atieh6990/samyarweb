@@ -56,6 +56,8 @@ thirtyEight.parse = function (data2) {
 
 };
 thirtyEight.reset = function () {
+    const rulesContent = document.querySelector(".popUpRulesParent_38");
+    rulesContent.scrollTop = 0;
     thirtyEight.headerSelect = 0
     thirtyEight.acceptRules = false
     thirtyEight.showUploadPopup = false
@@ -72,8 +74,7 @@ thirtyEight.reset = function () {
     $('.videList_Pchild_38').empty()
     $('.rulesContent_38').empty()
     document.getElementById('customCheckbox_38').checked = false;
-    const rulesContent = document.querySelector(".popUpRulesParent_38");
-    rulesContent.scrollTop = 0;
+
 };
 thirtyEight.create = function () {
 
