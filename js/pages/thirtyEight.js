@@ -38,8 +38,16 @@ thirtyEight.init = function () {
 };
 
 thirtyEight.fillRules = function (data) {
-    $('.rulesContent_38').html(jQuery.parseJSON(data).detail.long_txt)
-    ajax("POST", 'https://samyar.rasgames.ir/v1/', thirtyEight.drawSelectVideoItems, "act=contest&type=userDetail" + setParamsAjax(thirtyEight.sendData))
+    const dataDetail = jQuery.parseJSON(data)
+    if (dataDetail.detail.is_active === 0) {
+        thirtyEight.toggleUploadPopup(true, 'در این تاریخ هیچ مسابقه ای تعریف نشده است.')
+        setTimeout(function () {
+            handelPage.managerReturn()
+        }, 2000)
+    } else {
+        $('.rulesContent_38').html(dataDetail.detail.long_txt)
+        ajax("POST", 'https://samyar.rasgames.ir/v1/', thirtyEight.drawSelectVideoItems, "act=contest&type=userDetail" + setParamsAjax(thirtyEight.sendData))
+    }
 }
 
 thirtyEight.parseVideoList = function (data) {
@@ -195,6 +203,8 @@ thirtyEight.drawSelectVideoItems = function (data) {
         const camera = $("<img>");
 
         if (parseInt(video.allow_upload) === 0) {
+            thirtyEight.acceptRules = true
+            document.getElementById("customCheckbox_38").checked = true;
             camera.css("width", widthImg + "px");
             camera.attr("src", thirtyEight.imgDir + video.image);
         } else {
@@ -399,7 +409,7 @@ thirtyEight.toggleUploadPopup = function (show, text) {
 
     const action = thirtyEight.showUploadPopup ? 'show' : 'hide';
 
-    popup.removeClass('hideUploadPopup showUploadPopup').addClass(''+action+'UploadPopup');
+    popup.removeClass('hideUploadPopup showUploadPopup').addClass('' + action + 'UploadPopup');
     $('#popUpBoxParent_38').empty();
 
     if (thirtyEight.showUploadPopup) {
@@ -409,7 +419,7 @@ thirtyEight.toggleUploadPopup = function (show, text) {
 thirtyEight.toggleRulesPopup = function (show) {
     let popup = $('#popupRules_38')
     const action = show ? 'show' : 'hide';
-    popup.removeClass('hideUploadPopup showUploadPopup').addClass(''+action+'UploadPopup');
+    popup.removeClass('hideUploadPopup showUploadPopup').addClass('' + action + 'UploadPopup');
 }
 thirtyEight.hoverHeader = function (index) {
     const removeIndex = (index === 0) ? 1 : 0;
