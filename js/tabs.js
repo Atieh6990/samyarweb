@@ -634,7 +634,9 @@ sellList.prototype = {
         var objThis = this;
         $("." + objThis.obj.scrollElClass).scroll(function () {
             // console.log($(document).height() ,$(window).scrollTop(),$(window).height() )
-            if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            var btn = parseInt($("" + objThis.obj.appendItem).css('padding-bottom').split('px')[0])
+            // console.log(btn)
+            if ($(this).scrollTop() + $(this).innerHeight()+ btn >= $(this)[0].scrollHeight) {
                 // console.log("end")
                 eval("" + objThis.obj.endScrollFun);
             }

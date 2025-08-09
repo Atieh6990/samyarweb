@@ -1289,11 +1289,12 @@ menu.clickItemsPg1 = function (id) {
                 break;
             case "20":
                 gaU('send', 'pageview', 'pg1-contest-list');
-                if (managementRel.getCookie('national') === '0012981613' || managementRel.getCookie('national') === '1360401415' || managementRel.getCookie('national') === '0016885090' || managementRel.getCookie('national') === '0083488883' || managementRel.getCookie('national') === '0010055398' || managementRel.getCookie('national') === '0453470432' || managementRel.getCookie('national') === '4621681370' || managementRel.getCookie('national') === '1920018425') {
-                    handelPage.managerEnter(38);
-                } else {
-                    handelPage.managerEnter(20);
-                }
+                handelPage.managerEnter(38);
+                // if (managementRel.getCookie('national') === '0012981613' || managementRel.getCookie('national') === '1360401415' || managementRel.getCookie('national') === '0016885090' || managementRel.getCookie('national') === '0083488883' || managementRel.getCookie('national') === '0010055398' || managementRel.getCookie('national') === '0453470432' || managementRel.getCookie('national') === '4621681370' || managementRel.getCookie('national') === '1920018425') {
+                //     handelPage.managerEnter(38);
+                // } else {
+                //     handelPage.managerEnter(20);
+                // }
                 break;
             case "22":
 
@@ -1832,18 +1833,13 @@ list.prototype = {
             if (window.JSInterface)
                 plus = 24;
             var scrollPosition = handelPage.height + $(window).scrollTop() + parseInt(plus);
-            //console.log((scrollHeight - scrollPosition) / scrollHeight);
-            //if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-            //alert(scrollPosition);
             if (((scrollHeight - scrollPosition) / scrollHeight) < 0.001) {
                 // when scroll to bottom of the page
                 //    alert("bottom");
-                //   console.log("func e list->"+objThis.obj.endScrollFun+'page num-?'+objThis.page+'mpage e app->'+handelPage.page);
-                // if (objThis.obj.endScrollFun)
-                if (objThis.obj.endScrollFun && objThis.page == handelPage.page) {
-                    //  console.log("end list bezan");
-                    eval("" + objThis.obj.endScrollFun);
-                }
+                eval("" + objThis.obj.endScrollFun);
+                // if (objThis.obj.endScrollFun && objThis.page == handelPage.page) {
+                //     eval("" + objThis.obj.endScrollFun);
+                // }
             }
         };
 
