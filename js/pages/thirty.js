@@ -199,7 +199,7 @@ pageThirty.ClickItem = function (idm) {
 };
 pageThirty.endScroll = function () {
 
-    console.log("pageThirty.endScroll")
+    // console.log("pageThirty.endScroll",pageThirty.next ,pageThirty.canCallNextLink)
 
     if ((pageThirty.next != null && pageThirty.next != "" && pageThirty.canCallNextLink)) {
         // alert(pageEighteen.selectedmodel);

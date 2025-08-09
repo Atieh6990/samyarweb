@@ -183,7 +183,8 @@ pageThirtyTwo.submit = function (data2) {
         // console.log("1");
         managementRel.tost(obj['data']['msg']);
         pageThirtyTwo.reset()
-        pageEighteen.sellHistory()
+        // handelPage.managerReturn()//be darkhast sobhan baraye bar dovom taghir kard va be sagheye ghabl bar migarde
+        pageEighteen.sellHistory()//bade sabt bere be list sabt shode ha
     } else {
         // console.log("2");
         if (obj['error']) {

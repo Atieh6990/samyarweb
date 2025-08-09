@@ -26,6 +26,7 @@ var pageTwo = {
     popUpNewsID: []
 };
 pageTwo.init = function () {
+    gtag('event', 'homePage', { userID: managementRel.getCookie("id") });
     /* if(pageOne.slide._pusse())
      pageOne.slide._pusse();*/
     // alert("2 init");

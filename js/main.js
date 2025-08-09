@@ -1833,18 +1833,13 @@ list.prototype = {
             if (window.JSInterface)
                 plus = 24;
             var scrollPosition = handelPage.height + $(window).scrollTop() + parseInt(plus);
-            //console.log((scrollHeight - scrollPosition) / scrollHeight);
-            //if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-            //alert(scrollPosition);
             if (((scrollHeight - scrollPosition) / scrollHeight) < 0.001) {
                 // when scroll to bottom of the page
                 //    alert("bottom");
-                //   console.log("func e list->"+objThis.obj.endScrollFun+'page num-?'+objThis.page+'mpage e app->'+handelPage.page);
-                // if (objThis.obj.endScrollFun)
-                if (objThis.obj.endScrollFun && objThis.page == handelPage.page) {
-                    //  console.log("end list bezan");
-                    eval("" + objThis.obj.endScrollFun);
-                }
+                eval("" + objThis.obj.endScrollFun);
+                // if (objThis.obj.endScrollFun && objThis.page == handelPage.page) {
+                //     eval("" + objThis.obj.endScrollFun);
+                // }
             }
         };
 
