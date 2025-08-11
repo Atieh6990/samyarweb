@@ -7,6 +7,7 @@ pageTen = {
 };
 
 pageTen.init = function () {
+    gtag('event', 'exam');
     $('.pageTTParent_10').attr("style", "height:" + (window.innerHeight - $(".menu-bar").height()) + "px !important")
     pageTen.clearPage()
     pageTen.calcPos();

@@ -1,6 +1,7 @@
 pageNine = {};
 
 pageNine.init = function () {
+    gtag('event', 'SalesTechniques');
     $('.pageTTParent_9').attr("style", "height:" + (window.innerHeight - $(".menu-bar").height()) + "px !important")
     $('.Pparent_9').attr("style", 'height:' + ((1150 * window.innerHeight) / 1280) + 'px');
     // $("#nine-detailNews-box").empty();

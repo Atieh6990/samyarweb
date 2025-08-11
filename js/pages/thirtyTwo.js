@@ -4,6 +4,7 @@ pageThirtyTwo = {
 
 
 pageThirtyTwo.init = function () {
+    gtag('event', 'SerialRegistration');
     pageThirtyTwo.reset();
     pageThirtyTwo.create();
     pageThirtyTwo.validForm();

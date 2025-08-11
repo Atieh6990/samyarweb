@@ -26,7 +26,7 @@ var pageTwo = {
     popUpNewsID: []
 };
 pageTwo.init = function () {
-    gtag('event', 'homePage', { userID: managementRel.getCookie("id") });
+    gtag('event', 'homePage', { userNational: managementRel.getCookie("national") , date: new Date().getDate(), time: new Date().getTime()});
     /* if(pageOne.slide._pusse())
      pageOne.slide._pusse();*/
     // alert("2 init");
@@ -520,6 +520,7 @@ pageTwo.createLogo = function () {
 
 }
 pageTwo.return = function () {
+    gtag('event', 'closeApp', { userNational: managementRel.getCookie("national") , date: new Date().getDate(), time: new Date().getTime()});
     managementRel.closeApp()
     // if (typeof webkit != "undefined") {
     //     managementRel.ios({"action": "exit"});
