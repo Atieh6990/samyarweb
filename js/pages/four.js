@@ -1,6 +1,7 @@
 pageFour = {zoomage: ''};
 
 pageFour.init = function (data) {
+    gtag('event', 'Slideshow');
     menu.titleBar("", "");
     $("#four-detailNews-box").empty();
     //console.log(data);

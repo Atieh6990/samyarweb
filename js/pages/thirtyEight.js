@@ -21,7 +21,7 @@ thirtyEight = {
 };
 
 thirtyEight.init = function () {
-
+    gtag('event', 'Challenges&rewards');
     thirtyEight.calcPos()
     thirtyEight.hoverHeader(thirtyEight.headerSelect)
 

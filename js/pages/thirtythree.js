@@ -14,6 +14,7 @@ pageThirtyThree = {
 };
 
 pageThirtyThree.init = function () {
+    gtag('event', 'productions');
     $('.pageTTParent').attr("style", "height:" + (window.innerHeight - $(".menu-bar").height()) + "px !important")
     pageThirtyThree.clearPage()
 

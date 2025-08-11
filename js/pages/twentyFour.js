@@ -5,7 +5,7 @@ var urlForecast = 'https://samyar.rasgames.ir/samyarpishbini/api/';
 // var urlForecast = 'http://localhost/samyarpishbini/api/';
 
 pageTwentyFour.init = function () {
-
+    gtag('event', 'Forecast');
     // alert('width->'+handelPage.width+',height->'+handelPage.height);
 
     $("html").css("overflow", "");
