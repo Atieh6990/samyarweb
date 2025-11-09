@@ -138,7 +138,7 @@ pageEighteen.ClickItem = function (idm) {
 
         handelPage.managerEnter(30);
         window.scrollTo(0, 0);
-        console.log(data  )
+        // console.log(data  )
         pageTwentyFour.ajaxForecast("POST", urlForecast + 'v1/pmodellist', pageThirty.manage, data);
     } else {
         //  alert("too "+idm.indexOf("product-click-18-"));

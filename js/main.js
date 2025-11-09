@@ -1193,8 +1193,11 @@ menu.userCreat = function () {
 
 }
 menu.clickItemsPg1 = function (id) {
-    // alert('id->'+id);
+    // console.log('pageTwo.token'+pageTwo.token);
 
+    if(typeof pageTwo.token === "undefined" || typeof pageTwo.token === undefined || pageTwo.token === ''){
+        return false
+    }
     // console.log("111");
 
     if (id == "me_18") {

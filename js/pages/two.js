@@ -317,7 +317,7 @@ pageTwo.clickFilter = function (status) {
 }
 pageTwo.resulNews = function (data) {
 
-    //  alert("data=>"+data);
+     // alert("data=>"+data);
 
     var dataAjax = {
         userID: managementRel.getCookie("id")
@@ -332,6 +332,7 @@ pageTwo.resulNews = function (data) {
 
     pageTwo.parser(data);
     if (pageTwo.slide == "") {
+
         pageTwo.slide = new slideshow({
             height: handelPage.height * 0.3,
             indicators: false,
@@ -350,12 +351,12 @@ pageTwo.resulNews = function (data) {
     }
 
     $(window).scroll(function () {
-
         if ($(this).scrollTop() < 50) {
 
             pageTwo.slide._start();
 
         } else {
+
             pageTwo.slide._pusse();
         }
     });
@@ -368,7 +369,7 @@ pageTwo.resulNews = function (data) {
 
 }
 pageTwo.successLogin = function (data) {
-    //console.log("success login"+JSON.stringify(data));
+    // console.log("success login"+JSON.stringify(data));
 
     var obj = jQuery.parseJSON(data);
 
@@ -532,6 +533,9 @@ pageTwo.return = function () {
     menu.hide();
 }
 pageTwo.ClickItem = function (id) {
+    if(typeof pageTwo.token === "undefined" || typeof pageTwo.token === undefined || pageTwo.token === ''){
+        return false
+    }
     pageTwo.slide._pusse();
     pageTwo.index = id.split("-");
     pageTwo.slid = pageTwo.index[1];
