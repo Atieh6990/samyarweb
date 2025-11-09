@@ -76,6 +76,7 @@ pageThirtyThree.createTabs = function () {
 }
 
 pageThirtyThree.selectBrand = function (name) {
+    // console.log(pageThirtyThree.brandCnt)
     for (var i = 0; i < pageThirtyThree.brandCnt; i++) {
         $("#brandItem_" + i).removeClass("colorHideHover")
         $("#productBrand_" + i).attr('style', 'display:none !important')
