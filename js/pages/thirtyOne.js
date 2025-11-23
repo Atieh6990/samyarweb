@@ -23,6 +23,7 @@ pageThirtyOne.parse = function (data2) {
             for (var i = 0; i < obj['data'].length; i++) {
 
                 pageThirtyOne.serial[i] = obj['data'][i]['serial'];
+                pageThirtyOne.date[i] = obj['data'][i]['created_at']['date'];
                 pageThirtyOne.isScored[i] = obj['data'][i]['is_scored'];
                 pageThirtyOne.isRejected[i] = obj['data'][i]['is_reject'];
                 pageThirtyOne.isDuplicate[i] = obj['data'][i]['is_duplicate'];
@@ -41,6 +42,7 @@ pageThirtyOne.reset = function () {
     window.scrollTo(0, 0);
     pageThirtyOne.canCallNextLink = true
     $("#report-list-31").empty();
+    pageThirtyOne.date = [];
     pageThirtyOne.serial = [];
     pageThirtyOne.isScored = [];
     pageThirtyOne.isRejected = [];
@@ -68,6 +70,7 @@ pageThirtyOne.create = function () {
 
     this.list = new list({
         title: pageThirtyOne.serial,
+        date: pageThirtyOne.date,
         id: pageThirtyOne.isScored,
         scored: pageThirtyOne.isScored,
         rejected: pageThirtyOne.isRejected,

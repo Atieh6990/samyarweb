@@ -1793,13 +1793,14 @@ list.prototype = {
                         this.elTtitle.append("<span style='color:#9e9e9e'> &nbsp&nbsp تایید واریز </span>");
                     }
                 }
-
+                this.elTtitle.append("<span style='color:#9e9e9e'>&nbsp&nbsp &nbsp&nbsp"+(this.obj.date[i]).split(" ")[0]+"</span>");
 
                 this.imgel.load(function () {
                     var picwidth = parseFloat($(".img-item-31").css("width"));
                     var itemwidth = (parseFloat($(".report-itemR-31").css("width"))) * (0.9);
                     var finalWidth = itemwidth - picwidth;
-                    $("." + classTitle).css({"width": finalWidth + 'px'});
+                    // $("." + classTitle).css({"width": finalWidth + 'px'});
+                    $("." + classTitle).css({"width":  '100%'});
 
                 });
 
