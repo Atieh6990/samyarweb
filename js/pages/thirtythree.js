@@ -10,10 +10,11 @@ pageThirtyThree = {
     subBrandId: 0,
     products: [],
     brands: '',
-    eighteenTitle:""
+    eighteenTitle: ""
 };
 
 pageThirtyThree.init = function () {
+
     gtag('event', 'productions');
     $('.pageTTParent').attr("style", "height:" + (window.innerHeight - $(".menu-bar").height()) + "px !important")
     pageThirtyThree.clearPage()
@@ -25,15 +26,23 @@ pageThirtyThree.init = function () {
                 "id": "1",
                 "name": "سامسونگ",
                 "image": "http://samyar.rasgames.ir/client4/images/samsungProduct.png",
-                "icon":"images/products/samsungicon.png",
+                "icon": "images/products/samsungicon.png",
                 "description": "سامسونگ"
             },
             {
                 "id": "2",
                 "name": "سام",
                 "image": "http://samyar.rasgames.ir/client4/images/samProduct.png",
-                "icon":"images/products/sam_icon.png?t=22",
+                "icon": "images/products/sam_icon.png?t=22",
                 "description": "سام"
+            }
+            ,
+            {
+                "id": "3",
+                "name": "هایسنس",
+                "image": "http://samyar.rasgames.ir/client4/images/samProduct.png",
+                "icon": "images/products/sam_icon.png?t=22",
+                "description": "هایسنس"
             }
         ]
     }
@@ -94,10 +103,9 @@ pageThirtyThree.return = function () {
 
 pageThirtyThree.ClickItem = function (id) {
     var name = id.split("_");
-    // console.log(name)
-    if(menu.isSell){
+    // console.log(pageThirtyThree.brandSelected)
+    if (menu.isSell) {
         // console.log(pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"])
-
 
 
         if (pageThirtyThree.brandSelected == 0) {//baraye jashnvare , sabte mahsoole samsung hazf shod(10/9/1400)
@@ -105,17 +113,20 @@ pageThirtyThree.ClickItem = function (id) {
             return
         }
 
-        if(pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 17 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 18 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 16 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 22 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"]  != 21){
+        if(pageThirtyThree.brandSelected === 1){
+            if (pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 17 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 18 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 16 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 22 && pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"] != 21) {
 
-            // id == 16 (tv) , id == 22 (side) , id == 21 (DW) dar tarikhe 15.08.02 be darkhste teame samyar be promotion ezafe shod
-            //17 == id mashin lebas shooee sam & 18 = yakhchal sam(01/04/1)
-            // & 22 = side by side sam & 21 = zarfshooee sam (30/11/1401) /*****/ (dar tarikhe 22/01/1402 side va zarfshoee hazf shod (21&22))
-            managementRel.tost("امکان درج محصول وجود ندارد.");
-            return
+                // id == 16 (tv) , id == 22 (side) , id == 21 (DW) dar tarikhe 15.08.02 be darkhste teame samyar be promotion ezafe shod
+                //17 == id mashin lebas shooee sam & 18 = yakhchal sam(01/04/1)
+                // & 22 = side by side sam & 21 = zarfshooee sam (30/11/1401) /*****/ (dar tarikhe 22/01/1402 side va zarfshoee hazf shod (21&22))
+                managementRel.tost("امکان درج محصول وجود ندارد.");
+                return
+            }
         }
 
-        pageThirtyThree.eighteenTitle=pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["name"]
-        pageEighteen.ClickItem("product-click-18-" + pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"])
+
+        pageThirtyThree.eighteenTitle = pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["name"]
+         pageEighteen.ClickItem("product-click-18-" + pageThirtyThree.products[name[1]].subBrands[name[2]]["products"][name[3]]["id"])
 
         return
     }
@@ -124,17 +135,20 @@ pageThirtyThree.ClickItem = function (id) {
         brandId: pageThirtyThree.products[name[1]].brandId,
         brandName: pageThirtyThree.products[name[1]].BrandName,
         subBrand: pageThirtyThree.products[name[1]].subBrands[name[2]],
-        itemIndex:name[3],
-        icon:pageThirtyThree.products[name[1]].brandIcon
+        itemIndex: name[3],
+        icon: pageThirtyThree.products[name[1]].brandIcon
     }
-    // console.log(sendData)
-    handelPage.managerEnter(6);
-    pageSix.init(sendData);
+
+    if(pageThirtyThree.brandSelected !== '2'){//baraye bakhshe mahsoolat hich mahsooli vase hisense nist => nare safe joziate mahsoolat
+        handelPage.managerEnter(6);
+        pageSix.init(sendData);
+    }
+
 };
 
 
 pageThirtyThree.getSubBrand = function (brandId) {
-
+    // console.log(brandId)
     var params = {
         userID: managementRel.getCookie("id"),
     }
@@ -144,13 +158,16 @@ pageThirtyThree.getSubBrand = function (brandId) {
     }
     if (brandId == 1) {
         ajax("POST", dir, pageThirtyThree.manageSubBrand, "act=product&type=categoryN" + setParamsAjax(params));
-
     }
+    if (brandId == 2) {
+        ajax("POST", dir, pageThirtyThree.manageSubBrand, "act=product&type=category_hisense" + setParamsAjax(params));
+    }
+
     pageThirtyThree.products.push({
         BrandIndex: pageThirtyThree.lastBrandId,
         brandId: pageThirtyThree.SixObj[pageThirtyThree.lastBrandId].id,
         BrandName: pageThirtyThree.SixObj[pageThirtyThree.lastBrandId].name,
-        brandIcon:pageThirtyThree.SixObj[pageThirtyThree.lastBrandId].icon,
+        brandIcon: pageThirtyThree.SixObj[pageThirtyThree.lastBrandId].icon,
         subBrands: ''
     })
 
@@ -186,7 +203,14 @@ pageThirtyThree.getProducts = function (subBrand) {
         userID: managementRel.getCookie("id"),
         catID: subBrand
     };
-    ajax("POST", dir, pageThirtyThree.manageProducts, "act=product&type=subcategoryN" + setParamsAjax(data));
+    // console.log('getProducts ---->', subBrand ,typeof subBrand)
+    if (subBrand === '24' || subBrand === '25') {//baraye soti tasviri & lavazem khanegi hisense
+        // console.log('fuck')
+        ajax("POST", dir, pageThirtyThree.manageProducts, "act=product&type=subcategory_hisense" + setParamsAjax(data));
+    }else{
+        ajax("POST", dir, pageThirtyThree.manageProducts, "act=product&type=subcategoryN" + setParamsAjax(data));
+    }
+
 }
 
 pageThirtyThree.manageProducts = function (data) {
@@ -208,7 +232,7 @@ pageThirtyThree.manageProducts = function (data) {
     }
 }
 pageThirtyThree.creatHorizontalList = function (data) {
-    console.log(pageThirtyThree.products)
+    // console.log(pageThirtyThree.products)
     var Lheight = (100 * window.innerHeight) / 1920 + 'px';
     var listMargin = (33 * window.innerWidth) / 1080 + 'px !important';
     var listItemHeightL = (430 * window.innerHeight) / 1920 + 'px';
@@ -223,7 +247,7 @@ pageThirtyThree.creatHorizontalList = function (data) {
         listData: data[0].subBrands[0].products, appendEl: '#productParent_0_0',
         elStyle: "margin-right:" + listMargin + ";height:" + listItemHeightL + "", elTitle: "listItemTitle",
         onclick: "pageThirtyThree.ClickItem(id)",
-        titleIMG:data[0].brandIcon,titleIgClass:"titleImg_33_t1"
+        titleIMG: data[0].brandIcon, titleIgClass: "titleImg_33_t1"
     });
 
     new horizontalList({
@@ -235,7 +259,7 @@ pageThirtyThree.creatHorizontalList = function (data) {
         listData: data[0].subBrands[1].products, appendEl: '#productParent_0_1',
         elStyle: "margin-right:" + listMargin + ";height:" + listItemHeightL + "", elTitle: "listItemTitle",
         onclick: "pageThirtyThree.ClickItem(id)",
-        titleIMG:'',titleIgClass:""
+        titleIMG: '', titleIgClass: ""
         // titleIMG:data[0].brandIcon,titleIgClass:"titleImg_33_t1"
     })
 
@@ -247,7 +271,7 @@ pageThirtyThree.creatHorizontalList = function (data) {
         externalStyle: "height:" + Lheight + "",
         listData: data[1].subBrands[0].products, appendEl: '#productParent_1_0',
         elStyle: "margin-right:" + listMargin + ";height:" + listItemHeightL + "", elTitle: "listItemTitle",
-        onclick: "pageThirtyThree.ClickItem(id)", titleIMG:data[1].brandIcon,titleIgClass:"titleImg_33_t2"
+        onclick: "pageThirtyThree.ClickItem(id)", titleIMG: data[1].brandIcon, titleIgClass: "titleImg_33_t2"
     })
 
     new horizontalList({
@@ -259,7 +283,31 @@ pageThirtyThree.creatHorizontalList = function (data) {
         listData: data[1].subBrands[1].products, appendEl: '#productParent_1_1',
         elStyle: "margin-right:" + listMargin + ";height:" + listItemHeightL + "", elTitle: "listItemTitle",
         onclick: "pageThirtyThree.ClickItem(id)",
-        titleIMG:'',titleIgClass:""
+        titleIMG: '', titleIgClass: ""
+        // titleIMG:data[1].brandIcon,titleIgClass:"titleImg_33_t2"
+    })
+    new horizontalList({
+        brandIndex: 2,
+        subBrandIndex: 0,
+        appendTitleEl: "#product_2_0",
+        listTitle: "<b>" + data[2].subBrands[0].name + "</b>",
+        externalStyle: "height:" + Lheight + "",
+        listData: data[2].subBrands[0].products, appendEl: '#productParent_2_0',
+        elStyle: "margin-right:" + listMargin + ";height:" + listItemHeightL + "", elTitle: "listItemTitle",
+        onclick: "pageThirtyThree.ClickItem(id)",
+        titleIMG: '', titleIgClass: ""
+        // titleIMG:data[1].brandIcon,titleIgClass:"titleImg_33_t2"
+    })
+    new horizontalList({
+        brandIndex: 2,
+        subBrandIndex: 1,
+        appendTitleEl: "#product_2_1",
+        listTitle: "<b>" + data[2].subBrands[1].name + "</b>",
+        externalStyle: "height:" + Lheight + "",
+        listData: data[2].subBrands[1].products, appendEl: '#productParent_2_1',
+        elStyle: "margin-right:" + listMargin + ";height:" + listItemHeightL + "", elTitle: "listItemTitle",
+        onclick: "pageThirtyThree.ClickItem(id)",
+        titleIMG: '', titleIgClass: ""
         // titleIMG:data[1].brandIcon,titleIgClass:"titleImg_33_t2"
     })
     $("#productBrand_0").attr('style', 'display:block !important')
@@ -284,9 +332,11 @@ pageThirtyThree.clearPage = function () {
     $(".listTitle").remove();
     $("#productBrand_0").attr('style', 'display:none !important')
     $("#productBrand_1").attr('style', 'display:none !important')
+    $("#productBrand_2").attr('style', 'display:none !important')
     $("#productParent_0_0").empty();
     $("#productParent_0_1").empty();
     $("#productParent_1_0").empty();
     $("#productParent_1_1").empty();
-
+    $("#productParent_2_0").empty();
+    $("#productParent_2_1").empty();
 }
