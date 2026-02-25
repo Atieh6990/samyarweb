@@ -112,7 +112,7 @@ pageEighteen.return = function () {
 pageEighteen.ClickItem = function (idm) {
     //alert(idm);
 
-    // console.log('idm 18=?' + idm.indexOf("product-click-18-"));
+    console.log('idm 18=?' + idm.indexOf("product-click-18-"));
 
     if (idm.indexOf("product-click-18-") == 0) {
         // alert("too 0");

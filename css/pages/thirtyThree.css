@@ -32,7 +32,7 @@
     background-color: rgb(3, 95, 170);;
 }
 
-.head-item:first-child {
+.head-item:not(:last-child) {
     border-left: 1px solid #0a78e7;
 }
 
@@ -46,7 +46,7 @@
 
 .hoverTab {
     flex: 1;
-    width: 50%;
+    width:33%;
     height: 5px;
     background-color: #fec400;
     position: absolute;
